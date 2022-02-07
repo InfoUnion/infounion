@@ -8,3 +8,7 @@ InfoUnion aims to act as a metasearch engine and database for information regard
 Additionally the web site aims to have avenues for collecting testimonials through forum boards and groups. A place for people to post fair job listings, commisserate on working conditions, and find community for their respective fields and jobs.
 
 # Functionality
+
+
+# UI / Mockup
+https://www.figma.com/file/rutKpveKGSOwXUVdEoiSVr/Untitled
