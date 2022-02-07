@@ -49,6 +49,7 @@ git fetch
 
 Here's a general folder naming convention to stick to when creating new React coomponents. Under src in the frontend folder, when creating new components, create a new folder for it capitalized to the name you'll be using for the component as well.
 
+```
 Example:
 .
 ├── prototype
@@ -61,6 +62,7 @@ Example:
 │   │  │  │  ├──Login.js
 │   │  │  │  ├──Login.css
 │   │  │  │  ├──Login.test.js
+```
 
 # UI / Mockup
 https://www.figma.com/file/rutKpveKGSOwXUVdEoiSVr/Untitled
