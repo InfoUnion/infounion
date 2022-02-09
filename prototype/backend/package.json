@@ -1,0 +1,19 @@
+{
+  "name": "backend",
+  "version": "1.0.0",
+  "description": "skeleton for backend",
+  "main": "index.js",
+  "scripts": {
+    "test": "jest",
+    "dev": "nodemon backend.js",
+    "start": "node backend.js"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "express": "^4.17.2"
+  },
+  "devDependencies": {
+    "nodemon": "^2.0.15"
+  }
+}
