@@ -2,7 +2,7 @@
   "name": "backend",
   "version": "1.0.0",
   "description": "skeleton for backend",
-  "main": "index.js",
+  "main": "backend.js",
   "scripts": {
     "test": "jest",
     "dev": "nodemon backend.js",
@@ -11,7 +11,9 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
-    "express": "^4.17.2"
+    "cors": "^2.8.5",
+    "express": "^4.17.2",
+    "mongoose": "^6.2.1"
   },
   "devDependencies": {
     "nodemon": "^2.0.15"

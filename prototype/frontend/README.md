@@ -4,7 +4,9 @@ This project was bootstrapped with [Create React App](https://github.com/faceboo
 
 ## Need to download node modules
 
+### `npm install`
 ### `npm install axios`
+
 
 ## Available Scripts
 

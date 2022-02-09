@@ -6,3 +6,4 @@ npm install express
 npm install --save-dev nodemon
 npm install cors
 npm install mongoose
+npm install jest
