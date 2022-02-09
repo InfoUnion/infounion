@@ -25,12 +25,6 @@ git checkout -b name-of-branch.
 git push --set-upstream origin name-of-branch
 // Run this after creating a new branch to connect a branch to the main
 
-git branch -u origin/main
-// Run this to change the upstream to main
-
-git push HEAD
-// All pushing will be based on this alias "HEAD" for the branch you created. if you want to push to the main branch(don't) use HEAD:main
-
 git checkout main
 // Go back to main
 
