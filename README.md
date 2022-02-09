@@ -48,6 +48,12 @@ git fetch
 
 ```
 
+# Figma Conventions
+
+Each compoent is grouped and ready for import, more information here: https://www.alphr.com/figma-export-code/#:~:text=Select%20the%20elements%20you%20want,and%20press%20%E2%80%9CExport%20Code.%E2%80%9D
+
+Please comment when changes that are needed 
+
 # Folder Conventions
 
 Here's a general folder naming convention to stick to when creating new React coomponents. Under src in the frontend folder, when creating new components, create a new folder for it capitalized to the name you'll be using for the component as well.
