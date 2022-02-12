@@ -2,6 +2,12 @@
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
+## Need to download node modules
+
+### `npm install`
+### `npm install axios`
+
+
 ## Available Scripts
 
 In the project directory, you can run:
