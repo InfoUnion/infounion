@@ -74,3 +74,13 @@ Example:
 │   │  │  │  ├──Login.css
 │   │  │  │  ├──Login.test.js
 ```
+
+# API / Web Scrapping Research
+
+Federal Database: https://developer.dol.gov/beginners-guide/
+Other APIs:
+  https://www.unionware.com/products/api-framework/
+  https://www.data.gov/local/get-local-government-data-gov
+  https://www.usa.gov/developer
+  https://code.gov/agencies
+https://docs.google.com/document/d/1IT6KDD4dduXokwT3u3gDnck2O6mgQQ3ZRDBKUSYWvWE/edit?usp=sharing
