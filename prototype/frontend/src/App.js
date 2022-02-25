@@ -1,5 +1,11 @@
-import logo from './logo.svg';
 import { Routes, Route, Link } from "react-router-dom";
+import logo from './logo.svg';
+
+import Home from './components/About/About.js'
+import About from './components/Home/Home.js'
+import Contact from './components/Contact/Contact.js'
+import Login from './components/Login/Login.js'
+
 import './App.css';
 
 function App() {
@@ -13,72 +19,6 @@ function App() {
         <Route path="login" element={<Login />} />
       </Routes>
     </div>
-  );
-}
-
-
-function Home() {
-  return (
-    <>
-      <main>
-        <h2>This is our homepage!</h2>
-        <p>We're here to inform our workers.</p>
-      </main>
-      <nav>
-        <p><Link to="/about">About</Link></p>
-        <p><Link to="/contact">Contact Us</Link></p>
-        <p><Link to="/login">Log in</Link></p>
-      </nav>
-    </>
-  );
-}
-
-function About() {
-  return (
-    <>
-      <main>
-        <h2>Who are we?</h2>
-        <p>
-          InfoUnion was created with one idea in mind: info on all things job-related, easy to understand, all in one location.
-          Our development team is composed of four geniuses based in San Luis Obispo, CA.
-        </p>
-      </main>
-      <nav>
-        <Link to="/">Home</Link>
-      </nav>
-    </>
-  );
-}
-
-function Contact() {
-  return (
-    <>
-      <main>
-        <h2>Contact Us!</h2>
-        <p>
-          Email us at InfoUnion@calpoly.edu
-        </p>
-      </main>
-      <nav>
-        <Link to="/">Home</Link>
-      </nav>
-    </>
-  );
-}
-
-function Login() {
-  return (
-    <>
-      <main>
-        <h2>Log in to your InfoUnion account</h2>
-        <p>
-          Webpage currently under construction!
-        </p>
-      </main>
-      <nav>
-        <Link to="/">Home</Link>
-      </nav>
-    </>
   );
 }
 
