@@ -1,0 +1,25 @@
+:root { 
+  --azure-radiance: #0084ff;
+  --black: #000000;
+  --bridal-heath: #fff9f4;
+ 
+  --font-size-m: 48px;
+  --font-size-s: 36px;
+ 
+  --font-family-josefin_sans: "Josefin Sans", Helvetica;
+}
+.josefinsans-normal-bridal-heath-48px {
+  color: var(--bridal-heath);
+  font-family: var(--font-family-josefin_sans);
+  font-size: var(--font-size-m);
+  font-style: normal;
+  font-weight: 400;
+}
+
+.josefinsans-normal-azure-radiance-36px {
+  color: var(--azure-radiance);
+  font-family: var(--font-family-josefin_sans);
+  font-size: var(--font-size-s);
+  font-style: normal;
+  font-weight: 400;
+}

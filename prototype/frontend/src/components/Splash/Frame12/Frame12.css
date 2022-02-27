@@ -1,0 +1,10 @@
+.frame-12 {
+  align-items: flex-start;
+  background-color: #ffffff;
+  display: flex;
+  height: 1019px;
+  overflow: hidden;
+  position: relative;
+  width: 1440px;
+}
+
