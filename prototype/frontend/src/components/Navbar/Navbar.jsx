@@ -20,14 +20,14 @@ const NavBar= () =>{
                             <Link to="/contact">Contact</Link>
                         </li>
                         <li>
-                            <Link to="/search">Search</Link>
+                            <Link to="/splash">Search</Link>
                         </li>
 
                 </ul>
 
         </div>
             <div class="right">
-                <Link to="/search">Login</Link>
+                <Link to="/login">Login</Link>
             </div>
 
         </header>
