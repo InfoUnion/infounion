@@ -38,6 +38,12 @@ a:hover {
     color: var(--text-color);
 }
 
+.welcome {
+    font-family: 'Yellowtail', cursive;
+    letter-spacing: 2px;
+
+}
+
 .space {
     /*border: 2px solid var(--main-color);*/
     width: 100vw;
@@ -46,4 +52,5 @@ a:hover {
 
 .placeholder {
     font-size: 96px;
+    font-weight: lighter;
 }
