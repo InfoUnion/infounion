@@ -21,18 +21,29 @@ main {
 
 nav {
     border: 2px solid var(--main-color);
+    width: 100vw;
 
     display: flex;
     flex-direction: row;
     justify-content: space-evenly;
 }
 
-a:hover {
+a {
     color: var(--main-color);
+    text-decoration: none;
+    font-size: 36px;
 }
 
-.box {
-    border: 2px solid var(--main-color);
+a:hover {
+    color: var(--text-color);
+}
+
+.space {
+    /*border: 2px solid var(--main-color);*/
     width: 100vw;
     height: 10px;
+}
+
+.placeholder {
+    font-size: 96px;
 }

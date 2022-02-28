@@ -10,8 +10,8 @@ import './App.css';
 
 function App() {
   return (
-    <div className="App">
-      <h1 className="welcome">Welcome to InfoUnion!</h1>
+    <div class="App">
+      <h1 class="welcome">Welcome to InfoUnion!</h1>
       <Routes>
         <Route path="/" element={<Home />} />
         <Route path="about" element={<About />} />
