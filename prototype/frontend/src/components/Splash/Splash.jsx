@@ -1,22 +1,22 @@
 import { Routes, Route, Link } from "react-router-dom";
-import './Home.css'
+import './Splash.css'
+//import './Splash.html'
 
-function Home() {
+function Splash() {
     return (
 
         <main>
-            <h2>This is our homepage!</h2>
-            <p>We're here to inform our workers.</p>
+            <h2>This is our Search!</h2>
+            <p>We're here to inform our workers bringing you the knowledge.</p>
             <nav>
                 <p><Link to="/about">About</Link></p>
                 <p><Link to="/contact">Contact Us</Link></p>
                 <p><Link to="/login">Log in</Link></p>
-                <p><Link to="/splash">Search</Link></p>
+                <p><Link to="/">Home</Link></p>
             </nav>
-            <div class='box'></div>
         </main>
 
     );
 }
 
-export default Home;
+export default Splash;
