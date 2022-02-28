@@ -6,7 +6,7 @@ const NavBar= () =>{
     return (
         <header className="header">
             <div className="left">
-                <a href="#">InfoUnion</a>
+                <Link to="/">InfoUnion</Link>
             </div>
     <div className="mid">
                 <ul className="navbar">
@@ -20,9 +20,6 @@ const NavBar= () =>{
                             <Link to="/contact">Contact</Link>
                         </li>
                         <li>
-                            <Link to="/login">Login</Link>
-                        </li>
-                        <li>
                             <Link to="/search">Search</Link>
                         </li>
 
@@ -30,7 +27,7 @@ const NavBar= () =>{
 
         </div>
             <div class="right">
-                <a href="#">Welcome</a>
+                <Link to="/search">Login</Link>
             </div>
 
         </header>
