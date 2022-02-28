@@ -11,7 +11,7 @@ import './App.css';
 function App() {
   return (
     <div className="App">
-      <h1>Welcome to InfoUnion!</h1>
+      <h1 className="welcome">Welcome to InfoUnion!</h1>
       <Routes>
         <Route path="/" element={<Home />} />
         <Route path="about" element={<About />} />

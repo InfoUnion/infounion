@@ -1,3 +1,9 @@
+:root {
+    --background-color: #FFF9F4;
+    --main-color: #0085FF;
+    --text-color: #434343;
+}
+
 @font-face {
     font-family: Josefin Sans;
     src: url("../../assets/fonts/Josefin_Sans/JosefinSans-VariableFont_wght.ttf");
@@ -6,4 +12,18 @@
 @font-face {
     font-family: Yellowtail;
     src: url("../../assets/fonts/Yellowtail/Yellowtail-Regular.ttf");
+}
+
+main {
+    text-align: center;
+}
+
+.box {
+    border: 2px solid var(--main-color);
+    width: 100%;
+    height: 10px;
+}
+
+Link:hover {
+    color: var(--main-color);
 }
