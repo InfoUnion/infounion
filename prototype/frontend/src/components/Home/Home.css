@@ -16,14 +16,23 @@
 
 main {
     text-align: center;
+    position: relative;
+}
+
+nav {
+    border: 2px solid var(--main-color);
+
+    display: flex;
+    flex-direction: row;
+    justify-content: space-evenly;
+}
+
+a:hover {
+    color: var(--main-color);
 }
 
 .box {
     border: 2px solid var(--main-color);
-    width: 100%;
+    width: 100vw;
     height: 10px;
-}
-
-Link:hover {
-    color: var(--main-color);
 }
