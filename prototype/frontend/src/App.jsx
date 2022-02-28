@@ -1,10 +1,10 @@
 import { Routes, Route, Link } from "react-router-dom";
 import logo from './logo.svg';
 
-import Home from './components/Home/Home.js'
-import About from './components/About/About.js'
-import Contact from './components/Contact/Contact.js'
-import Login from './components/Login/Login.js'
+import Home from './components/Home/Home'
+import About from './components/About/About'
+import Contact from './components/Contact/Contact'
+import Login from './components/Login/Login'
 
 import './App.css';
 

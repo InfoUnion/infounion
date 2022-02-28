@@ -17,4 +17,4 @@ function Login() {
     );
 }
 
-export default Contact;
+export default Login
