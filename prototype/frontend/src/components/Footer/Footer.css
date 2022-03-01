@@ -1,0 +1,38 @@
+:root {
+    --background-color: #FFF9F4;
+    --main-color: #0085FF;
+    --text-color: #434343;
+}
+
+body {
+    margin: 0;
+    padding: 0;
+}
+
+#root {
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+}
+
+.content {
+    flex: 1 0 auto;
+    padding: 10px;
+}
+
+.footer {
+    flex-shrink: 0;
+    text-align: center;
+    background-color: #0085FF;
+    color: white;
+}
+
+@font-face {
+    font-family: Josefin Sans;
+    src: url("../../assets/fonts/Josefin_Sans/JosefinSans-VariableFont_wght.ttf");
+}
+
+@font-face {
+    font-family: Yellowtail;
+    src: url("../../assets/fonts/Yellowtail/Yellowtail-Regular.ttf");
+}
