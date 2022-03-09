@@ -13,7 +13,7 @@ function App() {
         <Route path="about" element={<About />} />
         <Route path="contact" element={<Contact />} />
         <Route path="login" element={<Login />} />
-        <Route path="test" element={<Test />} />
+        <Route path="unions" element={<Test />} />
       </Routes>
     </div>
   );
@@ -31,7 +31,7 @@ function Home() {
         <p><Link to="/about">About</Link></p>
         <p><Link to="/contact">Contact Us</Link></p>
         <p><Link to="/login">Log in</Link></p>
-        <p><Link to="/test">Test</Link></p>
+        <p><Link to="/unions">Test</Link></p>
       </nav>
     </>
   );
