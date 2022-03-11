@@ -112,7 +112,7 @@ function findUserById(id) {
 
 app.post('/users', async (req, res) => {
     const userToAdd = req.body;
-    userToAdd.id = ID();
+    //userToAdd.id = ID();
     const savedUser = await myFunctions.addUser(userToAdd);
     //addUser(userToAdd);
     //res.send(userToAdd);
