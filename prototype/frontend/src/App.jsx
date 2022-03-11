@@ -13,9 +13,9 @@ import Footer from "./components/Footer/Footer";
 
 function App() {
   return (
-    <div className="App">
+    <div class="App">
         <Navbar/>
-      <h1 className="welcome">Welcome to InfoUnion!</h1>
+      <h1 class="welcome">Welcome to InfoUnion!</h1>
       <Routes>
         <Route path="/" element={<Home />} />
         <Route path="about" element={<About />} />
