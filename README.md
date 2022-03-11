@@ -1,6 +1,3 @@
-npm i react-bootstrap <--- premade components
-When importing components, import from react-bootstrap instead of react-router or react-dom
-
 # InfoUnion
 Front &amp; Backend of our webapp, InfoUnion
 
