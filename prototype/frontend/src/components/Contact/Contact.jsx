@@ -5,9 +5,6 @@ function Contact() {
     return (
         <>
             <main>
-                <nav>
-                    <Link to="/">Home</Link>
-                </nav>
                 <div class='space'></div>
                 <h2>Contact Us!</h2>
                 <p>

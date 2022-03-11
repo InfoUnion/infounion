@@ -4,9 +4,6 @@ function About() {
     return (
         <>
             <main>
-                <nav>
-                    <Link to="/">Home</Link>
-                </nav>
                 <div class='space'></div>
                 <h2>Who are we?</h2>
                 <p>
