@@ -1,3 +1,5 @@
+npm i reactstrap <--- premade components
+
 # InfoUnion
 Front &amp; Backend of our webapp, InfoUnion
 
