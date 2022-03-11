@@ -9,6 +9,7 @@ function Home() {
                 <p><Link to="/about">About</Link></p>
                 <p><Link to="/contact">Contact Us</Link></p>
                 <p><Link to="/login">Log in</Link></p>
+                <p><Link to="/splash">Search</Link></p>
             </nav>
             <div class='space'></div>
             <div>
