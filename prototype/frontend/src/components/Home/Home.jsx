@@ -5,6 +5,7 @@ function Home() {
     return (
 
         <main>
+            <h1 class="welcome">Welcome to InfoUnion!</h1>
             <div class='space'></div>
             <div>
                 <h2>This is our homepage!</h2>
