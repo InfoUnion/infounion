@@ -4,7 +4,7 @@ import { Home } from '../../App.js';
 import { MapContainer, TileLayer, Marker, Popup } from 'react-leaflet'
 
 
-function Test() {
+function Unions() {
   return (
  
 <MapContainer center={[35.282753, -120.659615]} zoom={13}>
@@ -28,4 +28,4 @@ function Test() {
 </MapContainer>
   );
 }
-  export {Test};
+  export {Unions};

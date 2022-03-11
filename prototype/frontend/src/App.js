@@ -1,7 +1,7 @@
 import logo from './logo.svg';
 import { Routes, Route, Link } from "react-router-dom";
 import './App.css';
-import { Test } from './components/Union_List_Page/Union_List_Page.js';
+import { Test } from './components/Union_List_Page/Unions.js';
 
 
 function App() {
@@ -13,7 +13,7 @@ function App() {
         <Route path="about" element={<About />} />
         <Route path="contact" element={<Contact />} />
         <Route path="login" element={<Login />} />
-        <Route path="unions" element={<Test />} />
+        <Route path="unions" element={<Unions />} />
       </Routes>
     </div>
   );
@@ -31,7 +31,7 @@ function Home() {
         <p><Link to="/about">About</Link></p>
         <p><Link to="/contact">Contact Us</Link></p>
         <p><Link to="/login">Log in</Link></p>
-        <p><Link to="/unions">Test</Link></p>
+        <p><Link to="/unions">Unions</Link></p>
       </nav>
     </>
   );
