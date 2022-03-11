@@ -4,14 +4,7 @@ import './Home.css'
 function Home() {
     return (
 
-        <main>
-            <h1 class="welcome">Welcome to InfoUnion!</h1>
-            <div class='space'></div>
-            <div>
-                <h2>This is our homepage!</h2>
-                <p>We're here to inform our workers.</p>
-            </div>
-            <div class='space'></div>
+        <main class="home-main">
             <div>
                 <h1 class='placeholder'>HOME PAGE</h1>
                 <h1 class='placeholder'>ANNOUNCEMENTS</h1>

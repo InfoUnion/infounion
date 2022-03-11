@@ -5,43 +5,44 @@
 }
 
 .mid {
-    background-color:#FFF9F4;
+    background-color: var(--background-color);
     display: inline-block;
     width: 63%;
     margin: auto;
 }
 
-.navbar{
+.navbar {
 
-    display:flex;
+    display: flex;
 }
 
-.navbar li{
+.navbar li {
 
     list-style: none;
-    display:inline-block;
+    display: inline-block;
 
-    margin:auto;
+    margin: auto;
 }
 
-.navbar li a{
+.navbar li a {
     text-decoration: none;
-    color:rgb(29, 25, 231);
+    color: rgb(29, 25, 231);
     font-size: 18px;
-    padding:8px 20px;
+    padding: 8px 20px;
 }
 
-.navbar li a:hover{
-    color:black;
+.navbar li a:hover {
+    color: black;
     border: black;
     border-radius: 2px;
     font-size: 20px;
 }
 
-.navbar li a:active{
+.navbar li a:active {
     background-color: deepskyblue;
     border-radius: 5px;
 }
+
 .right {
     background-color: aqua;
     display: inline-block;
@@ -61,15 +62,17 @@
     padding: 18px 160px;
     color: #1d19e7;
 }
-.right a{
-    text-decoration:none;
+
+.right a {
+    text-decoration: none;
 }
-.right:hover{
-    font-weight:bolder;
+
+.right:hover {
+    font-weight: bolder;
 }
 
 .left {
-    background-color:#FFF9F4;
+    background-color: #FFF9F4;
     display: inline-block;
     width: 10%;
     font-size: 18px;
@@ -79,12 +82,12 @@
 
 }
 
-.left a{
-    text-decoration:none;
+.left a {
+    text-decoration: none;
 }
 
-.left:hover{
-    font-weight:bolder;
+.left:hover {
+    font-weight: bolder;
 }
 
 @font-face {
