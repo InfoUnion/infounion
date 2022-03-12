@@ -4,7 +4,7 @@ import './Contact.css';
 function Contact() {
     return (
         <>
-            <main>
+            <main className="contact-container">
                 <div class='space'></div>
                 <h2>Contact Us!</h2>
                 <p>

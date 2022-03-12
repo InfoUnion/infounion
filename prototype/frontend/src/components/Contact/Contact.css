@@ -1,0 +1,22 @@
+:root {
+    --background-color: #FFF9F4;
+    --main-color: #0085FF;
+    --text-color: #434343;
+}
+
+@font-face {
+    font-family: Josefin Sans;
+    src: url("../../assets/fonts/Josefin_Sans/JosefinSans-VariableFont_wght.ttf");
+}
+
+@font-face {
+    font-family: Yellowtail;
+    src: url("../../assets/fonts/Yellowtail/Yellowtail-Regular.ttf");
+}
+
+.contact-container {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
