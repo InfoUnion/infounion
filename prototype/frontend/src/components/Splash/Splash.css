@@ -40,7 +40,7 @@
 
     background-color: var(--text-color);
     color: transparent;
-    text-shadow: 0px 2px 3px var(--background-color);
+    text-shadow: 0px 2px 2px var(--background-color);
     -webkit-background-clip: text;
     background-clip: text;
 

@@ -1,0 +1,74 @@
+:root {
+    --background-color: #FFF9F4;
+    --main-color: #0085FF;
+    --text-color: #434343;
+}
+
+@font-face {
+    font-family: Josefin Sans;
+    src: url("../../assets/fonts/Josefin_Sans/JosefinSans-VariableFont_wght.ttf");
+}
+
+@font-face {
+    font-family: Yellowtail;
+    src: url("../../assets/fonts/Yellowtail/Yellowtail-Regular.ttf");
+}
+
+.login-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100vw;
+    height: 100vh;
+}
+
+.login-form {
+    display: flex;
+
+    justify-content: center;
+    align-items: center;
+    width: 400px;
+    height: 400px;
+
+    background-color: var(--main-color);
+    border-radius: 3px;
+}
+
+.mb-3 {
+    background-color: var(--main-color);
+}
+
+.form-label {
+    background-color: transparent;
+    color: var(--background-color);
+}
+
+.form-text {
+    background-color: transparent;
+}
+
+.form-control {
+    background-color: var(--background-color);
+}
+
+.form-container {
+    background-color: var(--main-color);
+}
+
+.login-button {
+    color: var(--background-color);
+}
+
+.login-button:hover {
+    color: var(--text-color);
+}
+
+.register-button {
+    background-color: transparent;
+    color: var(--background-color);
+    text-decoration: none;
+}
+
+.register-button:hover {
+    color: var(--text-color);
+}
