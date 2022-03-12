@@ -27,7 +27,6 @@ function Splash() {
             </div>
             <div class="splash-prompt-container-2">
                 <p class="splash-prompt">I want</p>
-                <div class="spacer"></div>
                 <div class="info select-container">
                     <Form.Select class="form-select">
                         <option>Information</option>
