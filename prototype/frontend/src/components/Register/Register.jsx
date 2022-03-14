@@ -1,8 +1,7 @@
 import { Form, Button } from "react-bootstrap";
-import { Link } from "react-router-dom";
-import './Login.css'
+import './Register.css'
 
-function Login() {
+function Register() {
     return (
         <>
             <main>
@@ -17,15 +16,17 @@ function Login() {
                                 </Form.Text>
                             </Form.Group>
 
+                            <Form.Group className="mb-3" controlId="formBasicEmail">
+                                <Form.Label>Username</Form.Label>
+                                <Form.Control type="text" placeholder="Enter username" />
+                            </Form.Group>
+
                             <Form.Group className="mb-3" controlId="formBasicPassword">
                                 <Form.Label>Password</Form.Label>
                                 <Form.Control type="password" placeholder="Password" />
                             </Form.Group>
-                            <Button className="login-button" variant="" type="submit">
-                                Login
-                            </Button>
                             <Button className="register-button" variant="" type="submit">
-                                <Link className="register-link" to="/register">Register</Link>
+                                Register
                             </Button>
                         </Form>
                     </div>
@@ -36,4 +37,4 @@ function Login() {
     );
 }
 
-export default Login
+export default Register

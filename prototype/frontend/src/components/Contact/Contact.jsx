@@ -4,11 +4,11 @@ import './Contact.css';
 function Contact() {
     return (
         <>
-            <main>
+            <main className="contact-container">
                 <div class='space'></div>
                 <h2>Contact Us!</h2>
                 <p>
-                    Email us at InfoUnion@calpoly.edu
+                    Email us at InfoUnion@calpoly.edu to submit your unions
                 </p>
             </main>
 

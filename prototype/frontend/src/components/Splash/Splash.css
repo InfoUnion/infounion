@@ -1,6 +1,7 @@
 :root {
-    --background-color:#FFF9F4;
+    --background-color: #FFF9F4;
     --main-color: #0085FF;
+    --accent-color: #80C2FF;
     --text-color: #434343;
 }
 
@@ -14,26 +15,81 @@
     src: url("../../assets/fonts/Yellowtail/Yellowtail-Regular.ttf");
 }
 
-main {
+.splash-main {
+    display: flex;
+    flex-direction: column;
     text-align: center;
+    align-items: center;
+    justify-content: center;
+
+    background-color: var(--main-color);
+    height: 100vh;
+    width: 100vw;
+
 }
 
-.box {
-    border: 2px solid var(--background-color);
-    width: 100%;
-    height: 10px;
+.splash-header {
+    font-family: Yellowtail;
+    font-size: 150px;
+    font-weight: lighter;
+    margin-top: -10vh;
+
 }
 
-Link:hover {
-    color: var(--main-color);
+.inset {
+
+    background-color: var(--text-color);
+    color: transparent;
+    text-shadow: 0px 2px 2px var(--background-color);
+    -webkit-background-clip: text;
+    background-clip: text;
+
 }
 
-.search {
-    background-position: 10px 12px; /* Position the search icon */
-    background-repeat: no-repeat; /* Do not repeat the icon image */
-    width: 100%; /* Full-width */
-    font-size: 16px; /* Increase font-size */
-    padding: 12px 20px 12px 40px; /* Add some padding */
-    border: 1px solid #ddd; /* Add a grey border */
-    margin-bottom: 12px; /* Add some space below the input */
+.splash-prompt-container {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-evenly;
+    background-color: var(--main-color);
+    height: 10vh;
+    width: 50vw;
+}
+
+.splash-prompt-container-2 {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-evenly;
+    background-color: var(--main-color);
+    height: 10vh;
+    width: 20vw;
+
+}
+
+.splash-prompt {
+    font-size: 30px;
+    background-color: var(--main-color);
+    color: var(--background-color);
+}
+
+.splash-message {
+    font-size: 25px;
+    color: var(--background-color);
+    background-color: var(--main-color);
+}
+
+.select-container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: var(--main-color);
+}
+
+.form-select {
+    font-size: 25px;
+    border: transparent;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 3px;
+
 }
