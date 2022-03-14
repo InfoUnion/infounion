@@ -1,6 +1,7 @@
 :root {
     --background-color: #FFF9F4;
     --main-color: #0085FF;
+    --accent-color: #80C2FF;
     --text-color: #434343;
 }
 
@@ -14,9 +15,63 @@
     src: url("../../assets/fonts/Yellowtail/Yellowtail-Regular.ttf");
 }
 
+.mb-3 {
+    background-color: var(--main-color);
+}
+
+.form-label {
+    background-color: transparent;
+    color: var(--background-color);
+}
+
+.form-text {
+    background-color: transparent;
+}
+
+.form-control-contact {
+    background-color: var(--background-color);
+    width: 600px;
+}
+
+.form-container {
+    background-color: var(--main-color);
+}
+
+.submit-button {
+    color: var(--background-color);
+}
+
+.submit-button:hover {
+    color: var(--text-color);
+}
+
+.register-link {
+    background-color: transparent;
+    color: var(--background-color);
+    text-decoration: none;
+}
+
+.register-link:hover {
+    color: var(--text-color);
+}
+
 .contact-container {
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
+}
+
+.contact-form {
+    display: flex;
+
+    justify-content: center;
+    align-items: center;
+    width: 800px;
+    height: 400px;
+
+    background-color: var(--main-color);
+    border-radius: 3px;
+
+    box-shadow: 3px 3px 3px var(--accent-color);
 }

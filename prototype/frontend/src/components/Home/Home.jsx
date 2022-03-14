@@ -60,11 +60,11 @@ function Home() {
                 </div>
             </div>
             <div className="news-box-container">
-                <div className="news-box"></div>
-                <div className="news-box"></div>
-                <div className="news-box"></div>
-                <div className="news-box"></div>
-                <div className="news-box"></div>
+                <img className="news-box" src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSnwbOEwZxCM-ZSGb2G1PSOUKqya72_Ifnhqw&usqp=CAU"></img>
+                <img className="news-box" src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQWPIC3TScS2eqX_VUx5Vwn0L7EONSpbdzjTw&usqp=CAU"></img>
+                <img className="news-box" src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRa0I_5b1gLyg0hJ95kVea_4E8mGEMAhVYmgw&usqp=CAU"></img>
+                <img className="news-box" src="https://cdn.dribbble.com/users/617587/screenshots/13955768/media/9b30c56bc7c0e36ae86bad4d3c5ddcba.png?compress=1&resize=400x300&vertical=top"></img>
+                <img className="news-box" src="https://www.cta.org/wp-content/uploads/2020/04/Social-Share-1-1.png"></img>
             </div>
             <div className="featured-content-container">
                 <div className="featured-content">

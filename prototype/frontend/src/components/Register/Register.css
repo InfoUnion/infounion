@@ -47,7 +47,8 @@
     background-color: transparent;
 }
 
-.form-control {
+.form-control-register {
+    width: 300px;
     background-color: var(--background-color);
 }
 

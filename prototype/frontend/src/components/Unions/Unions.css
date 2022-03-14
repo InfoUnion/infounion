@@ -1,0 +1,54 @@
+:root {
+    --background-color: #FFF9F4;
+    --main-color: #0085FF;
+    --accent-color: #80C2FF;
+    --text-color: #434343;
+}
+
+@font-face {
+    font-family: Josefin Sans;
+    src: url("../../assets/fonts/Josefin_Sans/JosefinSans-VariableFont_wght.ttf");
+}
+
+@font-face {
+    font-family: Yellowtail;
+    src: url("../../assets/fonts/Yellowtail/Yellowtail-Regular.ttf");
+}
+
+.unions-container {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    margin-top: 20px;
+    width: 100%;
+    height: 50vh;
+}
+
+.cards-container {
+    width: 50vw;
+    height: 50vh;
+    margin-left: 25px;
+    background-color: var(--main-color);
+}
+
+.map-container {
+    display: flex;
+    align-items: center;
+    justify-content: right;
+    margin-right: 25px;
+    width: 50vw;
+    height: 50vh;
+}
+
+.leaflet-container {
+    width: 50vw;
+    height: 50vh;
+    border-radius: 3px;
+    border: 1px solid var(--main-color);
+}
+
+.unions-cards-listgroup {
+    width: 100%;
+    height: 100%;
+    overflow: scroll;
+}

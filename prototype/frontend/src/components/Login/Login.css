@@ -51,7 +51,7 @@
     background-color: transparent;
 }
 
-.form-control {
+.form-control-login {
     background-color: var(--background-color);
     width: 300px;
 }
