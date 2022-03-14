@@ -52,3 +52,9 @@
     height: 100%;
     overflow: scroll;
 }
+
+.list-group-item{
+    margin: 2px;
+    background-color: var(--main-color);
+    color: var(--background-color);
+}
