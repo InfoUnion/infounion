@@ -4,10 +4,11 @@ import React from "react";
 
 const Footer = () => {
     return (
-        <footer className="footer">
-            <p> Copyright 2022 - InfoUnion & Associates </p>
-        </footer>
-
+        <div className="footer-container">
+            <footer className="footer">
+                <p> Copyright 2022 - InfoUnion & Associates </p>
+            </footer>
+        </div>
     );
 }
 export default Footer;

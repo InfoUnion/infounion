@@ -9,22 +9,13 @@ body {
     padding: 0;
 }
 
-#root {
-    display: flex;
-    flex-direction: column;
-    height: 100%;
-}
-
-.content {
-    flex: 1 0 auto;
-    padding: 10px;
-}
-
 .footer {
-    flex-shrink: 0;
     text-align: center;
-    background-color: #0085FF;
-    color: white;
+    height: 100px;
+    width: 100%;
+    background-color: transparent;
+    color: var(--text-color);
+    border: 1px solid black;
 }
 
 @font-face {
