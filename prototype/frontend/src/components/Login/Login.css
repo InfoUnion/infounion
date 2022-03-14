@@ -53,6 +53,7 @@
 
 .form-control {
     background-color: var(--background-color);
+    width: 300px;
 }
 
 .form-container {
