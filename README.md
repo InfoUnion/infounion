@@ -1,6 +1,9 @@
 # InfoUnion
 Front &amp; Backend of our webapp, InfoUnion
 
+# Product Spec
+https://docs.google.com/document/d/1gftDwFXkpsSZekMuVqWvDATEhlRc-7KY_5gV8A2Uh-Y/edit?usp=sharing
+
 # Goal
 
 InfoUnion aims to act as a metasearch engine and database for information regarding labor and labor laws in the United States with an emphasis on providing workers better information regarding their worker's rights. The goal is coallate all available information regarding topics of labor including labor laws, unions, worker's rights advocacy groups, worker's legal representation, labor statistics, and general information regarding work in the US.
