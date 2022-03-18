@@ -94,7 +94,8 @@ async function deleteUserById(id){
     }
 }
 
-
+exports.findUserByName = findUserByName;
+exports.findUserByJob = findUserByJob;
 exports.deleteUserById = deleteUserById;
 exports.getUsers = getUsers;
 exports.findUserById = findUserById;
