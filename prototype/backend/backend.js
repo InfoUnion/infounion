@@ -60,11 +60,14 @@ app.get('/', (req, res) => {
     res.send("hello world");
 });
 
+
 app.get('/users', async (req, res) => {
     const name = req.query['name'];
     const job = req.query['job'];
+    const username = req.query['username'];
+    const password = req.query['password'];
     try{
-        result = await myFunctions.getUsers(name,job);
+        result = await myFunctions.getUsers(name,job,username,password);
     /*users['users_list'];
     
     if(name != undefined){
@@ -74,7 +77,7 @@ app.get('/users', async (req, res) => {
         result = result.filter( (user) => user['job']===job);
         
     } */
-        result = {users_list: result}
+        //result = {users_list: result}
         res.send(result);
     } catch(error){
         console.log(error);
