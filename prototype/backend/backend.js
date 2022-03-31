@@ -104,6 +104,29 @@ app.delete('/users/:id', async (req,res) => {
 
 });
 
+app.delete('/unions/:id', async (req,res) => {
+    const id = req.params['id'];
+    if(unionFunc.findUnionById(id)=={}){
+        res.status(404).send('Resource not found.');
+    }else{
+        try{
+            const unionDelete = await unionFunc.deleteUnionById(id);
+            if(unionDelete){
+                res.status(204).end();
+            }
+            else
+                res.status(500).end();
+            
+        }catch(error){
+            console.log(error);
+            res.status(500).send('An error ocurred in the server.');
+        }
+        
+    }
+
+    
+});
+
 app.delete('/users', async (req,res) => {
     const id = req.query['id'];
     if(myFunctions.findUserById(id)=={}){
