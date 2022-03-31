@@ -1,5 +1,25 @@
+# Unit Tests
+03/17/2022
+ 
+ PASS  ./test.test.js
+  ✓ Testing get users (435 ms)
+  ✓ Testing findUserByName -- success (22 ms)
+  ✓ Testing findUserByID -- success (22 ms)
+  ✓ Testing findUserByJob -- success (18 ms)
+  ✓ testing deleting a user by Id -- successful path (471 ms)
+  ✓ testing adding user -- successful path (63 ms)
+
+Test Suites: 1 passed, 1 total
+Tests:       6 passed, 6 total
+Snapshots:   0 total
+Time:        1.266 s, estimated 2 s
+Ran all test suites.
+
 # InfoUnion
 Front &amp; Backend of our webapp, InfoUnion
+
+# Product Spec
+https://docs.google.com/document/d/1gftDwFXkpsSZekMuVqWvDATEhlRc-7KY_5gV8A2Uh-Y/edit?usp=sharing
 
 # Goal
 
