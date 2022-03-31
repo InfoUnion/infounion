@@ -24,9 +24,12 @@ function getDbConnection() {
     return dbConnection;
   }
 
-async function getUsers(name, job){
+async function getUsers(name, job,username,password){
     const userModel = getDbConnection().model("User", UserSchema);
     let result;
+    if(username && password){
+        result = await findUserByUserPass(username,password);
+    }
     if (name === undefined && job === undefined){
         result = await userModel.find();
     }
@@ -80,6 +83,11 @@ async function findUserByJob(job){
 async function findUserByJobName(name,job){
     const userModel = getDbConnection().model("User", UserSchema);
     return await userModel.find({'job':job,'name':name});
+}
+
+async function findUserByUserPass(username,password){
+    const userModel = getDbConnection().model("User", UserSchema);
+    return await userModel.find({'username':username,'password':password});
 }
 
 async function deleteUserById(id){
