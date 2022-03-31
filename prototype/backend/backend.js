@@ -104,6 +104,27 @@ app.delete('/users/:id', async (req,res) => {
 
 });
 
+app.delete('/users', async (req,res) => {
+    const id = req.query['id'];
+    if(myFunctions.findUserById(id)=={}){
+        res.status(404).send('Resource not found.');
+    }else{
+        try{
+            const userDelete = await myFunctions.deleteUserById(id);
+            if(userDelete){
+                res.status(204).end();
+            }
+            else
+                res.status(500).end();
+            
+        }catch(error){
+            console.log(error);
+            res.status(500).send('An error ocurred in the server.');
+        }
+        
+    }
+
+});
 
 
 
