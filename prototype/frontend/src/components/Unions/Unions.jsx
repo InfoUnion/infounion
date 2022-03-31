@@ -20,7 +20,7 @@ function Unions() {
         <div className='unions-container'>
             <div className='cards-container'>
                 <ListGroup className="unions-cards-listgroup">
-                    {unions.map(union => (<ListGroup.Item key={union.name}>{union.name}</ListGroup.Item>))}
+                    {unions.map(union => (<ListGroup.Item key={union.name}><a href={union.sameAs} target="_blank" rel="noreferrer">{union.name}</a></ListGroup.Item>))}
                 </ListGroup>
             </div>
             <div className='map-container'>
