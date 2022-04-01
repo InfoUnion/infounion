@@ -1,11 +1,12 @@
 import { MapContainer, TileLayer, Marker, Popup } from "react-leaflet";
-import { ListGroup } from "react-bootstrap";
+import { ListGroup, Collapse, Button, Accordion } from "react-bootstrap";
 import { Link } from "react-router-dom";
 import unions from '../../assets/data/unions';
 import './Unions.css';
 
 import 'leaflet/dist/leaflet.css';
 import L from 'leaflet';
+import AccordionBody from "react-bootstrap/esm/AccordionBody";
 
 delete L.Icon.Default.prototype._getIconUrl;
 
@@ -19,9 +20,13 @@ function Unions() {
     return (
         <div className='unions-container'>
             <div className='cards-container'>
-                <ListGroup className="unions-cards-listgroup">
-                    {unions.map(union => (<ListGroup.Item key={union.name}>{union.name}</ListGroup.Item>))}
-                </ListGroup>
+                <Accordion className="unions-cards-listgroup">
+                {unions.map(union => (
+                    <Accordion.Item eventKey ={union.name} key={union.name}>
+                        <Accordion.Header>{union.name}</Accordion.Header>
+                        <Accordion.Body> {union.description} </Accordion.Body>
+                    </Accordion.Item>))}
+                </Accordion>
             </div>
             <div className='map-container'>
                 <MapContainer center={[35.282753, -120.659615]} zoom={13}>
