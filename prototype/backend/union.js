@@ -6,7 +6,14 @@ const UnionSchema = new mongoose.Schema({
       required: true,
       trim: true,
     },
-    location: String,
+    
+    address: {
+        addressLocality: String, 
+        addressRegion: String, 
+        streetAddress: String, 
+        postalCode: String,
+    },
+
     description: String,
     member_count: Number,
     industry: String,
