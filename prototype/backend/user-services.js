@@ -24,9 +24,12 @@ function getDbConnection() {
     return dbConnection;
   }
 
-async function getUsers(name, job){
+async function getUsers(name, job,username,password){
     const userModel = getDbConnection().model("User", UserSchema);
     let result;
+    if(username && password){
+        result = await findUserByUserPass(username,password);
+    }
     if (name === undefined && job === undefined){
         result = await userModel.find();
     }
@@ -82,6 +85,11 @@ async function findUserByJobName(name,job){
     return await userModel.find({'job':job,'name':name});
 }
 
+async function findUserByUserPass(username,password){
+    const userModel = getDbConnection().model("User", UserSchema);
+    return await userModel.find({'username':username,'password':password});
+}
+
 async function deleteUserById(id){
     const userModel = getDbConnection().model("User", UserSchema);
 
@@ -94,9 +102,38 @@ async function deleteUserById(id){
     }
 }
 
-exports.findUserByName = findUserByName;
-exports.findUserByJob = findUserByJob;
+async function updateUserById(id,name,location,occupation){
+    const userModel = getDbConnection().model("User", UserSchema);
+    
+    const user = await findUserById(id);
+    if(name == undefined){
+        name = user.name;
+    }
+    if(location == undefined){
+        location = user.location;
+    }
+    if(occupation == undefined){
+        occupation = user.occupation;
+    }
+    try{
+        const newuser = await userModel.findOneAndUpdate({_id: id},
+            {
+                $set:{
+                    name: name,
+                    location: location,
+                    occupation: occupation
+                
+                }
+            },{new: true});
+        return newuser;
+    }catch(error){
+        console.log(error);
+        return false;
+    }
+}
+
 exports.deleteUserById = deleteUserById;
 exports.getUsers = getUsers;
 exports.findUserById = findUserById;
 exports.addUser = addUser;
+exports.updateUserById = updateUserById;
