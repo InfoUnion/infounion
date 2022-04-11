@@ -1,6 +1,6 @@
 const express = require('express');
 const app = express();
-const port = 5000;
+const port = 4000;
 const myFunctions = require('./user-services.js');
 const unionFunc = require('./union-services.js');
 

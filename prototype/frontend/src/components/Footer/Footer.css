@@ -8,23 +8,18 @@ body {
     margin: 0;
     padding: 0;
 }
-
-#root {
-    display: flex;
-    flex-direction: column;
-    height: 100%;
-}
-
-.content {
-    flex: 1 0 auto;
-    padding: 10px;
-}
-
 .footer {
-    flex-shrink: 0;
-    text-align: center;
-    background-color: #0085FF;
-    color: white;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100px;
+    width: 100%;
+    background-color: var(--main-color);
+}
+
+.footer-text {
+    background-color: var(--main-color);
+    color: var(--background-color);
 }
 
 @font-face {

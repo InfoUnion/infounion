@@ -15,6 +15,29 @@
     src: url("../../assets/fonts/Yellowtail/Yellowtail-Regular.ttf");
 }
 
+.login-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100vw;
+    height: 100vh;
+}
+
+.login-form {
+    display: flex;
+
+    justify-content: center;
+    align-items: center;
+    width: 400px;
+    height: 400px;
+
+    background-color: var(--main-color);
+    border-radius: 3px;
+
+    box-shadow: 3px 3px 3px var(--accent-color);
+
+}
+
 .mb-3 {
     background-color: var(--main-color);
 }
@@ -28,20 +51,20 @@
     background-color: transparent;
 }
 
-.form-control-contact {
+.form-control-login {
     background-color: var(--background-color);
-    width: 600px;
+    width: 300px;
 }
 
 .form-container {
     background-color: var(--main-color);
 }
 
-.submit-button {
+.login-button {
     color: var(--background-color);
 }
 
-.submit-button:hover {
+.login-button:hover {
     color: var(--text-color);
 }
 
@@ -53,25 +76,4 @@
 
 .register-link:hover {
     color: var(--text-color);
-}
-
-.contact-container {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-}
-
-.contact-form {
-    display: flex;
-
-    justify-content: center;
-    align-items: center;
-    width: 800px;
-    height: 400px;
-
-    background-color: var(--main-color);
-    border-radius: 3px;
-
-    box-shadow: 3px 3px 3px var(--accent-color);
 }

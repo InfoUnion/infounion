@@ -1,7 +1,6 @@
 :root {
     --background-color: #FFF9F4;
     --main-color: #0085FF;
-    --accent-color: #80C2FF;
     --text-color: #434343;
 }
 
@@ -13,6 +12,26 @@
 @font-face {
     font-family: Yellowtail;
     src: url("../../assets/fonts/Yellowtail/Yellowtail-Regular.ttf");
+}
+
+.login-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100vw;
+    height: 100vh;
+}
+
+.login-form {
+    display: flex;
+
+    justify-content: center;
+    align-items: center;
+    width: 400px;
+    height: 400px;
+
+    background-color: var(--main-color);
+    border-radius: 3px;
 }
 
 .mb-3 {
@@ -28,50 +47,29 @@
     background-color: transparent;
 }
 
-.form-control-contact {
+.form-control-register {
+    width: 300px;
     background-color: var(--background-color);
-    width: 600px;
 }
 
 .form-container {
     background-color: var(--main-color);
 }
 
-.submit-button {
+.login-button {
     color: var(--background-color);
 }
 
-.submit-button:hover {
+.login-button:hover {
     color: var(--text-color);
 }
 
-.register-link {
+.register-button {
     background-color: transparent;
     color: var(--background-color);
     text-decoration: none;
 }
 
-.register-link:hover {
+.register-button:hover {
     color: var(--text-color);
-}
-
-.contact-container {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-}
-
-.contact-form {
-    display: flex;
-
-    justify-content: center;
-    align-items: center;
-    width: 800px;
-    height: 400px;
-
-    background-color: var(--main-color);
-    border-radius: 3px;
-
-    box-shadow: 3px 3px 3px var(--accent-color);
 }
