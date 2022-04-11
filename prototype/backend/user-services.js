@@ -102,9 +102,38 @@ async function deleteUserById(id){
     }
 }
 
-exports.findUserByName = findUserByName;
-exports.findUserByJob = findUserByJob;
+async function updateUserById(id,name,location,occupation){
+    const userModel = getDbConnection().model("User", UserSchema);
+    
+    const user = await findUserById(id);
+    if(name == undefined){
+        name = user.name;
+    }
+    if(location == undefined){
+        location = user.location;
+    }
+    if(occupation == undefined){
+        occupation = user.occupation;
+    }
+    try{
+        const newuser = await userModel.findOneAndUpdate({_id: id},
+            {
+                $set:{
+                    name: name,
+                    location: location,
+                    occupation: occupation
+                
+                }
+            },{new: true});
+        return newuser;
+    }catch(error){
+        console.log(error);
+        return false;
+    }
+}
+
 exports.deleteUserById = deleteUserById;
 exports.getUsers = getUsers;
 exports.findUserById = findUserById;
 exports.addUser = addUser;
+exports.updateUserById = updateUserById;

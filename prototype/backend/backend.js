@@ -104,6 +104,104 @@ app.delete('/users/:id', async (req,res) => {
 
 });
 
+app.delete('/unions/:id', async (req,res) => {
+    const id = req.params['id'];
+    if(unionFunc.findUnionById(id)=={}){
+        res.status(404).send('Resource not found.');
+    }else{
+        try{
+            const unionDelete = await unionFunc.deleteUnionById(id);
+            if(unionDelete){
+                res.status(204).end();
+            }
+            else
+                res.status(500).end();
+            
+        }catch(error){
+            console.log(error);
+            res.status(500).send('An error ocurred in the server.');
+        }
+        
+    }
+
+
+});
+
+app.patch('/users', async (req,res) => {
+    const id = req.body['id'];
+    const name = req.body['name'];
+    const location = req.body['location'];
+    const occupation = req.body['occupation'];
+    if(myFunctions.findUserById(id)=={}){
+        res.status(404).send('Resource not found.');
+    }else{
+        try{
+            const userUpdate = await myFunctions.updateUserById(id,name,location,occupation);
+            if(userUpdate){
+                res.status(200).send(userUpdate).end();
+            }
+            else
+                res.status(500).end();
+            
+        }catch(error){
+            console.log(error);
+            res.status(500).send('An error ocurred in the server.');
+        }
+        
+    }
+
+});
+
+app.patch('/unions', async (req,res) => {
+    const id = req.body['id'];
+    const name = req.body['name'];
+    const address = req.body['address'];
+    const description = req.body['description'];
+    const member_count = req.body['member_count'];
+    const industry = req.body['industry'];
+    const year_founded = req.body['year_founded'];
+    const website = req.body['website'];
+    if(unionFunc.findUnionById(id)=={}){
+        res.status(404).send('Resource not found.');
+    }else{
+        try{
+            const unionUpdate = await unionFunc.updateUnionById(id,name,address,description,member_count,industry,year_founded,website);
+            if(unionUpdate){
+                res.status(200).send(unionUpdate).end();
+            }
+            else
+                res.status(500).end();
+            
+        }catch(error){
+            console.log(error);
+            res.status(500).send('An error ocurred in the server.');
+        }
+        
+    }
+
+});
+
+/*app.delete('/users', async (req,res) => {
+    const id = req.query['id'];
+    if(myFunctions.findUserById(id)=={}){
+        res.status(404).send('Resource not found.');
+    }else{
+        try{
+            const userDelete = await myFunctions.deleteUserById(id);
+            if(userDelete){
+                res.status(204).end();
+            }
+            else
+                res.status(500).end();
+            
+        }catch(error){
+            console.log(error);
+            res.status(500).send('An error ocurred in the server.');
+        }
+        
+    }
+
+});*/
 
 
 

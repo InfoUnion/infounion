@@ -71,8 +71,56 @@ async function deleteUnionById(id){
     }
 }
 
+async function updateUnionById(id,name,address,description,member_count,industry,year_founded,website){
+    const unionModel = getDbConnection().model("Union", UnionSchema);
+    
+    const union = await findUnionById(id);
+    if(name == undefined){
+        name = union.name;
+    }
+    if(address == undefined){
+        address = union.location;
+    }
+    if(description == undefined){
+        description = union.description;
+    }
+    if(member_count == undefined){
+        member_count = union.member_count;
+    }
+    if(industry == undefined){
+        industry = union.industry;
+    }
+    if(year_founded == undefined){
+        year_founded = union.year_founded;
+    }
+    if(website == undefined){
+        website = union.website;
+    }
+
+    try{
+        const newunion = await unionModel.findOneAndUpdate({_id: id},
+            {
+                $set:{
+                    name: name,
+                    address: address,
+                    description: description,
+                    member_count: member_count,
+                    industry: industry,
+                    year_founded: year_founded,
+                    website: website
+                
+                }
+            },{new: true});
+        return newunion;
+    }catch(error){
+        console.log(error);
+        return false;
+    }
+}
+
 
 exports.deleteUnionById = deleteUnionById;
 exports.getUnions = getUnions;
 exports.findUnionById = findUnionById;
 exports.addUnion = addUnion;
+exports.updateUnionById = updateUnionById;
