@@ -124,3 +124,4 @@ exports.getUnions = getUnions;
 exports.findUnionById = findUnionById;
 exports.addUnion = addUnion;
 exports.updateUnionById = updateUnionById;
+exports.findUnionByName = findUnionByName;
