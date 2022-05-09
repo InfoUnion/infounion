@@ -1,5 +1,6 @@
 // Kareem Darghous
-const myFunctions = require('./user-services.js');
+const myFunctions = require('./union-services.js');
+const userFunctions = require('./user-services.js');
 
 const mongoose = require('mongoose');
 const { MongoClient, ServerApiVersion } = require('mongodb');
@@ -31,13 +32,13 @@ function getDbConnection() {
 test("Testing get users", async () => {
   const name = "jeff";
   const job = undefined
-  const users = await myFunctions.getUsers(name,job);
+  const users = await userFunctions.getUsers(name,job);
   expect(users).toBeDefined();
 });
 
 test('Testing findUserByName -- success', async () => {
   const name = "charles";
-  const result = await myFunctions.findUserByName(name);
+  const result = await myFunctions.findUnionByName(name);
   expect(result).toBeDefined
   expect(result).toBeTruthy
 
@@ -45,7 +46,7 @@ test('Testing findUserByName -- success', async () => {
 
 test('Testing findUserByID -- success', async () => {
   const id = "6345649bf6b835f78b1b465f";
-  const result = await myFunctions.findUserById(id);
+  const result = await userFunctions.findUserById(id);
   //expect(result).toBeDefined();
   expect(result).toBeDefined;
   expect(result).toBeTruthy
@@ -53,7 +54,7 @@ test('Testing findUserByID -- success', async () => {
 
 test('Testing findUserByJob -- success', async () => {
   const job = "jober";
-  const result = await myFunctions.findUserByJob(job)
+  const result = await userFunctions.findUserByJob(job)
   expect(result).toBeDefined
   expect(result).toBeTruthy
 
@@ -80,7 +81,7 @@ test("testing deleting a user by Id -- successful path", async () => {
 
   const result = new userModel(user);
   const addedUser = await result.save();
-  const deleteResult = await myFunctions.deleteUserById(addedUser._id);
+  const deleteResult = await userFunctions.deleteUserById(addedUser._id);
   expect(deleteResult).toBeDefined();
   expect(deleteResult).toBeTruthy();
   expect
@@ -101,9 +102,8 @@ test("testing adding user -- successful path", async () => {
             "__v": 0
         };
 
-  const result = await myFunctions.addUser(user);
+  const result = await userFunctions.addUser(user);
   expect(result).toBeDefined;
   // expect(result.occupation).toBe(user.occupation);
 });
 
-//
