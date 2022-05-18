@@ -134,6 +134,7 @@ async function updateUserById(id,name,location,occupation){
 
 exports.deleteUserById = deleteUserById;
 exports.getUsers = getUsers;
+exports.findUserByJob = findUserByJob;
 exports.findUserById = findUserById;
 exports.addUser = addUser;
 exports.updateUserById = updateUserById;
