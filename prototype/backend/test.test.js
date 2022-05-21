@@ -66,7 +66,7 @@ test('Testing findUserByJob -- success', async () => {
 const unionListData = [
    {"name": "Industrial Employers and Distributors Association", "numberOfEmployees": 17, "sameAs": ["https://www.ieda.com/"], "foundingDate": 1937, "taxID": "94-0294755", "address": {"addressLocality": "Emeryville", "addressRegion": "CA", "streetAddress": "2200 Powell Street No 1000", "postalCode": "94608", "@type": "PostalAddress"}, "employee": {"jobTitle": "President and CEO, Lincoln Child Center", "@type": "Person", "name": "Christine Stoner-Mertz"}, "@context": "http://schema.org", "@type": "Organization", "description": "To act as a collective bargaining representative for public and private sector Employers. Collective bargaining representatives."}
   ,{"ProgramAreas": "Program areas at Industrial Employers and Distributors AssociationRepresented public and private sector Employers."},
-
+  
    {"description": "The mission of  Operating Engineers Local 3 is to organize workers for their economic and social advancement.", "numberOfEmployees": 223, "sameAs": ["https://www.oe3.org/"], "foundingDate": 1939, "telephone": "510-748-7400", "taxID": "94-0577785", "address": {"addressLocality": "Alameda", "addressRegion": "CA", "streetAddress": "1620 S Loop Rd", "postalCode": "94502", "@type": "PostalAddress"}, "employee": {"jobTitle": "President", "@type": "Person", "name": "Steve Ingersoll"}, "@context": "http://schema.org", "@type": "Organization", "name": "Operating Engineers Local 3 (OE3)"}
   ,{"ProgramAreas": "Program areas at OE3To organize workers for their economic and social advancement."},
   
