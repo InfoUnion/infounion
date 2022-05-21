@@ -35,6 +35,6 @@ jobs:
     - run: npm run build --if-present
     - run: |
           touch .env
-          echo ${{ secrets.MONGO_URI }} >> .env
+          echo MONGO_URI = mongodb+srv://Admin_User:BrunoB308@cluster0.xhcpr.mongodb.net/users?retryWrites=true&w=majority >> .env
           cat .env
     - run: npm test
