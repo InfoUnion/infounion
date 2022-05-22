@@ -123,6 +123,7 @@ const unionListData = [
 // });
 
 test("testing adding user -- successful path", async () => {
+  var result;
   const user = {
         
             "_id": "6345649bf6b835f78b111111",
@@ -136,18 +137,19 @@ test("testing adding user -- successful path", async () => {
             "union_membership": [],
             "__v": 0
         };
-
-  const result = await userFunctions.addUser(user);
+  if (!(unionFunctions.getUnions(union.name)))
+  {
+     result = await userFunctions.addUser(user);
+  }
   expect(result).toBeDefined;
   // expect(result.occupation).toBe(user.occupation);
 });
-
 
   {  
     test("testing adding union -- successful path", async () => {
       for (let i = 0; i <= unionListData.length; i++)
       {
-  
+        var result;
         var union = unionListData[i];
       //{
 
@@ -177,8 +179,10 @@ test("testing adding user -- successful path", async () => {
         // "name": "Industrial Employers and Distributors Association", "numberOfEmployees": 17, "sameAs": ["https://www.ieda.com/"], "foundingDate": 1937, "taxID": "94-0294755", "address": {"addressLocality": "Emeryville", "addressRegion": "CA", "streetAddress": "2200 Powell Street No 1000", "postalCode": "94608", "@type": "PostalAddress"}, "employee": {"jobTitle": "President and CEO, Lincoln Child Center", "@type": "Person", "name": "Christine Stoner-Mertz"}, "@context": "http://schema.org", "@type": "Organization", "description": "To act as a collective bargaining representative for public and private sector Employers. Collective bargaining representatives."
         //     };
 
-
-      const result = await unionFunctions.addUnion(union);
+      if (!(unionFunctions.getUnions(union.name)))
+      {
+         result = await unionFunctions.addUnion(union);
+      }
       i++;
     }
     expect(result).toBeDefined;
@@ -187,4 +191,3 @@ test("testing adding user -- successful path", async () => {
   
 });
   }
-
