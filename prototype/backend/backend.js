@@ -3,12 +3,14 @@ const app = express();
 const port = 4000;
 const myFunctions = require('./user-services.js');
 const unionFunc = require('./union-services.js');
+const comFunc = require('./comment-services.js');
+
 
 const cors = require('cors');
 const e = require('express');
 
 
- app.use(cors());
+app.use(cors());
 app.use(express.json());
 
 
@@ -33,8 +35,10 @@ app.get('/users', async (req, res) => {
 
 app.get('/unions', async (req, res) => {
     const name = req.query['name'];
+    const postalCode = req.query['postalCode'];
+    console.log(name,postalCode);
     try{
-        result = await unionFunc.getUnions(name);
+        result = await unionFunc.getUnions(name,postalCode);
         res.send(result);
     } catch(error){
         console.log(error);
@@ -42,6 +46,17 @@ app.get('/unions', async (req, res) => {
     }
 });
 
+app.get('/comments', async (req, res) => {
+    const user = req.query['user'];
+    const union = req.query['union'];
+    try{
+        result = await comFunc.getComments(user,union);
+        res.send(result);
+    } catch(error){
+        console.log(error);
+        res.status(500).send('An error ocurred in the server.');
+    }
+});
 
 app.get('/users/:id', async (req, res) => {
     const id = req.params['id']; //or req.params.id
@@ -81,6 +96,14 @@ app.post('/unions', async (req, res) => {
         res.status(500).end();
 });
 
+app.post('/comments', async (req, res) => {
+    const commentToAdd = req.body;
+    const savedComment = await comFunc.addComment(commentToAdd);
+    if (savedComment)
+        res.status(201).send(savedComment).end();
+    else
+        res.status(500).end();
+});
 
 app.delete('/users/:id', async (req,res) => {
     const id = req.params['id'];
@@ -123,8 +146,27 @@ app.delete('/unions/:id', async (req,res) => {
         }
         
     }
+});
 
-
+app.delete('/comments/:id', async (req,res) => {
+    const id = req.params['id'];
+    if(comFunc.findCommentById(id)=={}){
+        res.status(404).send('Resource not found.');
+    }else{
+        try{
+            const commentDelete = await comFunc.deleteCommentById(id);
+            if(commentDelete){
+                res.status(204).end();
+            }
+            else
+                res.status(500).end();
+            
+        }catch(error){
+            console.log(error);
+            res.status(500).send('An error ocurred in the server.');
+        }
+        
+    }
 });
 
 app.patch('/users', async (req,res) => {
@@ -168,6 +210,30 @@ app.patch('/unions', async (req,res) => {
             const unionUpdate = await unionFunc.updateUnionById(id,name,address,description,member_count,industry,year_founded,website);
             if(unionUpdate){
                 res.status(200).send(unionUpdate).end();
+            }
+            else
+                res.status(500).end();
+            
+        }catch(error){
+            console.log(error);
+            res.status(500).send('An error ocurred in the server.');
+        }
+        
+    }
+
+});
+
+app.patch('/comments', async (req,res) => {
+    const id = req.body['id'];
+    const comment = req.body['comment'];
+    const rating = req.body['rating'];
+    if(comFunc.findCommentById(id)=={}){
+        res.status(404).send('Resource not found.');
+    }else{
+        try{
+            const commentUpdate = await comFunc.updateCommentById(id,comment,rating);
+            if(commentUpdate){
+                res.status(200).send(commentUpdate).end();
             }
             else
                 res.status(500).end();
