@@ -36,6 +36,6 @@ jobs:
     - name: 'Create env file'
       run: |
           touch .env
-          echo MONGU_URI = mongodb+srv://Admin_User:BrunoB308@cluster0.xhcpr.mongodb.net/users?retryWrites=true&w=majority >> .env
+          echo MONGO_URI = mongodb+srv://Admin_User:BrunoB308@cluster0.xhcpr.mongodb.net/users?retryWrites=true&w=majority >> .env
           cat .env
     - run: npm test
