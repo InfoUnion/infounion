@@ -4,7 +4,7 @@
   "description": "skeleton for backend",
   "main": "backend.js",
   "scripts": {
-    "test": "jest",
+    "test": "jest --forceExit",
     "dev": "nodemon backend.js",
     "start": "node backend.js"
   },

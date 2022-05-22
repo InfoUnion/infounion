@@ -196,8 +196,4 @@ test("testing adding user -- successful path", async () => {
   
 });
   }
-    afterAll(async done => {
-    // Closing the DB connection allows Jest to exit successfully.
-    dbConnection.close();
-    done();
-  });
+
