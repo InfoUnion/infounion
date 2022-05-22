@@ -142,7 +142,7 @@ test("testing adding user -- successful path", async () => {
   // expect(result.occupation).toBe(user.occupation);
 });
 
-
+/*
   {  
     test("testing adding union -- successful path", async () => {
       for (let i = 0; i <= unionListData.length; i++)
@@ -187,4 +187,4 @@ test("testing adding user -- successful path", async () => {
   
 });
   }
-
+*/
