@@ -35,6 +35,11 @@ test("Testing get users", async () => {
   const job = undefined
   const users = await userFunctions.getUsers(name,job);
   expect(users).toBeDefined();
+      afterAll(async done => {
+      // Closing the DB connection allows Jest to exit successfully.
+      dbConnection.close();
+      done();
+    });
 });
 
 test('Testing findUserByName -- success', async () => {
@@ -42,6 +47,11 @@ test('Testing findUserByName -- success', async () => {
   const result = await unionFunctions.findUnionByName(name);
   expect(result).toBeDefined
   expect(result).toBeTruthy
+  afterAll(async done => {
+    // Closing the DB connection allows Jest to exit successfully.
+    dbConnection.close();
+    done();
+  });
 
 });
 
@@ -51,6 +61,11 @@ test('Testing findUserByID -- success', async () => {
   //expect(result).toBeDefined();
   expect(result).toBeDefined;
   expect(result).toBeTruthy
+  afterAll(async done => {
+    // Closing the DB connection allows Jest to exit successfully.
+    dbConnection.close();
+    done();
+  });
 });
 
 test('Testing findUserByJob -- success', async () => {
@@ -58,7 +73,11 @@ test('Testing findUserByJob -- success', async () => {
   const result = await userFunctions.findUserByJob(job)
   expect(result).toBeDefined
   expect(result).toBeTruthy
-
+  afterAll(async done => {
+    // Closing the DB connection allows Jest to exit successfully.
+    dbConnection.close();
+    done();
+  });
 
 });
 
@@ -143,6 +162,11 @@ test("testing adding user -- successful path", async () => {
   }
   expect(result).toBeDefined;
   // expect(result.occupation).toBe(user.occupation);
+  afterAll(async done => {
+    // Closing the DB connection allows Jest to exit successfully.
+    dbConnection.close();
+    done();
+  });
 });
 
   {  
@@ -193,6 +217,11 @@ test("testing adding user -- successful path", async () => {
     expect(result).toBeDefined;
     // expect(result.occupation).toBe(user.occupation);
     //i = i + 1;
-  
+    
+    afterAll(async done => {
+      // Closing the DB connection allows Jest to exit successfully.
+      dbConnection.close();
+      done();
+    });
 });
   }
