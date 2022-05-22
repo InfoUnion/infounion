@@ -33,8 +33,9 @@ jobs:
         cache-dependency-path: prototype/backend/package-lock.json
     - run: npm ci
     - run: npm run build --if-present
-    - run: |
+    - name: 'Create env file'
+      run: |
           touch .env
-          echo ${{ secrets.MONGO_URI }} >> .env
+          echo MONGU_URI = ${{ secrets.MONGO_URI }} >> .env
           cat .env
     - run: npm test
