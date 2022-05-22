@@ -18,11 +18,14 @@ function getDbConnection() {
     return dbConnection;
   }
 
-async function getUnions(name){
+async function getUnions(name,ID){
     const unionModel = getDbConnection().model("Union", UnionSchema);
     let result;
     if (name === undefined){
         result = await unionModel.find();
+    }
+    else if (ID){
+        result = await findUnionById(ID);
     }
     else if (name) {
         result = await findUnionByName(name);

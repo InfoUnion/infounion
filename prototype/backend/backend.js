@@ -33,8 +33,9 @@ app.get('/users', async (req, res) => {
 
 app.get('/unions', async (req, res) => {
     const name = req.query['name'];
+    const ID = req.query['ID'];
     try{
-        result = await unionFunc.getUnions(name);
+        result = await unionFunc.getUnions(name,ID);
         res.send(result);
     } catch(error){
         console.log(error);
