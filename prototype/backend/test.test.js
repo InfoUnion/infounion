@@ -5,9 +5,9 @@ const unionData = require('./data/uniondata.jsx');
 const mongoose = require('mongoose');
 const { MongoClient, ServerApiVersion } = require('mongodb');
 const UserSchema = require("./user");
-const dotenv = require("dotenv");
+//const dotenv = require("dotenv");
 const { default: majorUnions } = require('./data/uniondata');
-dotenv.config();
+//dotenv.config();
 
 let dbConnection;
 
