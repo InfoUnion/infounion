@@ -137,7 +137,7 @@ test("testing adding user -- successful path", async () => {
             "union_membership": [],
             "__v": 0
         };
-  if (!(unionFunctions.getUnions(union.name)))
+  if (!(userFunctions.getUsers(user.name)))
   {
      result = await userFunctions.addUser(user);
   }
@@ -147,10 +147,13 @@ test("testing adding user -- successful path", async () => {
 
   {  
     test("testing adding union -- successful path", async () => {
-      for (let i = 0; i <= unionListData.length; i++)
+      for (let i = 0; i < unionListData.length; i++)
       {
         var result;
         var union = unionListData[i];
+        var name = union['name'];
+        console.log(name);
+
       //{
 
         // "name": "United Brotherhood of Carpenters & Joiners - SW Regional Council of Carpenters",
@@ -178,10 +181,12 @@ test("testing adding user -- successful path", async () => {
 
         // "name": "Industrial Employers and Distributors Association", "numberOfEmployees": 17, "sameAs": ["https://www.ieda.com/"], "foundingDate": 1937, "taxID": "94-0294755", "address": {"addressLocality": "Emeryville", "addressRegion": "CA", "streetAddress": "2200 Powell Street No 1000", "postalCode": "94608", "@type": "PostalAddress"}, "employee": {"jobTitle": "President and CEO, Lincoln Child Center", "@type": "Person", "name": "Christine Stoner-Mertz"}, "@context": "http://schema.org", "@type": "Organization", "description": "To act as a collective bargaining representative for public and private sector Employers. Collective bargaining representatives."
         //     };
-
-      if (!(unionFunctions.getUnions(union.name)))
-      {
-         result = await unionFunctions.addUnion(union);
+       if (!(name == undefined))
+       {
+        if (!(unionFunctions.getUnions(name)))
+        {
+          result = await unionFunctions.addUnion(union);
+        }
       }
       i++;
     }
