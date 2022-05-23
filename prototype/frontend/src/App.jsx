@@ -1,40 +1,75 @@
-import { Routes, Route, Link, Router, Switch } from "react-router-dom";
-import '../node_modules/bootstrap/dist/css/bootstrap.css'
-import './App.scss';
+import React from 'react';
+import { BrowserRouter, Route, Routes } from 'react-router-dom';
+import { CssBaseline, createTheme, Box } from '@mui/material';
+import { ThemeProvider } from '@emotion/react';
 
-import Home from './components/Home/Home';
-import About from './components/About/About';
-import Contact from './components/Contact/Contact';
-import {Login} from './components/Login/Login1';
-import {Register} from './components/Register/Register1';
+import './App.css';
+
+import NavBar from './components/NavBar/NavBar';
+
 import Splash from './components/Splash/Splash';
+import Home from './components/Home/Home';
+import Compare from './components/Compare/Compare';
+import Forum from './components/Forum/Forum';
+import About from './components/About/About';
+import Login from './components/Login/Login';
 import Unions from './components/Unions/Unions';
 import Union from './components/Union/Union';
-import Navbar from "./components/Navbar/Navbar";
-import Footer from "./components/Footer/Footer";
-import App1 from "./components/Login/App1";
+
+import Footer from './components/Footer/Footer';
+// import { Container } from '@mui/system';
 
 function App() {
+
+  const theme = createTheme({
+    // palette: {
+    //   primary: {
+    //     light: '#4f5b62',
+    //     main: '#263238',
+    //     dark: '#000a12',
+    //     contrastText: '#fff',
+    //   },
+    //   secondary: {
+    //     light: '#ffffff',
+    //     main: '#fffbf0',
+    //     dark: '#ccc8bd',
+    //     contrastText: '#000',
+    //   },
+    // },
+  });
+
   return (
-    <div className="App">
-      <div className="page-container">
-        <Navbar />
-        <div className="content-container">
-          <Routes>
-            <Route path="/" element={<Home />} />
-            <Route path="about" element={<About />} />
-            <Route path="contact" element={<Contact />} />
-            <Route path="login" element={<App1 />} />
-            <Route path="register" element={<Register />} />
-            <Route path="splash" element={<Splash />} />
-            <Route path= "/unions/:id" element = {<Union />}/>
-            <Route path="unions" element={<Unions />} />
-            
-          </Routes>
-        </div>
-        <Footer />
-      </div>
-    </div>
+    <React.Fragment>
+      <ThemeProvider theme={theme}>
+        <CssBaseline />
+        <Box
+          className='page-wrapper'
+          display='flex'
+          flexDirection='column'
+          minHeight='100vh'
+        >
+          <NavBar />
+          <Box
+            className='main-wrapper'
+            flexGrow={1}
+          >
+            <BrowserRouter>
+              <Routes>
+                <Route path='/splash' element={<Splash />} />
+                <Route path='/home' element={<Home />} />
+                <Route path='/compare' element={<Compare />} />
+                <Route path='/forum' element={<Forum />} />
+                <Route path='/about' element={<About />} />
+                <Route path='/login' element={<Login />} />
+                <Route path="/unions/:id" element={<Union />} />
+                <Route path='/unions' element={<Unions />} />
+              </Routes>
+            </BrowserRouter>
+          </Box>
+          <Footer />
+        </Box>
+      </ThemeProvider>
+    </React.Fragment>
   );
 }
 
