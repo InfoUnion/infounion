@@ -1,4 +1,8 @@
 import { useState } from "react";
+import {
+  TextField,
+  Button,
+} from '@mui/material';
 
 const CommentForm = ({
   handleSubmit,
@@ -14,24 +18,27 @@ const CommentForm = ({
     handleSubmit(text);
     setText("");
   };
+
   return (
     <form onSubmit={onSubmit}>
-      <textarea
+      <TextField
+        // multiline
+        // maxRows={1}
         className="comment-form-textarea"
         value={text}
         onChange={(e) => setText(e.target.value)}
       />
-      <button className="comment-form-button" disabled={isTextareaDisabled}>
+      <Button onClick={onSubmit} disabled={isTextareaDisabled}>
         {submitLabel}
-      </button>
+      </Button>
       {hasCancelButton && (
-        <button
+        <Button
           type="button"
           className="comment-form-button comment-form-cancel-button"
           onClick={handleCancel}
         >
           Cancel
-        </button>
+        </Button>
       )}
     </form>
   );
