@@ -1,7 +1,10 @@
-import React, { useEffect, } from 'react';
+import React, { useEffect, useState } from 'react';
 import { useLocation } from 'react-router-dom';
 
 import { Container, Box, Stack, Button, Typography, TextField, } from '@mui/material';
+
+import Comments from "./Comments";
+import './Union.css';
 
 
 function Union() {
@@ -9,6 +12,13 @@ function Union() {
   const { u } = location.state;
 
   useEffect(() => { console.log(u) }, [u]);
+
+  const { comments, setComments } = useState([]);
+
+  const addComment = (newComment) => {
+    setComments(state => [...state, newComment])
+  };
+
 
   return (
     <Container maxWidth="xl">
@@ -47,7 +57,7 @@ function Union() {
         <Typography>
           Description: {u.row.description}
         </Typography>
-        <Typography
+        {/* <Typography
           variant='h4'
           fontWeight='bold'
         >
@@ -57,6 +67,15 @@ function Union() {
           label='Comment'
           multiline
           rows={3}
+        />
+        <Button
+          onClick={addComment}
+        >
+          Post
+        </Button> */}
+        <Comments
+          commentsUrl="http://localhost:3004/comments"
+          currentUserId="1"
         />
       </Stack>
     </Container >

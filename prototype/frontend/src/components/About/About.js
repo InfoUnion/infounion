@@ -6,27 +6,27 @@ const itemData = [
   {
     img: 'https://images.unsplash.com/photo-1565299715199-866c917206bb',
     title: 'Giselle Dougan',
-    author: '@bkristastucchio',
+    author: 'https://www.linkedin.com/in/giselle-dougan-166933153/',
   },
   {
     img: 'https://images.unsplash.com/photo-1551782450-a2132b4ba21d',
     title: 'Justin Scabarozi',
-    author: '@rollelflex_graphy726',
+    author: 'https://www.linkedin.com/in/justin-scabarozi-620329219/',
   },
   {
     img: 'https://images.unsplash.com/photo-1602968407815-5963b28c66af',
     title: 'Kareem Darghous',
-    author: '@helloimnik',
+    author: 'https://www.linkedin.com/in/kareem-d-35786a109/',
   },
   {
     img: 'https://images.unsplash.com/photo-1614045959735-6f9dc28cb994',
     title: 'Khoa Ly',
-    author: '@nolanissac',
+    author: 'https://www.linkedin.com/in/khoaly/',
   },
   {
     img: 'https://images.unsplash.com/photo-1515592505566-64d3ee6c1e83',
     title: 'Tomas Prieto',
-    author: '@hjrc33',
+    author: 'https://www.linkedin.com/in/tom%C3%A1s-prieto-577a44225/',
   },
 ]
 
