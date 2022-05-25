@@ -94,7 +94,6 @@ function stableSort(array, comparator) {
 }
 
 export default function CollapsibleTable() {
-  const [unions, setUnions] = React.useState([]);
   const [order, setOrder] = React.useState('asc');
   const [orderBy, setOrderBy] = React.useState('name');
   const [page, setPage] = React.useState(0);
@@ -114,24 +113,27 @@ export default function CollapsibleTable() {
     setRowsPerPage(+event.target.value);
     setPage(0);
   };
-  async function fetchAll(){
+
+  async function fetchAll() {
     try {
-       const response = await axios.get('http://localhost:4000/unions');
-       return response;     
+      const response = await axios.get('http://localhost:4000/unions');
+      return response;
     }
-    catch (error){
-       //We're not handling errors. Just logging into the console.
-       console.log(error); 
-       return false;         
+    catch (error) {
+      //We're not handling errors. Just logging into the console.
+      console.log(error);
+      return false;
     }
   }
 
+  const [unions, setUnions] = React.useState([]);
+
   React.useEffect(() => {
-    fetchAll().then( result => {
-     if (result)
-        setUnions(result);
+    fetchAll().then(result => {
+      if (result)
+        setUnions(result["data"]);
     });
-  }, [] );
+  }, []);
 
   const rows = unions.map((union) => (createData(
     union.name,
@@ -144,6 +146,8 @@ export default function CollapsibleTable() {
     union.sameAs,
     union.telephone,
     union.description)));
+
+  console.log(rows);
 
   return (
     <Paper sx={{ width: '100%' }}>
