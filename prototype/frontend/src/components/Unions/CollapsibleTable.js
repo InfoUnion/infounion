@@ -1,4 +1,5 @@
 import * as React from 'react';
+import axios from 'axios';
 // import PropTypes from 'prop-types';
 import {
   Table,
@@ -10,7 +11,9 @@ import {
 
 import CollapsibleRow from './CollapsibleRow';
 import CollapsibleTableHead from './CollapsibleTableHead';
-import unions from '../../assets/data/unions';
+//import unions from '../../assets/data/unions';
+
+
 
 const columns = [
   {
@@ -55,17 +58,10 @@ function createData(name, street, city, state, postal, numEmp, founded, website,
   return { name, street, city, state, postal, numEmp, founded, website, phone, description };
 }
 
-const rows = unions.map((union) => (createData(
-  union.name,
-  union.address.streetAddress,
-  union.address.addressLocality,
-  union.address.addressRegion,
-  union.address.postalCode,
-  union.numberOfEmployees,
-  union.foundingDate,
-  union.sameAs,
-  union.telephone,
-  union.description)));
+
+
+
+
 
 function descendingComparator(a, b, orderBy) {
   if (b[orderBy] < a[orderBy]) {
@@ -117,6 +113,41 @@ export default function CollapsibleTable() {
     setRowsPerPage(+event.target.value);
     setPage(0);
   };
+
+  async function fetchAll() {
+    try {
+      const response = await axios.get('http://localhost:4000/unions');
+      return response;
+    }
+    catch (error) {
+      //We're not handling errors. Just logging into the console.
+      console.log(error);
+      return false;
+    }
+  }
+
+  const [unions, setUnions] = React.useState([]);
+
+  React.useEffect(() => {
+    fetchAll().then(result => {
+      if (result)
+        setUnions(result["data"]);
+    });
+  }, []);
+
+  const rows = unions.map((union) => (createData(
+    union.name,
+    union.address.streetAddress,
+    union.address.addressLocality,
+    union.address.addressRegion,
+    union.address.postalCode,
+    union.numberOfEmployees,
+    union.foundingDate,
+    union.sameAs,
+    union.telephone,
+    union.description)));
+
+  console.log(rows);
 
   return (
     <Paper sx={{ width: '100%' }}>

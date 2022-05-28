@@ -1,4 +1,4 @@
-import { useState, useEffect } from "react";
+import React, { useState, useEffect } from "react";
 import CommentForm from "./CommentForm";
 import Comment from "./Comment";
 import {
@@ -11,9 +11,11 @@ import {
 const Comments = ({ commentsUrl, currentUserId }) => {
   const [backendComments, setBackendComments] = useState([]);
   const [activeComment, setActiveComment] = useState(null);
+
   const rootComments = backendComments.filter(
     (backendComment) => backendComment.parentId === null
   );
+
   const getReplies = (commentId) =>
     backendComments
       .filter((backendComment) => backendComment.parentId === commentId)
@@ -21,6 +23,7 @@ const Comments = ({ commentsUrl, currentUserId }) => {
         (a, b) =>
           new Date(a.createdAt).getTime() - new Date(b.createdAt).getTime()
       );
+
   const addComment = (text, parentId) => {
     createCommentApi(text, parentId).then((comment) => {
       setBackendComments([comment, ...backendComments]);
@@ -40,6 +43,7 @@ const Comments = ({ commentsUrl, currentUserId }) => {
       setActiveComment(null);
     });
   };
+
   const deleteComment = (commentId) => {
     if (window.confirm("Are you sure you want to remove comment?")) {
       deleteCommentApi().then(() => {
@@ -58,9 +62,7 @@ const Comments = ({ commentsUrl, currentUserId }) => {
   }, []);
 
   return (
-    <div className="comments">
-      <h3 className="comments-title">Comments</h3>
-      <div className="comment-form-title">Write comment</div>
+    <React.Fragment>
       <CommentForm submitLabel="Write" handleSubmit={addComment} />
       <div className="comments-container">
         {rootComments.map((rootComment) => (
@@ -77,7 +79,7 @@ const Comments = ({ commentsUrl, currentUserId }) => {
           />
         ))}
       </div>
-    </div>
+    </React.Fragment>
   );
 };
 

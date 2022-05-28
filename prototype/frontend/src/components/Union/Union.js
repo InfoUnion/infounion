@@ -4,8 +4,6 @@ import { useLocation } from 'react-router-dom';
 import { Container, Box, Stack, Button, Typography, TextField, } from '@mui/material';
 
 import Comments from "./Comments";
-import './Union.css';
-
 
 function Union() {
   const location = useLocation();
@@ -28,10 +26,10 @@ function Union() {
             variant='h4'
             fontWeight='bold'
           >
-            {u.row.name}
+            {u.row.name ? u.row.name : 'Name Unavailable'}
           </Typography>
           <Button
-            href={u.row.website[0]}
+            href={u.row.website ? u.row.website[0] : ''}
             target="_blank"
             rel="noreferrer"
           >
@@ -43,19 +41,19 @@ function Union() {
           </Button>
         </Stack>
         <Typography>
-          {u.row.phone ? `Telephone: ${u.row.phone}` : 'Number Not Available'}
+          Telephone: {u.row.phone ? u.row.phone : 'Unavailable'}
         </Typography>
         <Typography>
-          {u.row.street ? `Address: ${u.row.street} ${u.row.city}, ${u.row.state} ${u.row.postal}` : 'Address Not Available'}
+          Address:  {u.row.street ? u.row.street + u.row.city + u.row.state + u.row.postal : 'Unavailable'}
         </Typography>
         <Typography>
-          Founded in {u.row.founded}
+          Founded in {u.row.founded ? u.row.founded : 'Unavailable'}
         </Typography>
         <Typography>
-          Number of Employees: {u.row.numEmp}
+          Number of Employees: {u.row.numEmp ? u.row.numEmp : 'Unavailable'}
         </Typography>
         <Typography>
-          Description: {u.row.description}
+          Description: {u.row.description ? u.row.description : 'Unavailable'}
         </Typography>
         {/* <Typography
           variant='h4'
@@ -73,6 +71,12 @@ function Union() {
         >
           Post
         </Button> */}
+        <Typography
+          variant='h4'
+          fontWeight='bold'
+        >
+          Comments
+        </Typography>
         <Comments
           commentsUrl="http://localhost:3004/comments"
           currentUserId="1"
