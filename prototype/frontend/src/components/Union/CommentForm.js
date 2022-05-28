@@ -1,7 +1,11 @@
-import { useState } from "react";
+import React, { useState } from "react";
 import {
   TextField,
   Button,
+  FormControl,
+  CardActions,
+  Card,
+  Divider
 } from '@mui/material';
 
 const CommentForm = ({
@@ -11,8 +15,11 @@ const CommentForm = ({
   handleCancel,
   initialText = "",
 }) => {
+
   const [text, setText] = useState(initialText);
+
   const isTextareaDisabled = text.length === 0;
+
   const onSubmit = (event) => {
     event.preventDefault();
     handleSubmit(text);
@@ -20,27 +27,36 @@ const CommentForm = ({
   };
 
   return (
-    <form onSubmit={onSubmit}>
-      <TextField
-        // multiline
-        // maxRows={1}
-        className="comment-form-textarea"
-        value={text}
-        onChange={(e) => setText(e.target.value)}
-      />
-      <Button onClick={onSubmit} disabled={isTextareaDisabled}>
-        {submitLabel}
-      </Button>
-      {hasCancelButton && (
-        <Button
-          type="button"
-          className="comment-form-button comment-form-cancel-button"
-          onClick={handleCancel}
-        >
-          Cancel
-        </Button>
-      )}
-    </form>
+    <React.Fragment>
+      <Card
+        elevation={0}>
+        <TextField
+          fullWidth
+          label='Comment'
+          multiline
+          rows={3}
+          value={text}
+          onSubmit={onSubmit}
+          onChange={(e) => setText(e.target.value)}
+        />
+        <CardActions>
+          <Button
+            onClick={onSubmit}
+            disabled={isTextareaDisabled}
+          >
+            {submitLabel}
+          </Button>
+
+          {hasCancelButton && (
+            <Button
+              onClick={handleCancel}
+            >
+              Cancel
+            </Button>
+          )}
+        </CardActions>
+      </Card>
+    </React.Fragment>
   );
 };
 

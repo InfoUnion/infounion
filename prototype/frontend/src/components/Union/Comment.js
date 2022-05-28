@@ -1,6 +1,16 @@
-import CommentForm from "./CommentForm";
+import React from "react";
+
+import {
+  Card,
+  CardHeader,
+  Button,
+  Avatar,
+  CardContent,
+  CardActions,
+} from '@mui/material';
 
 import PersonIcon from '@mui/icons-material/Person';
+import CommentForm from "./CommentForm";
 
 const Comment = ({
   comment,
@@ -13,33 +23,79 @@ const Comment = ({
   parentId = null,
   currentUserId,
 }) => {
+
   const isEditing =
     activeComment &&
     activeComment.id === comment.id &&
     activeComment.type === "editing";
+
   const isReplying =
     activeComment &&
     activeComment.id === comment.id &&
     activeComment.type === "replying";
+
   const fiveMinutes = 300000;
   const timePassed = new Date() - new Date(comment.createdAt) > fiveMinutes;
   const canDelete =
     currentUserId === comment.userId && replies.length === 0 && !timePassed;
+
   const canReply = Boolean(currentUserId);
+
   const canEdit = currentUserId === comment.userId && !timePassed;
+
   const replyId = parentId ? parentId : comment.id;
+
   const createdAt = new Date(comment.createdAt).toLocaleDateString();
+
   return (
-    <div key={comment.id} className="comment">
-      <div className="comment-image-container">
-        <PersonIcon></PersonIcon>
-      </div>
-      <div className="comment-right-part">
-        <div className="comment-content">
-          <div className="comment-author">{comment.username}</div>
-          <div>{createdAt}</div>
-        </div>
-        {!isEditing && <div className="comment-text">{comment.body}</div>}
+    <React.Fragment>
+      <Card
+        key={comment.id}
+        className="comment"
+        elevation={0}>
+        <CardHeader
+          avatar={
+            <Avatar sx={{ bgcolor: '#12512' }} aria-label="recipe">
+              {comment.username[0]}
+            </Avatar>
+          }
+          title={comment.username}
+          subheader={createdAt}
+        />
+        <CardContent>
+          {!isEditing && <div className="comment-text">{comment.body}</div>}
+        </CardContent>
+        <CardActions>
+          {canReply && (
+            <Button
+              className="comment-action"
+              onClick={() =>
+                setActiveComment({ id: comment.id, type: "replying" })
+              }
+            >
+              Reply
+            </Button>
+          )}
+          {canEdit && (
+            <Button
+              className="comment-action"
+              onClick={() =>
+                setActiveComment({ id: comment.id, type: "editing" })
+              }
+            >
+              Edit
+            </Button>
+          )}
+          {canDelete && (
+            <Button
+              className="comment-action"
+              onClick={() => deleteComment(comment.id)}
+            >
+              Delete
+            </Button>
+          )}
+        </CardActions>
+
         {isEditing && (
           <CommentForm
             submitLabel="Update"
@@ -51,62 +107,40 @@ const Comment = ({
             }}
           />
         )}
-        <div className="comment-actions">
-          {canReply && (
-            <div
-              className="comment-action"
-              onClick={() =>
-                setActiveComment({ id: comment.id, type: "replying" })
-              }
-            >
-              Reply
-            </div>
-          )}
-          {canEdit && (
-            <div
-              className="comment-action"
-              onClick={() =>
-                setActiveComment({ id: comment.id, type: "editing" })
-              }
-            >
-              Edit
-            </div>
-          )}
-          {canDelete && (
-            <div
-              className="comment-action"
-              onClick={() => deleteComment(comment.id)}
-            >
-              Delete
-            </div>
-          )}
-        </div>
+
         {isReplying && (
           <CommentForm
             submitLabel="Reply"
+            hasCancelButton
             handleSubmit={(text) => addComment(text, replyId)}
+            handleCancel={() => {
+              setActiveComment(null);
+            }}
           />
         )}
-        {replies.length > 0 && (
-          <div className="replies">
-            {replies.map((reply) => (
-              <Comment
-                comment={reply}
-                key={reply.id}
-                setActiveComment={setActiveComment}
-                activeComment={activeComment}
-                updateComment={updateComment}
-                deleteComment={deleteComment}
-                addComment={addComment}
-                parentId={comment.id}
-                replies={[]}
-                currentUserId={currentUserId}
-              />
-            ))}
-          </div>
-        )}
-      </div>
-    </div>
+
+        <CardContent>
+          {replies.length > 0 && (
+            <div className="replies">
+              {replies.map((reply) => (
+                <Comment
+                  comment={reply}
+                  key={reply.id}
+                  setActiveComment={setActiveComment}
+                  activeComment={activeComment}
+                  updateComment={updateComment}
+                  deleteComment={deleteComment}
+                  addComment={addComment}
+                  parentId={comment.id}
+                  replies={[]}
+                  currentUserId={currentUserId}
+                />
+              ))}
+            </div>
+          )}
+        </CardContent>
+      </Card >
+    </React.Fragment >
   );
 };
 
