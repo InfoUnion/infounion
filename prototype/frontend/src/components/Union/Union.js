@@ -11,13 +11,6 @@ function Union() {
 
   useEffect(() => { console.log(u) }, [u]);
 
-  const { comments, setComments } = useState([]);
-
-  const addComment = (newComment) => {
-    setComments(state => [...state, newComment])
-  };
-
-
   return (
     <Container maxWidth="xl">
       <Stack spacing={2}>
@@ -44,10 +37,10 @@ function Union() {
           Telephone: {u.row.phone ? u.row.phone : 'Unavailable'}
         </Typography>
         <Typography>
-          Address:  {u.row.street ? u.row.street + u.row.city + u.row.state + u.row.postal : 'Unavailable'}
+          Address:  {u.row.street ? u.row.street + " " + u.row.city + ", " + u.row.state + " " + u.row.postal : 'Unavailable'}
         </Typography>
         <Typography>
-          Founded in {u.row.founded ? u.row.founded : 'Unavailable'}
+          Founded in: {u.row.founded ? u.row.founded : 'Unavailable'}
         </Typography>
         <Typography>
           Number of Employees: {u.row.numEmp ? u.row.numEmp : 'Unavailable'}
@@ -55,22 +48,6 @@ function Union() {
         <Typography>
           Description: {u.row.description ? u.row.description : 'Unavailable'}
         </Typography>
-        {/* <Typography
-          variant='h4'
-          fontWeight='bold'
-        >
-          Comments
-        </Typography>
-        <TextField
-          label='Comment'
-          multiline
-          rows={3}
-        />
-        <Button
-          onClick={addComment}
-        >
-          Post
-        </Button> */}
         <Typography
           variant='h4'
           fontWeight='bold'

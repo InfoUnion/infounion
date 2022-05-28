@@ -54,14 +54,9 @@ const columns = [
   },
 ];
 
-function createData(name, street, city, state, postal, numEmp, founded, website, phone, description) {
-  return { name, street, city, state, postal, numEmp, founded, website, phone, description };
+function createData(name, street, city, state, postal, numEmp, founded, website, phone, description, comments) {
+  return { name, street, city, state, postal, numEmp, founded, website, phone, description, comments };
 }
-
-
-
-
-
 
 function descendingComparator(a, b, orderBy) {
   if (b[orderBy] < a[orderBy]) {
@@ -145,7 +140,8 @@ export default function CollapsibleTable() {
     union.foundingDate,
     union.sameAs,
     union.telephone,
-    union.description)));
+    union.description,
+    [])));
 
   console.log(rows);
 
