@@ -2,6 +2,7 @@ const mongoose = require('mongoose');
 const { MongoClient, ServerApiVersion } = require('mongodb');
 const UserSchema = require("./user");
 const dotenv = require("dotenv");
+const SaltHash = require('password-salt-and-hash');
 dotenv.config();
 
 let dbConnection;
@@ -61,7 +62,11 @@ async function addUser(user){
     try{
         // You can use a Model to create new documents using 'new' and 
         // passing the JSON content of the Document:
+
         const userToAdd = new userModel(user);
+        let hashId = SaltHash.generateSaltHash(userToAdd['sub']);
+        userToAdd['sub'] = hashId['password'];
+        userToAdd['salt'] = hashId['salt'];
         const savedUser = await userToAdd.save()
         return savedUser;
     }catch(error) {
