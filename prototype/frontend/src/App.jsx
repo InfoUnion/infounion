@@ -12,7 +12,7 @@ import Home from './components/Home/Home';
 import Compare from './components/Compare/Compare';
 import Forum from './components/Forum/Forum';
 import About from './components/About/About';
-import Login from './components/Login/Login';
+import Account from './components/Account/Account';
 import Unions from './components/Unions/Unions';
 import Union from './components/Union/Union';
 
@@ -55,12 +55,13 @@ function App() {
           >
             <BrowserRouter>
               <Routes>
+                <Route path='/' element={<Splash />} />
                 <Route path='/splash' element={<Splash />} />
                 <Route path='/home' element={<Home />} />
                 <Route path='/compare' element={<Compare />} />
                 <Route path='/forum' element={<Forum />} />
                 <Route path='/about' element={<About />} />
-                <Route path='/login' element={<Login />} />
+                <Route path='/account' element={<Account />} />
                 <Route path="/unions/:id" element={<Union />} />
                 <Route path='/unions' element={<Unions />} />
               </Routes>

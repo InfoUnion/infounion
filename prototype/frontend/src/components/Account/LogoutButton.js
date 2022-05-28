@@ -7,12 +7,12 @@ const LogoutButton = () => {
   const { logout, isAuthenticated } = useAuth0();
 
   return (
-    // isAuthenticated && (
+    isAuthenticated && (
       <Button color="inherit" sx={{ fontWeight: 'bold' }} onClick={() => logout()}
       >
         Log Out
       </Button>
-    // )
+    )
   )
 }
 
