@@ -18,11 +18,7 @@ function getDbConnection() {
     return dbConnection;
   }
 
-<<<<<<< HEAD
-async function getUnions(name,ID){
-=======
 async function getUnions(name,postalCode){
->>>>>>> origin/main
     const unionModel = getDbConnection().model("Union", UnionSchema);
     let result;
     if (name === undefined && postalCode === undefined){
@@ -138,8 +134,4 @@ exports.getUnions = getUnions;
 exports.findUnionById = findUnionById;
 exports.addUnion = addUnion;
 exports.updateUnionById = updateUnionById;
-<<<<<<< HEAD
 exports.findUnionByName = findUnionByName;
-=======
-exports.findUnionByName = findUnionByName;
->>>>>>> origin/main

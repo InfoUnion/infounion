@@ -35,16 +35,10 @@ app.get('/users', async (req, res) => {
 
 app.get('/unions', async (req, res) => {
     const name = req.query['name'];
-<<<<<<< HEAD
-    const ID = req.query['ID'];
-    try{
-        result = await unionFunc.getUnions(name,ID);
-=======
     const postalCode = req.query['postalCode'];
     console.log(name,postalCode);
     try{
         result = await unionFunc.getUnions(name,postalCode);
->>>>>>> origin/main
         res.send(result);
     } catch(error){
         console.log(error);
