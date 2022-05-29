@@ -1,7 +1,13 @@
 // Kareem Darghous
+<<<<<<< HEAD
 const unionFunctions = require('./union-services.js');
 const userFunctions = require('./user-services.js');
 const unionData = require('./data/uniondata.jsx');
+=======
+const myFunctions = require('./union-services.js');
+const userFunctions = require('./user-services.js');
+
+>>>>>>> origin/main
 const mongoose = require('mongoose');
 const { MongoClient, ServerApiVersion } = require('mongodb');
 const UserSchema = require("./user");
@@ -39,7 +45,11 @@ test("Testing get users", async () => {
 
 test('Testing findUserByName -- success', async () => {
   const name = "charles";
+<<<<<<< HEAD
   const result = await unionFunctions.findUnionByName(name);
+=======
+  const result = await myFunctions.findUnionByName(name);
+>>>>>>> origin/main
   expect(result).toBeDefined
   expect(result).toBeTruthy
 
@@ -63,6 +73,7 @@ test('Testing findUserByJob -- success', async () => {
 });
 
 
+<<<<<<< HEAD
 const unionListData = [
   {"taxID": "94-0294755", "employee": {"jobTitle": "President and CEO, Lincoln Child Center", "@type": "Person", "name": "Christine Stoner-Mertz"}, "name": "Industrial Employers and Distributors Association", "numberOfEmployees": 17, "address": {"addressLocality": "Emeryville", "addressRegion": "CA", "streetAddress": "2200 Powell Street No 1000", "postalCode": "94608", "@type": "PostalAddress"}, "sameAs": ["https://www.ieda.com/"], "@context": "http://schema.org", "foundingDate": 1937, "@type": "Organization", "description": "To act as a collective bargaining representative for public and private sector Employers. Collective bargaining representatives."}
   ,{"ProgramAreas": "Program areas at Industrial Employers and Distributors AssociationRepresented public and private sector Employers."},
@@ -154,6 +165,32 @@ const unionListData = [
 //   expect(deleteResult).toBeTruthy();
 //   expect
 // });
+=======
+
+test("testing deleting a user by Id -- successful path", async () => {
+  const userModel = getDbConnection().model("User", UserSchema);
+
+   const user = {
+            "_id": "6229049bf6b835f78b1b465f",
+            "username": "jeff",
+            "password": "String",
+            "name": "Jeff",
+            "location": "Massachushets",
+            "occupation": "jober",
+            "union_favorites": [],
+            "comments": [],
+            "union_membership": [],
+            "__v": 0
+        };
+
+  const result = new userModel(user);
+  const addedUser = await result.save();
+  const deleteResult = await userFunctions.deleteUserById(addedUser._id);
+  expect(deleteResult).toBeDefined();
+  expect(deleteResult).toBeTruthy();
+  expect
+});
+>>>>>>> origin/main
 
 test("testing adding user -- successful path", async () => {
   var result;
@@ -170,10 +207,15 @@ test("testing adding user -- successful path", async () => {
             "union_membership": [],
             "__v": 0
         };
+<<<<<<< HEAD
   if (!(userFunctions.getUsers(user.name)))
   {
      result = await userFunctions.addUser(user);
   }
+=======
+
+  const result = await userFunctions.addUser(user);
+>>>>>>> origin/main
   expect(result).toBeDefined;
   // expect(result.occupation).toBe(user.occupation);
 });

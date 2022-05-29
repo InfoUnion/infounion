@@ -1,4 +1,4 @@
-:root {
+/* :root {
   --background-color: #FFF9F4;
   --main-color: #0085FF;
   --text-color: #434343;
@@ -18,17 +18,30 @@
   background-color: var(--background-color);
   color: var(--text-color);
   font-family: 'Josefin Sans', sans-serif;
+} */
+
+@import url('https://fonts.googleapis.com/css?family=Playfair+Display:300,400,500,700&display=swa');
+
+/* .MuiContainer-root {
+  border: 2px dashed red;
 }
 
-.welcome {
-  text-align: center;
+.MuiBox-root {
+  border: 1px solid red;
 }
 
-.page-container {
-  display: flex;
-  flex-direction: column;
-  min-height: 100vh;
+.MuiGrid-container {
+  border: 1px solid green;
 }
-.content-container {
-  flex: 1;
+
+.MuiGrid-item {
+  border: 1px dashed green;
 }
+
+.MuiTypography-root {
+  border: 1px solid orange;
+}
+
+.MuiStack-root {
+  border: 2px dashed purple;
+} */
