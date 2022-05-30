@@ -1,8 +1,11 @@
+import App from './App';
+import reportWebVitals from './reportWebVitals';
 import React from 'react';
 import ReactDOM from 'react-dom';
 import './index.css';
-import App from './App';
-import reportWebVitals from './reportWebVitals';
+import 'jquery';
+window.jQuery = window.$ = global.jquery
+
 
 ReactDOM.render(
   <React.StrictMode>
