@@ -20,7 +20,7 @@ const pages = ['Home', 'Unions', 'Compare', 'Forum', 'About']
 // const settings = ['Profile', 'Account', 'Settings', 'Login'];
 
 const NavBar = () => {
-  const { logout, isAuthenticated } = useAuth0()
+  // const { logout, isAuthenticated } = useAuth0() //Had to comment out (was blocking CI)
 
   const [anchorElNav, setAnchorElNav] = React.useState(null)
   // const [anchorElUser, setAnchorElUser] = React.useState(null);

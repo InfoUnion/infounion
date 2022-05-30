@@ -9,7 +9,7 @@ import {
   CardActions
 } from '@mui/material'
 
-import PersonIcon from '@mui/icons-material/Person'
+//import PersonIcon from '@mui/icons-material/Person' 
 import CommentForm from './CommentForm'
 
 const Comment = ({
