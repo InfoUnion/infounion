@@ -1,14 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="0795a534-2dfd-4a15-a707-fd9131b1df49" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/prototype/frontend/src/components/Forum/Categories/Categories.jsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/prototype/package-lock.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/prototype/frontend/src/App.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/prototype/frontend/src/App.jsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/prototype/frontend/src/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/prototype/frontend/src/index.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/prototype/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/prototype/package.json" afterDir="false" />
-    </list>
+    <list default="true" id="0795a534-2dfd-4a15-a707-fd9131b1df49" name="Changes" comment="" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -74,6 +67,7 @@
       <workItem from="1650830847193" duration="13830000" />
       <workItem from="1653696462013" duration="7465000" />
       <workItem from="1653708202930" duration="685000" />
+      <workItem from="1653938846264" duration="345000" />
     </task>
     <servers />
   </component>

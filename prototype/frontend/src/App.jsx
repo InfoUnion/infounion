@@ -26,6 +26,7 @@ import Footer from './components/Footer/Footer';
 
 // Broken
 
+/*
 const persistedState = {};
 
 
@@ -34,6 +35,7 @@ const store = createStore(
     persistedState,
     applyMiddleware(reduxThunk))
 
+*/
 
 
 
@@ -59,7 +61,7 @@ function App() {
   return (
       //
         <React.Fragment>
-          <Provider store={store} className="app">
+       {/*   <Provider store={store} className="app">*/}
           <ThemeProvider theme={theme}>
             <CssBaseline />
             <Box
@@ -89,7 +91,7 @@ function App() {
               <Footer />
             </Box>
           </ThemeProvider>
-          </Provider>
+     {/*     </Provider>*/}
         </React.Fragment>
 
   );
