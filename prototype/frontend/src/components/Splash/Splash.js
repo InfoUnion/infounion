@@ -1,13 +1,14 @@
 import React from 'react';
+import { useNavigate } from 'react-router-dom';
 
-import { Grid, Box, Typography, Stack, Paper, Button, } from '@mui/material';
+import { Grid, Box, Typography, Stack, Paper, Button, Container, } from '@mui/material';
 import { styled, } from '@mui/material/styles';
 
 import SearchIcon from '@mui/icons-material/Search';
 
 import ComboBox from './ComboBox';
 import './Splash.css';
-import { Container } from '@mui/system';
+
 
 function Splash() {
   const [occupation, setOccupation] = React.useState('');
@@ -17,13 +18,31 @@ function Splash() {
   const locations = ['California', 'New York', 'Texas'];
 
   const [information, setInformation] = React.useState('');
-  const informations = ['Unions', 'Labor Laws', 'Connections'];
+  const informations = ['Unions', 'News', 'Connections'];
+
+  let navigate = useNavigate();
 
   const Item = styled(Paper)(({ theme }) => ({
     padding: theme.spacing(1),
     textAlign: 'center',
     background: 'transparent',
   }));
+
+  const handleSearch = () => {
+    switch (information) {
+      case "Unions":
+        navigate('/unions');
+        break;
+      case "News":
+        navigate('/home');
+        break;
+      case "Connections":
+        navigate('/forum');
+        break;
+      default:
+        break;
+    }
+  }
 
   return (
     <Container maxWidth='xl'>
@@ -106,7 +125,7 @@ function Splash() {
           </Item>
 
           <Item className='splash-page-stack-item' elevation={0} >
-            <Button href='/unions'>
+            <Button onClick={handleSearch}>
               <SearchIcon />
             </Button>
           </Item>

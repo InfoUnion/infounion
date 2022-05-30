@@ -25,6 +25,15 @@ jobs:
 
     steps:
     - uses: actions/checkout@v3
+    
+     # This is the Super-Linter lines
+    
+    - name: Super-Linter
+      uses: github/super-linter@v4.9.2
+      env: 
+          GITHUB_TOKEN: ${{secrets.GITHUB_TOKEN}}
+          
+    
     - name: Use Node.js ${{ matrix.node-version }}
       uses: actions/setup-node@v3
       with:

@@ -27,7 +27,7 @@ function News(props) {
 
         {data
           ? data.articles.map((news) => (
-            <Grid item xs={1} >
+            <Grid item xs={1} key={news.url}>
               <NewsArticle data={news} key={news.url} />
             </Grid>
           ))
