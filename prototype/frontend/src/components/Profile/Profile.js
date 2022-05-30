@@ -1,19 +1,17 @@
-import React from 'react';
+import React from 'react'
 
-import { Container, Card, CardHeader, Avatar, CardContent, CardActions, Typography } from '@mui/material';
+import { Container, Card, CardHeader, Avatar, CardContent, CardActions, Typography } from '@mui/material'
 
-import { useAuth0 } from '@auth0/auth0-react';
-import LogoutButton from '../Account/LogoutButton';
+import { useAuth0 } from '@auth0/auth0-react'
+import LogoutButton from '../Account/LogoutButton'
 
-
-function Profile() {
-
-  const { user, isAuthenticated } = useAuth0();
+function Profile () {
+  const { user, isAuthenticated } = useAuth0()
 
   return (
     isAuthenticated && (
-      <Container maxWidth="xl">
-        <div className="wrapper">
+      <Container maxWidth='xl'>
+        <div className='wrapper'>
           <h1>Profile</h1>
         </div>
         <Card>
@@ -26,7 +24,7 @@ function Profile() {
           <CardContent>
             <Typography>
               Name:&nbsp;{user.name}
-              <br/>
+              <br />
               Email:&nbsp;{user.email}
             </Typography>
           </CardContent>
@@ -36,7 +34,7 @@ function Profile() {
         </Card>
       </Container>
     )
-  );
+  )
 }
 
-export default Profile;
+export default Profile

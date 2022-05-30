@@ -1,18 +1,18 @@
-import React, { useEffect, useState } from 'react';
-import { useLocation } from 'react-router-dom';
+import React, { useEffect, useState } from 'react'
+import { useLocation } from 'react-router-dom'
 
-import { Container, Box, Stack, Button, Typography, TextField, } from '@mui/material';
+import { Container, Box, Stack, Button, Typography, TextField } from '@mui/material'
 
-import Comments from "./Comments";
+import Comments from './Comments'
 
-function Union() {
-  const location = useLocation();
-  const { u } = location.state;
+function Union () {
+  const location = useLocation()
+  const { u } = location.state
 
-  useEffect(() => { console.log(u) }, [u]);
+  useEffect(() => { console.log(u) }, [u])
 
   return (
-    <Container maxWidth="xl">
+    <Container maxWidth='xl'>
       <Stack spacing={2}>
         <Stack direction='row' spacing={2} paddingTop={2}>
           <Typography
@@ -23,8 +23,8 @@ function Union() {
           </Typography>
           <Button
             href={u.row.website ? u.row.website[0] : ''}
-            target="_blank"
-            rel="noreferrer"
+            target='_blank'
+            rel='noreferrer'
           >
             <Typography
               fontWeight='bold'
@@ -37,7 +37,7 @@ function Union() {
           Telephone: {u.row.phone ? u.row.phone : 'Unavailable'}
         </Typography>
         <Typography>
-          Address:  {u.row.street ? u.row.street + " " + u.row.city + ", " + u.row.state + " " + u.row.postal : 'Unavailable'}
+          Address:  {u.row.street ? u.row.street + ' ' + u.row.city + ', ' + u.row.state + ' ' + u.row.postal : 'Unavailable'}
         </Typography>
         <Typography>
           Founded in: {u.row.founded ? u.row.founded : 'Unavailable'}
@@ -55,13 +55,13 @@ function Union() {
           Comments
         </Typography>
         <Comments
-          commentsUrl="http://localhost:3004/comments"
-          currentUserId="1"
+          commentsUrl='http://localhost:3004/comments'
+          currentUserId='1'
         />
       </Stack>
-    </Container >
+    </Container>
 
-  );
+  )
 }
 
-export default Union;
+export default Union

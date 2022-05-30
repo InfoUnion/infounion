@@ -1,4 +1,4 @@
-const mongoose = require("mongoose");
+const mongoose = require('mongoose')
 
 const UserSchema = new mongoose.Schema({
   username: String,
@@ -6,17 +6,13 @@ const UserSchema = new mongoose.Schema({
   name: {
     type: String,
     required: true,
-    trim: true,
+    trim: true
   },
   location: String,
   occupation: String,
   union_favorites: [mongoose.ObjectId],
   comments: [mongoose.ObjectId],
-  union_membership: [mongoose.ObjectId],
-}, {collection : 'users_list'});
+  union_membership: [mongoose.ObjectId]
+}, { collection: 'users_list' })
 
-
-
-
-
-module.exports = UserSchema;
+module.exports = UserSchema

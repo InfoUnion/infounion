@@ -1,11 +1,11 @@
-import React, { useContext } from "react";
-import { Grid, Box, } from '@mui/material';
-import { NewsContext } from "./NewsContext";
-import NewsArticle from "./NewsArticle";
+import React, { useContext } from 'react'
+import { Grid, Box } from '@mui/material'
+import { NewsContext } from './NewsContext'
+import NewsArticle from './NewsArticle'
 
-function News(props) {
-  const { data } = useContext(NewsContext);
-  console.log(data);
+function News (props) {
+  const { data } = useContext(NewsContext)
+  console.log(data)
 
   return (
     <Box
@@ -17,7 +17,7 @@ function News(props) {
     >
       <Grid
         container
-        columns={{ xs: 1, sm: 4, }}
+        columns={{ xs: 1, sm: 4 }}
         direction={{ xs: 'column', sm: 'row' }}
         justifyContent='center'
         alignItems='center'
@@ -31,10 +31,10 @@ function News(props) {
               <NewsArticle data={news} key={news.url} />
             </Grid>
           ))
-          : "Loading"}
+          : 'Loading'}
       </Grid>
-    </Box >
-  );
+    </Box>
+  )
 }
 
-export default News;
+export default News

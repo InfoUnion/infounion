@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState } from 'react'
 import {
   TextField,
   Button,
@@ -6,30 +6,30 @@ import {
   CardActions,
   Card,
   Divider
-} from '@mui/material';
+} from '@mui/material'
 
 const CommentForm = ({
   handleSubmit,
   submitLabel,
   hasCancelButton = false,
   handleCancel,
-  initialText = "",
+  initialText = ''
 }) => {
+  const [text, setText] = useState(initialText)
 
-  const [text, setText] = useState(initialText);
-
-  const isTextareaDisabled = text.length === 0;
+  const isTextareaDisabled = text.length === 0
 
   const onSubmit = (event) => {
-    event.preventDefault();
-    handleSubmit(text);
-    setText("");
-  };
+    event.preventDefault()
+    handleSubmit(text)
+    setText('')
+  }
 
   return (
-    <React.Fragment>
+    <>
       <Card
-        elevation={0}>
+        elevation={0}
+      >
         <TextField
           fullWidth
           label='Comment'
@@ -56,8 +56,8 @@ const CommentForm = ({
           )}
         </CardActions>
       </Card>
-    </React.Fragment>
-  );
-};
+    </>
+  )
+}
 
-export default CommentForm;
+export default CommentForm
