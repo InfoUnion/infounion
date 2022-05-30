@@ -5,7 +5,7 @@ import { ThemeProvider } from '@emotion/react';
 
 import './App.css';
 
-import NavBar from './components/NavBar/NavBar';
+import NavBar from './components/Navbar/NavBar';
 
 import Splash from './components/Splash/Splash';
 import Home from './components/Home/Home';
