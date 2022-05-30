@@ -1,12 +1,12 @@
 const express = require('express')
 const app = express()
-const port = 4000
+//const port = 4000
 const myFunctions = require('./user-services.js')
 const unionFunc = require('./union-services.js')
 const comFunc = require('./comment-services.js')
 
 const cors = require('cors')
-const e = require('express')
+//const e = require('express')
 
 app.use(cors())
 app.use(express.json())
@@ -21,7 +21,7 @@ app.get('/users', async (req, res) => {
   const username = req.query.username
   const password = req.query.password
   try {
-    result = await myFunctions.getUsers(name, job, username, password)
+    var result = await myFunctions.getUsers(name, job, username, password)
     res.send(result)
   } catch (error) {
     console.log(error)
@@ -223,6 +223,6 @@ app.patch('/comments', async (req, res) => {
 
 }); */
 
-app.listen(port, () => {
-  console.log(`Example app listening at http://localhost:${port}`)
-})
+app.listen(process.env.PORT || port, () => {
+  console.log("REST API is listening.");
+});
