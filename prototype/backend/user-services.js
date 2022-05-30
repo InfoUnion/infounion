@@ -25,14 +25,14 @@ function getDbConnection() {
     return dbConnection;
   }
 
-async function getUsers(name, job,username,password){
+async function getUsers(name, job,sub,username){
     const userModel = getDbConnection().model("User", UserSchema);
     let result;
-    if(username && password){
-        result = await findUserByUserPass(username,password);
-    }
     if (name === undefined && job === undefined){
         result = await userModel.find();
+    }
+    else if (sub){
+        result = await findUserbySub(sub);
     }
     else if (name && !job) {
         result = await findUserByName(name);
@@ -80,6 +80,12 @@ async function findUserByName(name){
     return await userModel.find({'name':name});
 }
 
+async function findUserByName(sub){
+    const userModel = getDbConnection().model("User", UserSchema);
+    
+    return await userModel.find({'sub':sub});
+}
+
 async function findUserByJob(job){
     const userModel = getDbConnection().model("User", UserSchema);
     return await userModel.find({'job':job});
@@ -89,11 +95,11 @@ async function findUserByJobName(name,job){
     const userModel = getDbConnection().model("User", UserSchema);
     return await userModel.find({'job':job,'name':name});
 }
-
+/*
 async function findUserByUserPass(username,password){
     const userModel = getDbConnection().model("User", UserSchema);
     return await userModel.find({'username':username,'password':password});
-}
+}*/
 
 async function deleteUserById(id){
     const userModel = getDbConnection().model("User", UserSchema);
