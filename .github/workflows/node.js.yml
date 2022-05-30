@@ -46,3 +46,10 @@ jobs:
     - run: npm test
       env:
         MONGO_URI: ${{ secrets.MONGO_URI }}
+    - uses: akhileshns/heroku-deploy@v3.12.12 # This is the action
+      with:
+      heroku_api_key: ${{secrets.HEROKU_API_KEY}}
+      heroku_app_name: "info-union" #Must be unique on Heroku
+      heroku_email: "kdarghous@gmail.com" #Must be the one you used on Heroku
+      appdir: "./prototype/backend" # <- This will point to the api folder in your project
+
