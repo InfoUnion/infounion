@@ -13,7 +13,7 @@ import {
 
 import PriorityHighIcon from '@mui/icons-material/PriorityHigh'
 import MenuIcon from '@mui/icons-material/Menu'
-import { useAuth0 } from '@auth0/auth0-react'
+// import { useAuth0 } from '@auth0/auth0-react'
 import LogoutButton from '../Account/LogoutButton'
 
 const pages = ['Home', 'Unions', 'Compare', 'Forum', 'About']
