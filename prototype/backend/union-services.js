@@ -33,6 +33,13 @@ async function getUnions(name,postalCode){
     return result;  
 }
 
+async function getStates(){
+    const unionModel = getDbConnection().model("Union", UnionSchema);
+    let result;
+    result = await unionModel.distinct("address.addressRegion");
+    return result;
+}
+
 async function findUnionById(id){
     const unionModel = getDbConnection().model("Union", UnionSchema);    
     try{
@@ -132,3 +139,4 @@ exports.findUnionById = findUnionById;
 exports.addUnion = addUnion;
 exports.updateUnionById = updateUnionById;
 exports.findUnionByName = findUnionByName;
+exports.getStates = getStates;

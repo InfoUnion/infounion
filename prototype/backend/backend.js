@@ -36,9 +36,19 @@ app.get('/users', async (req, res) => {
 app.get('/unions', async (req, res) => {
     const name = req.query['name'];
     const postalCode = req.query['postalCode'];
-    console.log(name,postalCode);
+    //console.log(name,postalCode);
     try{
         result = await unionFunc.getUnions(name,postalCode);
+        res.send(result);
+    } catch(error){
+        console.log(error);
+        res.status(500).send('An error ocurred in the server.');
+    }
+});
+
+app.get('/states', async (req, res) => {
+    try{
+        result = await unionFunc.getStates();
         res.send(result);
     } catch(error){
         console.log(error);
