@@ -19,6 +19,8 @@ root.render(
     domain={domain}
     clientId={clientId}
     redirectUri={window.location.href}
+    useRefreshTokens
+    cacheLocation="localstorage"
   >
     <App />
   </Auth0Provider>
