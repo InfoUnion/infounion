@@ -14,7 +14,7 @@ export default function MultiBox(props) {
     <Autocomplete
       multiple
       value={value}
-      getOptionLabel={(option) => option.name}
+      getOptionLabel={(option) => (option ? option.name : [])}
       onChange={handleChange}
       inputValue={inputValue}
       onInputChange={(event, newInputValue) => {
@@ -24,12 +24,13 @@ export default function MultiBox(props) {
       id='combo-box'
       options={list}
       sx={{ width: 300 }}
-      renderInput={(params) => <TextField
-        {...params}
-        variant="standard"
-        label={label}
-        placeholder={placeholder}
-      />}
+      renderInput={(params) => (
+        <TextField
+          {...params}
+          variant="standard"
+          label={label}
+          placeholder={placeholder}
+        />)}
     />
   )
 }
