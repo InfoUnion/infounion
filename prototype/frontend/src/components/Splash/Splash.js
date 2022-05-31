@@ -29,15 +29,15 @@ function Splash () {
 
   const handleSearch = () => {
     switch (information) {
-      case 'Unions':
-        navigate('/unions')
-        break
-      case 'News':
-        navigate('/home')
-        break
-      case 'Connections':
-        navigate('/forum')
-        break
+      case "Unions":
+        navigate('/unions', {state: location});
+        break;
+      case "News":
+        navigate('/home');
+        break;
+      case "Connections":
+        navigate('/forum');
+        break;
       default:
         break
     }
