@@ -10,7 +10,7 @@ export const NewsContextProvider = (props) => {
   useEffect(() => {
     axios
       .get(
-        `https://newsapi.org/v2/everything?q=unions+NOT+"credit+unions"&sortBy=popularity&pageSize=100&apiKey=${apiKey}`
+        `https://newsapi.org/v2/everything?q=unions+NOT+"credit+unions"+Amazon&sortBy=popularity&pageSize=100&apiKey=${apiKey}`
       )
       .then((response) => setData(response.data))
       .catch((error) => console.log(error))

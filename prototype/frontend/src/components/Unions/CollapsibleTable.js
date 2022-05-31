@@ -11,6 +11,7 @@ import {
 
 import CollapsibleRow from './CollapsibleRow'
 import CollapsibleTableHead from './CollapsibleTableHead'
+//import { getStates } from '../../../../backend/union-services'
 // import unions from '../../assets/data/unions';
 
 const columns = [
@@ -130,7 +131,7 @@ export default function CollapsibleTable({loc}) {
 
 
   const rows1 = unions.map((union) => (
-    (union.address.addressRegion === 'CA') && createData(
+    (union.address.addressRegion === loc[0]) && createData(
       union.name,
       union.address.streetAddress,
       union.address.addressLocality,
