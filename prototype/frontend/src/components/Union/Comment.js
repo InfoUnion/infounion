@@ -1,4 +1,4 @@
-import React from "react";
+import React from 'react'
 
 import {
   Card,
@@ -6,11 +6,11 @@ import {
   Button,
   Avatar,
   CardContent,
-  CardActions,
-} from '@mui/material';
+  CardActions
+} from '@mui/material'
 
-import PersonIcon from '@mui/icons-material/Person';
-import CommentForm from "./CommentForm";
+//import PersonIcon from '@mui/icons-material/Person' 
+import CommentForm from './CommentForm'
 
 const Comment = ({
   comment,
@@ -21,41 +21,41 @@ const Comment = ({
   deleteComment,
   addComment,
   parentId = null,
-  currentUserId,
+  currentUserId
 }) => {
-
   const isEditing =
     activeComment &&
     activeComment.id === comment.id &&
-    activeComment.type === "editing";
+    activeComment.type === 'editing'
 
   const isReplying =
     activeComment &&
     activeComment.id === comment.id &&
-    activeComment.type === "replying";
+    activeComment.type === 'replying'
 
-  const fiveMinutes = 300000;
-  const timePassed = new Date() - new Date(comment.createdAt) > fiveMinutes;
+  const fiveMinutes = 300000
+  const timePassed = new Date() - new Date(comment.createdAt) > fiveMinutes
   const canDelete =
-    currentUserId === comment.userId && replies.length === 0 && !timePassed;
+    currentUserId === comment.userId && replies.length === 0 && !timePassed
 
-  const canReply = Boolean(currentUserId);
+  const canReply = Boolean(currentUserId)
 
-  const canEdit = currentUserId === comment.userId && !timePassed;
+  const canEdit = currentUserId === comment.userId && !timePassed
 
-  const replyId = parentId ? parentId : comment.id;
+  const replyId = parentId || comment.id
 
-  const createdAt = new Date(comment.createdAt).toLocaleDateString();
+  const createdAt = new Date(comment.createdAt).toLocaleDateString()
 
   return (
-    <React.Fragment>
+    <>
       <Card
         key={comment.id}
-        className="comment"
-        elevation={0}>
+        className='comment'
+        elevation={0}
+      >
         <CardHeader
           avatar={
-            <Avatar sx={{ bgcolor: '#12512' }} aria-label="recipe">
+            <Avatar sx={{ bgcolor: '#12512' }} aria-label='recipe'>
               {comment.username[0]}
             </Avatar>
           }
@@ -63,32 +63,30 @@ const Comment = ({
           subheader={createdAt}
         />
         <CardContent>
-          {!isEditing && <div className="comment-text">{comment.body}</div>}
+          {!isEditing && <div className='comment-text'>{comment.body}</div>}
         </CardContent>
         <CardActions>
           {canReply && (
             <Button
-              className="comment-action"
+              className='comment-action'
               onClick={() =>
-                setActiveComment({ id: comment.id, type: "replying" })
-              }
+                setActiveComment({ id: comment.id, type: 'replying' })}
             >
               Reply
             </Button>
           )}
           {canEdit && (
             <Button
-              className="comment-action"
+              className='comment-action'
               onClick={() =>
-                setActiveComment({ id: comment.id, type: "editing" })
-              }
+                setActiveComment({ id: comment.id, type: 'editing' })}
             >
               Edit
             </Button>
           )}
           {canDelete && (
             <Button
-              className="comment-action"
+              className='comment-action'
               onClick={() => deleteComment(comment.id)}
             >
               Delete
@@ -98,30 +96,30 @@ const Comment = ({
 
         {isEditing && (
           <CommentForm
-            submitLabel="Update"
+            submitLabel='Update'
             hasCancelButton
             initialText={comment.body}
             handleSubmit={(text) => updateComment(text, comment.id)}
             handleCancel={() => {
-              setActiveComment(null);
+              setActiveComment(null)
             }}
           />
         )}
 
         {isReplying && (
           <CommentForm
-            submitLabel="Reply"
+            submitLabel='Reply'
             hasCancelButton
             handleSubmit={(text) => addComment(text, replyId)}
             handleCancel={() => {
-              setActiveComment(null);
+              setActiveComment(null)
             }}
           />
         )}
 
         <CardContent>
           {replies.length > 0 && (
-            <div className="replies">
+            <div className='replies'>
               {replies.map((reply) => (
                 <Comment
                   comment={reply}
@@ -139,9 +137,9 @@ const Comment = ({
             </div>
           )}
         </CardContent>
-      </Card >
-    </React.Fragment >
-  );
-};
+      </Card>
+    </>
+  )
+}
 
-export default Comment;
+export default Comment

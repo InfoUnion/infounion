@@ -1,4 +1,4 @@
-const mongoose = require("mongoose");
+const mongoose = require('mongoose')
 
 const CommentSchema = new mongoose.Schema({
     body: String,
@@ -12,4 +12,5 @@ const CommentSchema = new mongoose.Schema({
   }, {timestamps: true}
   ,{collection : 'comments_list'});
 
-module.exports = CommentSchema;
+
+module.exports = CommentSchema
