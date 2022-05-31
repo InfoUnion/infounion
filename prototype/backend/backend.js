@@ -22,10 +22,9 @@ app.get('/', (req, res) => {
 app.get('/users', async (req, res) => {
     const name = req.query['name'];
     const job = req.query['job'];
-    const username = req.query['username'];
-    const password = req.query['password'];
+    const sub = req.query['sub'];
     try{
-        result = await myFunctions.getUsers(name,job,username,password);
+        result = await myFunctions.getUsers(name,job,sub);
         res.send(result);
     } catch(error){
         console.log(error);

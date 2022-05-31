@@ -2,7 +2,6 @@ const mongoose = require('mongoose');
 const { MongoClient, ServerApiVersion } = require('mongodb');
 const UserSchema = require("./user");
 const dotenv = require("dotenv");
-const SaltHash = require('password-salt-and-hash');
 dotenv.config();
 
 let dbConnection;
@@ -25,14 +24,14 @@ function getDbConnection() {
     return dbConnection;
   }
 
-async function getUsers(name, job,sub,username){
+async function getUsers(name, job,sub){
     const userModel = getDbConnection().model("User", UserSchema);
     let result;
     if (name === undefined && job === undefined){
         result = await userModel.find();
     }
     else if (sub){
-        result = await findUserbySub(sub);
+        result = await findUserBySub(sub);
     }
     else if (name && !job) {
         result = await findUserByName(name);
@@ -64,9 +63,7 @@ async function addUser(user){
         // passing the JSON content of the Document:
 
         const userToAdd = new userModel(user);
-        let hashId = SaltHash.generateSaltHash(userToAdd['sub']);
-        userToAdd['sub'] = hashId['password'];
-        userToAdd['salt'] = hashId['salt'];
+        userToAdd['sub'] = userToAdd.generateHash(userToAdd['sub']);
         const savedUser = await userToAdd.save()
         return savedUser;
     }catch(error) {
@@ -80,10 +77,10 @@ async function findUserByName(name){
     return await userModel.find({'name':name});
 }
 
-async function findUserByName(sub){
+async function findUserBySub(sub){
     const userModel = getDbConnection().model("User", UserSchema);
     
-    return await userModel.find({'sub':sub});
+    return await userModel.findOne({'sub': UserSchema.validPassword(sub)});
 }
 
 async function findUserByJob(job){
