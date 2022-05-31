@@ -84,31 +84,32 @@ async function deleteCommentById (id) {
     return false
   }
 }
-// edit this still
-async function updateCommentById (id, commentS, rating) {
-  const commentModel = getDbConnection().model('Comment', CommentSchema)
+//edit this still
+async function updateCommentById(id,bodyS,rating){
+    const commentModel = getDbConnection().model("Comment", CommentSchema);
+    
+    const comment = await findCommentById(id);
+    if(bodyS == undefined){
+        bodyS = comment.body;
+    }
+    if(rating == undefined){
+        rating = comment.rating;
+    }
+    try{
+        const newComment = await commentModel.findOneAndUpdate({_id: id},
+            {
+                $set:{
+                    body: bodyS,
+                    rating: rating
+                
+                }
+            },{new: true});
+        return newComment;
+    }catch(error){
+        console.log(error);
+        return false;
+    }
 
-  const comment = await findCommentById(id)
-  if (commentS == undefined) {
-    commentS = comment.comment
-  }
-  if (rating == undefined) {
-    rating = comment.rating
-  }
-  try {
-    const newComment = await commentModel.findOneAndUpdate({ _id: id },
-      {
-        $set: {
-          comment: commentS,
-          rating
-
-        }
-      }, { new: true })
-    return newComment
-  } catch (error) {
-    console.log(error)
-    return false
-  }
 }
 
 exports.deleteCommentById = deleteCommentById
