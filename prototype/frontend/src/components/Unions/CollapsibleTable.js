@@ -92,6 +92,8 @@ export default function CollapsibleTable({ loc }) {
   const [orderBy, setOrderBy] = React.useState('name');
   const [page, setPage] = React.useState(0);
   const [rowsPerPage, setRowsPerPage] = React.useState(10);
+  const [unions, setUnions] = React.useState([])
+
 
   const handleRequestSort = (event, property) => {
     const isAsc = orderBy === property && order === 'asc'
@@ -119,7 +121,6 @@ export default function CollapsibleTable({ loc }) {
     }
   }
 
-  const [unions, setUnions] = React.useState([])
 
   React.useEffect(() => {
     fetchAll().then(result => {

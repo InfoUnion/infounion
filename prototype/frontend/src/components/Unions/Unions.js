@@ -6,6 +6,9 @@ import ComboBox from '../Splash/ComboBox'
 import CollapsibleTable from './CollapsibleTable';
 import { useLocation } from 'react-router-dom';
 
+import Regions from '../Splash/Regions'
+
+
 import './Unions.css'
 
 function Unions() {
@@ -16,7 +19,7 @@ function Unions() {
   const occupations = ['Teacher', 'Lawyer', 'Engineer']
 
   const [location, setLocation] = React.useState('')
-  const locations = ['California', 'New York', 'Texas']
+  const locations = Regions();
 
   return (
     <Container maxWidth='xl'>
@@ -36,7 +39,8 @@ function Unions() {
             spacing={1}
           >
             <ComboBox list={occupations} label='Occupation' value={occupation} setValue={setOccupation} />
-            <ComboBox list={locations} label='Location' value={location} setValue={setLocation} />
+            <ComboBox list={
+              locations.map((l) => l[1])} label='Location' value={location} setValue={setLocation} />
           </Stack>
           <CollapsibleTable loc={u_state} />
         </Stack>

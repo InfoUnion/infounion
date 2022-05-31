@@ -6,9 +6,9 @@ import { styled } from '@mui/material/styles'
 
 import SearchIcon from '@mui/icons-material/Search'
 
-import axios from 'axios'
-
 import ComboBox from './ComboBox'
+import Regions from './Regions'
+
 import './Splash.css'
 
 function Splash() {
@@ -19,50 +19,10 @@ function Splash() {
   const informations = ['Unions', 'News', 'Connections']
 
 
-
-  const [regions, setRegions] = React.useState([])
-  async function states() {
-    try {
-      const response = await axios.get('http://localhost:4000/states')
-      return response
-    } catch (error) {
-      // We're not handling errors. Just logging into the console.
-      console.log(error)
-      return false
-    }
-  }
-
-  React.useEffect(() => {
-    states().then(result => {
-      if (result) { setRegions(result.data) }
-    })
-  }, [])
-
   const [location, setLocation] = React.useState('')
-  const locations = regions.map((r) => {
-    switch (r) {
-      case 'CA':
-        return [r, 'California'];
-      case 'CT':
-        return [r, 'Connecticut'];
-      case 'DC':
-        return [r, 'Washington DC'];;
-      case 'MN':
-        return [r, 'Minnesota'];
-      case 'MO':
-        return [r, 'Missouri'];
-      case 'MT':
-        return [r, 'Montana'];
-      case 'NY':
-        return [r, 'New York'];
-      case 'NJ':
-        return [r, 'New Jersey'];
-      case 'PA':
-        return [r, 'Pennsylvania'];
-      default:
-        return null;
-    }
-  });
+  const locations = Regions();
+
+  console.log(locations)
 
   const navigate = useNavigate()
 
