@@ -2,6 +2,7 @@ import React from 'react'
 
 import { Container, Box, Stack, } from '@mui/material'
 import ComboBox from '../ComboBox/ComboBox'
+import MultiBox from '../MultiBox/MultiBox';
 
 import CollapsibleTable from '../CollapsibleTable/CollapsibleTable';
 import { useLocation } from 'react-router-dom';
@@ -13,24 +14,26 @@ import './Unions.css'
 
 function Unions() {
   const u_location = useLocation();
-  const [u, setU] = React.useState(u_location.state);
+  const [u, setU] = React.useState([u_location.state]);
 
   console.log(u);
 
   const [occupation, setOccupation] = React.useState('')
   const occupations = ['Teacher', 'Lawyer', 'Engineer']
 
-  const [location, setLocation] = React.useState((u ? u : ""))
+  const [location, setLocation] = React.useState((u ? u : []))
   const locations = Regions();
+  
+  console.log(location);
 
-  const [city, setCity] = React.useState("")
+  const [city, setCity] = React.useState([])
   const cities = Regions();
+
 
   const handleLocation = (value) => {
     setLocation(value);
-    setU(locations.filter((l) => l[1] === value)[0]);
+    setU(value);
   }
-
 
   return (
     <Container maxWidth='xl'>
@@ -50,10 +53,8 @@ function Unions() {
             spacing={1}
           >
             <ComboBox list={occupations} label='Occupation' value={occupation} setValue={setOccupation} />
-            <ComboBox list={
-              locations.map((l) => l[1])} label='State' value={location} setValue={handleLocation} />
-            <ComboBox list={
-              locations.map((l) => l[1])} label='City' value={city} setValue={setCity} />
+            <MultiBox list={locations} label='State' value={location} setValue={handleLocation} />
+            <MultiBox list={locations} label='City' value={city} setValue={setCity} />
           </Stack>
           <CollapsibleTable loc={u} />
         </Stack>

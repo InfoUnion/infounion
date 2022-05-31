@@ -22,7 +22,7 @@ function Regions() {
     })
   }, [])
 
-  return regions.map((r) => {
+  let temp = regions.map((r) => {
     switch (r) {
       case 'CA':
         return [r, 'California'];
@@ -46,6 +46,12 @@ function Regions() {
         return null;
     }
   });
+
+  function createData(abbr, name) {
+    return {abbr, name}
+  }
+
+  return temp.map((region) => (createData(region[0], region[1])));
 
 }
 

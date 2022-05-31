@@ -20,7 +20,7 @@ function Splash() {
 
 
   const [location, setLocation] = React.useState('')
-  const locations = Regions();
+  const locations = Regions()
 
   console.log(locations)
 
@@ -35,7 +35,7 @@ function Splash() {
   const handleSearch = () => {
     switch (information) {
       case "Unions":
-        navigate('/unions', { state: locations.find(l => l[1] === location) });
+        navigate('/unions', { state: locations.find(l => l.name === location) });
         break;
       case "News":
         navigate('/home');
@@ -100,7 +100,7 @@ function Splash() {
 
               <Grid item xs={1}>
                 <ComboBox list={
-                  locations.map((l) => l[1])} label='Location' value={location} setValue={setLocation} />
+                  locations.map((l) => l.name)} label='Location' value={location} setValue={setLocation} />
               </Grid>
             </Grid>
           </Item>
