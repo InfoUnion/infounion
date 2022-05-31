@@ -18,17 +18,22 @@ function getDbConnection () {
   return dbConnection
 }
 
-async function getUnions (name, postalCode) {
-  const unionModel = getDbConnection().model('Union', UnionSchema)
-  let result
-  if (name === undefined && postalCode === undefined) {
-    result = await unionModel.find()
-  } else if (name) {
-    result = await findUnionByName(name)
-  } else if (postalCode) {
-    result = await findUnionByPostal(postalCode)
-  }
-  return result
+async function getStates(){
+    const unionModel = getDbConnection().model("Union", UnionSchema);
+    let result;
+    result = await unionModel.distinct("address.addressRegion");
+    return result;
+}
+
+async function findUnionById(id){
+    const unionModel = getDbConnection().model("Union", UnionSchema);    
+    try{
+        return await unionModel.findById(id);
+    }catch(error) {
+        console.log(error);
+        return undefined;
+    }
+
 }
 
 async function findUnionById (id) {
@@ -122,9 +127,11 @@ async function updateUnionById (id, name, address, description, member_count, in
   }
 }
 
-exports.deleteUnionById = deleteUnionById
-exports.getUnions = getUnions
-exports.findUnionById = findUnionById
-exports.addUnion = addUnion
-exports.updateUnionById = updateUnionById
-exports.findUnionByName = findUnionByName
+exports.deleteUnionById = deleteUnionById;
+exports.getUnions = getUnions;
+exports.findUnionById = findUnionById;
+exports.addUnion = addUnion;
+exports.updateUnionById = updateUnionById;
+exports.findUnionByName = findUnionByName;
+exports.getStates = getStates;
+
