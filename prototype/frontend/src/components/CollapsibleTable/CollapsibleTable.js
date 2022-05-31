@@ -135,7 +135,7 @@ export default function CollapsibleTable({ loc }) {
   //console.log(unions.union.addressRegion);
 
   const rows1 = unions.map((union) => (
-    (loc[0] !== null ? (loc.some((l) => l.abbr === union.address.addressRegion)) : true) && createData(
+    (loc ? (loc.some((l) => l.abbr === union.address.addressRegion)) : true) && createData(
       union.name,
       union.address.streetAddress,
       union.address.addressLocality,

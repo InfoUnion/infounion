@@ -9,7 +9,7 @@ const checkedIcon = <CheckBoxIcon fontSize="small" />;
 
 export default function MultiBox(props) {
   const { list, label, value, setValue, placeholder } = props
-  const [inputValue, setInputValue] = React.useState('')
+  // const [inputValue, setInputValue] = React.useState('')
 
   const handleChange = (event, newValue) => {
     setValue(newValue)
@@ -24,7 +24,7 @@ export default function MultiBox(props) {
       //defaultValue={value}
 
       options={list}
-      getOptionLabel={(option) => (option ? option.name : [])}
+      getOptionLabel={(option) => (option ? option.name : "")}
       onChange={handleChange}
 
       disableCloseOnSelect

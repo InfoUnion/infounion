@@ -14,7 +14,7 @@ import './Unions.css'
 
 function Unions() {
   const u_location = useLocation();
-  const [u, setU] = React.useState([u_location.state]);
+  const [u, setU] = React.useState(u_location.state ? [u_location.state] : null);
 
   console.log(u);
 
