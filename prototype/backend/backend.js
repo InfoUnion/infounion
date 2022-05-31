@@ -1,12 +1,12 @@
 const express = require('express')
 const app = express()
-//const port = 4000
+const port = 4000
 const myFunctions = require('./user-services.js')
 const unionFunc = require('./union-services.js')
 const comFunc = require('./comment-services.js')
 
 const cors = require('cors')
-//const e = require('express')
+const e = require('express')
 
 app.use(cors())
 app.use(express.json())
