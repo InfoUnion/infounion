@@ -9,14 +9,14 @@ on:
   pull_request:
     branches: [ main ]
 
-defaults:
-  run:
-    working-directory: ./prototype/backend
     
 jobs:
-  build:
+  build-backend:
 
     runs-on: ubuntu-latest
+    defaults:
+      run:
+        working-directory: ./prototype/backend
 
     strategy:
       matrix:
@@ -32,6 +32,7 @@ jobs:
       uses: github/super-linter@v4.9.2
       env: 
           GITHUB_TOKEN: ${{secrets.GITHUB_TOKEN}}
+          DISABLE_ERRORS: true
           
     
     - name: Use Node.js ${{ matrix.node-version }}
@@ -43,3 +44,43 @@ jobs:
     - run: npm ci
     - run: npm run build --if-present
     - run: npm test
+      env:
+        MONGO_URI: ${{ secrets.MONGO_URI }}
+    - uses: akhileshns/heroku-deploy@v3.12.12 # This is the action
+      with:
+        heroku_api_key: ${{secrets.HEROKU_API_KEY}}
+        heroku_app_name: "info-union" #Must be unique on Heroku
+        heroku_email: "kdarghous@gmail.com" #Must be the one you used on Heroku
+        appdir: "./prototype/backend" # <- This will point to the api folder in your project
+
+  build-frontend:
+
+    runs-on: ubuntu-latest
+    defaults:
+      run:
+        working-directory: ./prototype/frontend
+
+    strategy:
+      matrix:
+        node-version: [12.x, 14.x, 16.x]
+        # See supported Node.js release schedule at https://nodejs.org/en/about/releases/
+
+    steps:
+    - uses: actions/checkout@v3
+          
+    
+    - name: Use Node.js ${{ matrix.node-version }}
+      uses: actions/setup-node@v3
+      with:
+        node-version: ${{ matrix.node-version }}
+        cache: 'npm'
+        cache-dependency-path: prototype/backend/package-lock.json
+    - run: npm ci
+    - run: npm run build --if-present
+    # - uses: akhileshns/heroku-deploy@v3.12.12 # This is the action
+    #   with:
+    #     heroku_api_key: ${{secrets.HEROKU_API_KEY}}
+    #     heroku_app_name: "info-union" #Must be unique on Heroku
+    #     heroku_email: "kdarghous@gmail.com" #Must be the one you used on Heroku
+    #     appdir: "./prototype/frontend" # <- This will point to the api folder in your project
+

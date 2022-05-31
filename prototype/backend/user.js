@@ -1,18 +1,23 @@
+
 const mongoose = require("mongoose");
 const bcrypt = require('bcrypt');
+
 
 const UserSchema = new mongoose.Schema({
   username: String,
   sub: {
     type: String,
     required: true,
+
+
   },
   location: String,
   occupation: String,
   union_favorites: [mongoose.ObjectId],
   comments: [mongoose.ObjectId],
-  union_membership: [mongoose.ObjectId],
-}, {collection : 'users_list'});
+  union_membership: [mongoose.ObjectId]
+}, { collection: 'users_list' })
+
 
 UserSchema.methods.generateHash = function(password) {
   return bcrypt.hashSync(password, bcrypt.genSaltSync(8), null);
@@ -26,3 +31,4 @@ UserSchema.methods.validPassword = function(password) {
 
 
 module.exports = UserSchema;
+

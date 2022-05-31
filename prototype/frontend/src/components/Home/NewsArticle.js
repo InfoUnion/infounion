@@ -1,49 +1,78 @@
 import React from "react";
-import { Card, CardActionArea, CardActions, CardMedia, CardContent, Typography, Button, } from '@mui/material';
+import {
+  Card,
+  CardActionArea, 
+  CardActions, 
+  CardMedia, 
+  CardContent, 
+  Typography, 
+  Button, 
+  Snackbar,
+  
+} from '@mui/material';
 
 
 function NewsArticle({ data }) {
+  const [open, setOpen] = React.useState(false);
+
+
+  const handleShare = () => {
+    navigator.clipboard.writeText(data.url);
+    setOpen(true);
+
+  }
+
+  const handleClose = (event, reason) => {
+    if (reason === 'clickaway') {
+      return;
+    }
+
+    setOpen(false);
+  };
+
+
   return (
-    // <div className="news">
-    //   <h1 className="news__title">{data.title}</h1>
-    //   <p className="news__desc">{data.description}</p>
-    //   <span className="news__author">{data.author}</span> <br />
-    //   <span className="news__published">{data.publishedAt}</span>
-    //   <span className="news__source">{data.source.name}</span>
-    // </div>
-    <Card sx={{ width: 300, height: 300 }}>
-      <CardActionArea
-        href={data.url}
-        target="_blank"
-        rel="noreferrer"
-      >
-        <CardMedia
-          component="img"
-          height="125"
-          image={data.urlToImage}
-          alt="green iguana"
-        />
-        <CardContent
-          height="150"
+    <React.Fragment>
+      <Card sx={{ width: 300, height: 300 }}>
+        <CardActionArea
+          href={data.url}
+          target="_blank"
+          rel="noreferrer"
         >
-          <Typography gutterBottom variant="h8" fontWeight='bold' component="div">
-            {data.title}
-          </Typography>
-          <Typography noWrap variant="body2" color="text.secondary">
-            {data.description}
-          </Typography>
-        </CardContent>
-      </CardActionArea>
+          <CardMedia
+            component="img"
+            height="125"
+            image={data.urlToImage}
+            alt="green iguana"
+          />
+          <CardContent
+            height="150"
+          >
+            <Typography gutterBottom variant="h8" fontWeight='bold' component="div">
+              {data.title}
+            </Typography>
+            <Typography noWrap variant="body2" color="text.secondary">
+              {data.description}
+            </Typography>
+          </CardContent>
+        </CardActionArea>
 
-      <CardActions
-        height="25"
-      >
-        <Button size="small" color="primary">
-          Share
-        </Button>
-      </CardActions>
+        <CardActions
+          height="25"
+        >
+          <Button size="small" color="primary" onClick={handleShare}>
+            Share
+          </Button>
+        </CardActions>
 
-    </Card>
+      </Card>
+      <Snackbar
+        open={open}
+        autoHideDuration={2000}
+        onClose={handleClose}
+        message="Link copied"
+      />
+    </React.Fragment>
   );
 }
 
