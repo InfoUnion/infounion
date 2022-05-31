@@ -3,9 +3,8 @@ import { Grid, Box } from '@mui/material'
 import { NewsContext } from './NewsContext'
 import NewsArticle from './NewsArticle'
 
-function News (props) {
+function News () {
   const { data } = useContext(NewsContext)
-  console.log(data)
 
   return (
     <Box
