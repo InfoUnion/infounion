@@ -1,23 +1,22 @@
-import React from 'react';
+import React from 'react'
 
-import { Container, } from '@mui/material';
+import { Container } from '@mui/material'
 import { NewsContextProvider } from './NewsContext'
-import News from "./News";
+import News from './News'
 
-import './Home.css';
+import './Home.css'
 
-
-function Home() {
+function Home () {
   return (
-    <Container maxWidth="xl">
-      <div className="wrapper">
+    <Container maxWidth='xl'>
+      <div className='wrapper'>
         <h1>Home</h1>
       </div>
       <NewsContextProvider>
         <News />
       </NewsContextProvider>
     </Container>
-  );
+  )
 }
 
-export default Home;
+export default Home
