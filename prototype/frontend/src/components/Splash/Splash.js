@@ -31,7 +31,7 @@ function Splash() {
   const handleSearch = () => {
     switch (information) {
       case "Unions":
-        navigate('/unions');
+        navigate('/unions', {state: location});
         break;
       case "News":
         navigate('/home');
