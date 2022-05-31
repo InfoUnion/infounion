@@ -125,7 +125,7 @@ const unionListData = [
 ]
 
 // test("testing deleting a user by Id -- successful path", async () => {
-//   const userModel = getDbConnection().model("User", UserSchema);
+//   const userModel = getDbConnection().model("User", UserSchema)
 
 //    const user = {
 //             "_id": "6229049bf6b835f78b1b465f",
