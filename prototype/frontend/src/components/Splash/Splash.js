@@ -38,7 +38,7 @@ function Splash() {
         navigate('/unions', { state: locations.find(l => l[1] === location) });
         break;
       case "News":
-        navigate('/home');
+        navigate('/home', { state: [location, occupation] });
         break;
       case "Connections":
         navigate('/forum');
