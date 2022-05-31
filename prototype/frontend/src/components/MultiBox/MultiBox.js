@@ -1,6 +1,11 @@
 import React from 'react'
-import TextField from '@mui/material/TextField'
-import Autocomplete from '@mui/material/Autocomplete'
+import { TextField, Autocomplete, Checkbox, } from '@mui/material'
+
+import CheckBoxOutlineBlankIcon from '@mui/icons-material/CheckBoxOutlineBlank';
+import CheckBoxIcon from '@mui/icons-material/CheckBox';
+
+const icon = <CheckBoxOutlineBlankIcon fontSize="small" />;
+const checkedIcon = <CheckBoxIcon fontSize="small" />;
 
 export default function MultiBox(props) {
   const { list, label, value, setValue, placeholder } = props
@@ -12,18 +17,30 @@ export default function MultiBox(props) {
 
   return (
     <Autocomplete
+      id='combo-box'git 
+      sx={{ width: 300 }}
+
       multiple
-      value={value}
+      //defaultValue={value}
+
+      options={list}
       getOptionLabel={(option) => (option ? option.name : [])}
       onChange={handleChange}
-      inputValue={inputValue}
-      onInputChange={(event, newInputValue) => {
-        setInputValue(newInputValue)
-      }}
-      disablePortal
-      id='combo-box'
-      options={list}
-      sx={{ width: 300 }}
+
+      disableCloseOnSelect
+
+      renderOption={(props, option, { selected }) => (
+        <li {...props}>
+          <Checkbox
+            icon={icon}
+            checkedIcon={checkedIcon}
+            style={{ marginRight: 8 }}
+            checked={selected}
+          />
+          {option.name}
+        </li>
+      )}
+
       renderInput={(params) => (
         <TextField
           {...params}
