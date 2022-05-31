@@ -17,7 +17,7 @@ export default function MultiBox(props) {
 
   return (
     <Autocomplete
-      id='combo-box'git 
+      id='combo-box'
       sx={{ width: 300 }}
 
       multiple
