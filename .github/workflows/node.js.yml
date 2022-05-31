@@ -14,6 +14,8 @@ jobs:
   build-backend:
 
     runs-on: ubuntu-latest
+    env:
+      CI: false
     defaults:
       run:
         working-directory: ./prototype/backend
@@ -56,6 +58,8 @@ jobs:
   build-frontend:
 
     runs-on: ubuntu-latest
+    env:
+      CI: false
     defaults:
       run:
         working-directory: ./prototype/frontend
@@ -82,5 +86,5 @@ jobs:
         heroku_api_key: ${{secrets.HEROKU_API_KEY}}
         heroku_app_name: "info-union" #Must be unique on Heroku
         heroku_email: "kdarghous@gmail.com" #Must be the one you used on Heroku
-        appdir: "./prototype/backend" # <- This will point to the api folder in your project
+        appdir: "./prototype/frontend" # <- This will point to the api folder in your project
 
