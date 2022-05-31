@@ -86,11 +86,11 @@ function stableSort (array, comparator) {
   return stabilizedThis.map((el) => el[0])
 }
 
-export default function CollapsibleTable () {
-  const [order, setOrder] = React.useState('asc')
-  const [orderBy, setOrderBy] = React.useState('name')
-  const [page, setPage] = React.useState(0)
-  const [rowsPerPage, setRowsPerPage] = React.useState(10)
+export default function CollapsibleTable({loc}) {
+  const [order, setOrder] = React.useState('asc');
+  const [orderBy, setOrderBy] = React.useState('name');
+  const [page, setPage] = React.useState(0);
+  const [rowsPerPage, setRowsPerPage] = React.useState(10);
 
   const handleRequestSort = (event, property) => {
     const isAsc = orderBy === property && order === 'asc'
@@ -126,20 +126,27 @@ export default function CollapsibleTable () {
     })
   }, [])
 
-  const rows = unions.map((union) => (createData(
-    union.name,
-    union.address.streetAddress,
-    union.address.addressLocality,
-    union.address.addressRegion,
-    union.address.postalCode,
-    union.numberOfEmployees,
-    union.foundingDate,
-    union.sameAs,
-    union.telephone,
-    union.description,
-    [])))
+ //console.log(unions.union.addressRegion);
 
-  console.log(rows)
+
+  const rows1 = unions.map((union) => (
+    (union.address.addressRegion === 'CA') && createData(
+      union.name,
+      union.address.streetAddress,
+      union.address.addressLocality,
+      union.address.addressRegion,
+      union.address.postalCode,
+      union.numberOfEmployees,
+      union.foundingDate,
+      union.sameAs,
+      union.telephone,
+      union.description,
+      []) 
+    ));
+
+  const rows = rows1.filter(row => (row))
+  console.log(loc);
+  //console.log(rows);
 
   return (
     <Paper sx={{ width: '100%' }}>
