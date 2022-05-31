@@ -6,6 +6,8 @@ import { styled } from '@mui/material/styles'
 
 import SearchIcon from '@mui/icons-material/Search'
 
+import axios from 'axios'
+
 import ComboBox from './ComboBox'
 import './Splash.css'
 
@@ -13,11 +15,54 @@ function Splash () {
   const [occupation, setOccupation] = React.useState('')
   const occupations = ['Teacher', 'Lawyer', 'Engineer']
 
-  const [location, setLocation] = React.useState('')
-  const locations = ['California', 'New York', 'Texas']
-
   const [information, setInformation] = React.useState('')
   const informations = ['Unions', 'News', 'Connections']
+
+
+
+  const [regions, setRegions] = React.useState([])
+  async function states () {
+    try {
+      const response = await axios.get('http://localhost:4000/states')
+      return response
+    } catch (error) {
+      // We're not handling errors. Just logging into the console.
+      console.log(error)
+      return false
+    }
+  }
+
+  React.useEffect(() => {
+    states().then(result => {
+      if (result) { setRegions(result.data) }
+    })
+  }, [])
+
+  const [location, setLocation] = React.useState('')
+  const locations = regions.map((r) => {
+    switch(r){
+      case 'CA':
+        return [r, 'California'];
+      case 'CT':
+        return [r, 'Connecticut'];
+      case 'DC':
+        return [r, 'Washington DC'];;
+      case 'MN':
+        return [r, 'Minnesota'];
+      case 'MO':
+        return [r, 'Missouri'];
+      case 'MT':
+        return [r, 'Montana'];
+      case 'NY':
+        return [r, 'New York'];
+      case 'NJ':
+        return [r, 'New Jersey'];
+      case 'PA':
+        return [r, 'Pennsylvania'];
+      default:
+        return null;
+      }
+  });
 
   const navigate = useNavigate()
 
@@ -30,7 +75,7 @@ function Splash () {
   const handleSearch = () => {
     switch (information) {
       case "Unions":
-        navigate('/unions', {state: location});
+        navigate('/unions', {state: locations.find(l => l[1] === location)});
         break;
       case "News":
         navigate('/home');
@@ -94,7 +139,8 @@ function Splash () {
               </Grid>
 
               <Grid item xs={1}>
-                <ComboBox list={locations} label='Location' value={location} setValue={setLocation} />
+                <ComboBox list={
+                  locations.map((l) => l[1]) } label='Location' value={location} setValue={setLocation} />
               </Grid>
             </Grid>
           </Item>

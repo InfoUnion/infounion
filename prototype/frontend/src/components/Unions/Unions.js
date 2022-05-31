@@ -10,6 +10,7 @@ import './Unions.css'
 function Unions() {
   const location = useLocation();
   const u_state = location.state;
+  console.log(u_state);
   
   return (
     <Container maxWidth='xl'>
