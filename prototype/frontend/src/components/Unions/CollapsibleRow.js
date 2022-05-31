@@ -14,7 +14,7 @@ import {
 import KeyboardArrowDownIcon from '@mui/icons-material/KeyboardArrowDown'
 import KeyboardArrowUpIcon from '@mui/icons-material/KeyboardArrowUp'
 
-export default function CollapsibleRow (props) {
+export default function CollapsibleRow(props) {
   const { row, columns } = props
   const [open, setOpen] = React.useState(false)
 
@@ -41,10 +41,10 @@ export default function CollapsibleRow (props) {
                 : column.id === 'name'
                   ? <Typography variant='body2'>
                     <Link to={`${value}`} state={{ u: { row } }}>{value}</Link>
-                    </Typography>
+                  </Typography>
                   : <Typography variant='body2'>
                     {value}
-                    </Typography>}
+                  </Typography>}
             </TableCell>
           )
         })}

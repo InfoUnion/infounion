@@ -11,7 +11,7 @@ import axios from 'axios'
 import ComboBox from './ComboBox'
 import './Splash.css'
 
-function Splash () {
+function Splash() {
   const [occupation, setOccupation] = React.useState('')
   const occupations = ['Teacher', 'Lawyer', 'Engineer']
 
@@ -21,7 +21,7 @@ function Splash () {
 
 
   const [regions, setRegions] = React.useState([])
-  async function states () {
+  async function states() {
     try {
       const response = await axios.get('http://localhost:4000/states')
       return response
@@ -40,7 +40,7 @@ function Splash () {
 
   const [location, setLocation] = React.useState('')
   const locations = regions.map((r) => {
-    switch(r){
+    switch (r) {
       case 'CA':
         return [r, 'California'];
       case 'CT':
@@ -61,7 +61,7 @@ function Splash () {
         return [r, 'Pennsylvania'];
       default:
         return null;
-      }
+    }
   });
 
   const navigate = useNavigate()
@@ -75,7 +75,7 @@ function Splash () {
   const handleSearch = () => {
     switch (information) {
       case "Unions":
-        navigate('/unions', {state: locations.find(l => l[1] === location)});
+        navigate('/unions', { state: locations.find(l => l[1] === location) });
         break;
       case "News":
         navigate('/home');
@@ -140,7 +140,7 @@ function Splash () {
 
               <Grid item xs={1}>
                 <ComboBox list={
-                  locations.map((l) => l[1]) } label='Location' value={location} setValue={setLocation} />
+                  locations.map((l) => l[1])} label='Location' value={location} setValue={setLocation} />
               </Grid>
             </Grid>
           </Item>
