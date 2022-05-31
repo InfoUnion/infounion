@@ -1,19 +1,20 @@
-import React from 'react';
+import React from 'react'
 
-import { Container, Box, Typography, Stack, Card } from '@mui/material';
-import LoginButton from './LoginButton';
-import LogoutButton from './LogoutButton';
-import { useAuth0 } from '@auth0/auth0-react';
-import Profile from '../Profile/Profile';
+import { Container, Box, Stack, Card } from '@mui/material'
+//import { Stack } from '@mui/material'
+import LoginButton from './LoginButton'
+//import LogoutButton from './LogoutButton'
+import { useAuth0 } from '@auth0/auth0-react'
+import Profile from '../Profile/Profile'
 
-function Account() {
-  const { user, isAuthenticated } = useAuth0();
+function Account () {
+  const { user, isAuthenticated } = useAuth0()
   console.log(user)
 
   return (
-    <React.Fragment>
+    <>
       {!isAuthenticated && (
-        <Container maxWidth="xl">
+        <Container maxWidth='xl'>
           <Box
             display='flex'
             justifyContent='center'
@@ -25,10 +26,11 @@ function Account() {
               height: 300,
               display: 'flex',
               justifyContent: 'center',
-              alignItems: 'center',
-            }}>
+              alignItems: 'center'
+            }}
+            >
               <Stack>
-                <div className="wrapper">
+                <div className='wrapper'>
                   <h1>Account</h1>
                 </div>
                 <LoginButton />
@@ -38,8 +40,8 @@ function Account() {
         </Container>
       )}
       <Profile />
-    </React.Fragment>
-  );
+    </>
+  )
 }
 
-export default Account;
+export default Account
