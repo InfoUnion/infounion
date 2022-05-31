@@ -151,7 +151,7 @@ export default function CollapsibleTable({ loc }) {
   //console.log(rows);
 
   return (
-    <Paper sx={{ width: '100%' }}>
+    <Paper sx={{ width: '80vw' }}>
       <TableContainer sx={{ maxHeight: 440 }}>
         <Table stickyHeader aria-label='sticky table'>
           <CollapsibleTableHead
