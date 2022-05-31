@@ -1,12 +1,12 @@
 import React from 'react'
 
 import { Container, Box, Stack, } from '@mui/material'
-import ComboBox from '../Splash/ComboBox'
+import ComboBox from '../ComboBox/ComboBox'
 
-import CollapsibleTable from './CollapsibleTable';
+import CollapsibleTable from '../CollapsibleTable/CollapsibleTable';
 import { useLocation } from 'react-router-dom';
 
-import Regions from '../Splash/Regions'
+import Regions from '../Regions/Regions'
 
 
 import './Unions.css'
@@ -23,11 +23,14 @@ function Unions() {
   const [location, setLocation] = React.useState((u ? u : ""))
   const locations = Regions();
 
+  const [city, setCity] = React.useState("")
+  const cities = Regions();
+
   const handleLocation = (value) => {
     setLocation(value);
     setU(locations.filter((l) => l[1] === value)[0]);
   }
-  
+
 
   return (
     <Container maxWidth='xl'>
@@ -48,7 +51,9 @@ function Unions() {
           >
             <ComboBox list={occupations} label='Occupation' value={occupation} setValue={setOccupation} />
             <ComboBox list={
-              locations.map((l) => l[1])} label='Location' value={location} setValue={handleLocation} />
+              locations.map((l) => l[1])} label='State' value={location} setValue={handleLocation} />
+            <ComboBox list={
+              locations.map((l) => l[1])} label='City' value={city} setValue={setCity} />
           </Stack>
           <CollapsibleTable loc={u} />
         </Stack>

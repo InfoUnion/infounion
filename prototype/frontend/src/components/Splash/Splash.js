@@ -6,8 +6,8 @@ import { styled } from '@mui/material/styles'
 
 import SearchIcon from '@mui/icons-material/Search'
 
-import ComboBox from './ComboBox'
-import Regions from './Regions'
+import ComboBox from '../ComboBox/ComboBox'
+import Regions from '../Regions/Regions'
 
 import './Splash.css'
 
