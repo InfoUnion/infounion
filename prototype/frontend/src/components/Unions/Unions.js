@@ -25,7 +25,9 @@ function Unions() {
         justifyContent='center'
         alignItems='center'
       >
-        <Stack>
+        <Stack
+          spacing={1}
+        >
           <div className='wrapper'>
             <h1>Unions</h1>
           </div>
@@ -34,10 +36,8 @@ function Unions() {
             spacing={1}
           >
             <ComboBox list={occupations} label='Occupation' value={occupation} setValue={setOccupation} />
-            <br />
             <ComboBox list={locations} label='Location' value={location} setValue={setLocation} />
           </Stack>
-          <br />
           <CollapsibleTable loc={u_state} />
         </Stack>
       </Box>

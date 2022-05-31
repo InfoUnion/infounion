@@ -49,16 +49,6 @@ async function findUnionById(id){
 
 }
 
-async function findUnionById (id) {
-  const unionModel = getDbConnection().model('Union', UnionSchema)
-  try {
-    return await unionModel.findById(id)
-  } catch (error) {
-    console.log(error)
-    return undefined
-  }
-}
-
 async function addUnion (union) {
   const unionModel = getDbConnection().model('Union', UnionSchema)
   try {
