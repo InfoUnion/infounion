@@ -12,12 +12,12 @@ const e = require('express')
 app.use(cors())
 app.use(express.json())
 
-app.get('/map', (req, res) => {
+app.get('/map', async (req, res) => {
   const street = req.query.street
   const city = req.query.city
   const state = req.query.state
   const zip = req.query.zip
-  axios
+  await axios
     .get(`https://geocoding.geo.census.gov/geocoder/locations/address?street=${street}&city=${city}&state=${state}&zip=${zip}&benchmark=Public_AR_Census2020&format=json`)
     .then(resp => {
       let geocode = resp.data;
