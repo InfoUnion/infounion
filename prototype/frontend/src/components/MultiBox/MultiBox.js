@@ -24,7 +24,7 @@ export default function MultiBox(props) {
       //defaultValue={value}
 
       options={list}
-      getOptionLabel={(option) => (option ? option.name : "")}
+      getOptionLabel={(option) => option.name}
       onChange={handleChange}
 
       disableCloseOnSelect

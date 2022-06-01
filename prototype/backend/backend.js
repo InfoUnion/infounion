@@ -4,6 +4,7 @@ const port = 4000
 const myFunctions = require('./user-services.js')
 const unionFunc = require('./union-services.js')
 const comFunc = require('./comment-services.js')
+const axios = require('axios')
 
 const cors = require('cors')
 const e = require('express')
@@ -11,30 +12,32 @@ const e = require('express')
 app.use(cors())
 app.use(express.json())
 
+app.get('/map', async (req, res) => {
+  const street = req.query.street
+  const city = req.query.city
+  const state = req.query.state
+  const zip = req.query.zip
+  await axios
+    .get(`https://geocoding.geo.census.gov/geocoder/locations/address?street=${street}&city=${city}&state=${state}&zip=${zip}&benchmark=Public_AR_Census2020&format=json`)
+    .then(resp => {
+      let geocode = resp.data;
+      console.log('geocode info: ', geocode);
+      res.send(geocode);
+   })
+    .catch((error) => console.log(error))
+});
+
 app.get('/', (req, res) => {
   res.send('hello world')
 })
 
 app.get('/users', async (req, res) => {
-  const name = req.query.name
-  const job = req.query.job
-  const username = req.query.username
-  const password = req.query.password
-  try {
-    var result = await myFunctions.getUsers(name, job, username, password)
-    res.send(result)
-  } catch (error) {
-    console.log(error)
-    res.status(500).send('An error ocurred in the server.')
-  }
-})
 
-app.get('/unions', async (req, res) => {
     const name = req.query['name'];
-    const postalCode = req.query['postalCode'];
-    //console.log(name,postalCode);
+    const job = req.query['job'];
+    const sub = req.query['sub'];
     try{
-        result = await unionFunc.getUnions(name,postalCode);
+        result = await myFunctions.getUsers(name,job,sub);
         res.send(result);
     } catch(error){
         console.log(error);
@@ -42,14 +45,28 @@ app.get('/unions', async (req, res) => {
     }
 });
 
+
+app.get('/unions', async (req, res) => {
+  const name = req.query['name'];
+  const postalCode = req.query['postalCode'];
+  //console.log(name,postalCode);
+  try {
+    result = await unionFunc.getUnions(name, postalCode);
+    res.send(result);
+  } catch (error) {
+    console.log(error);
+    res.status(500).send('An error ocurred in the server.');
+  }
+});
+
 app.get('/states', async (req, res) => {
-    try{
-        result = await unionFunc.getStates();
-        res.send(result);
-    } catch(error){
-        console.log(error);
-        res.status(500).send('An error ocurred in the server.');
-    }
+  try {
+    result = await unionFunc.getStates();
+    res.send(result);
+  } catch (error) {
+    console.log(error);
+    res.status(500).send('An error ocurred in the server.');
+  }
 });
 
 app.get('/comments', async (req, res) => {
@@ -87,6 +104,19 @@ app.post('/users', async (req, res) => {
 
 app.post('/unions', async (req, res) => {
   const unionToAdd = req.body
+  let geocode;
+  await axios
+    .get(`https://geocoding.geo.census.gov/geocoder/locations/address?street=${unionToAdd.address.streetAddress}&city=${unionToAdd.address.addressLocality}&state=${unionToAdd.address.addressRegion}&zip=${unionToAdd.address.postalCode}&benchmark=Public_AR_Census2020&format=json`)
+    .then(resp => {
+      geocode = resp.data;
+      console.log(geocode);
+      
+      
+   })
+    .catch((error) => console.log(error))
+  console.log(geocode);
+  unionToAdd.longitude = geocode.result.addressMatches[0].coordinates.x;
+  unionToAdd.latitude = geocode.result.addressMatches[0].coordinates.y;
   const savedUnion = await unionFunc.addUnion(unionToAdd)
   if (savedUnion) { res.status(201).send(savedUnion).end() } else { res.status(500).end() }
 })
@@ -177,11 +207,13 @@ app.patch('/unions', async (req, res) => {
   const industry = req.body.industry
   const year_founded = req.body.year_founded
   const website = req.body.website
+  const longitude = req.body.longitude
+  const latitude =  req.body.latitude
   if (unionFunc.findUnionById(id) == {}) {
     res.status(404).send('Resource not found.')
   } else {
     try {
-      const unionUpdate = await unionFunc.updateUnionById(id, name, address, description, member_count, industry, year_founded, website)
+      const unionUpdate = await unionFunc.updateUnionById(id, name, address, description, member_count, industry, year_founded, website,longitude,latitude)
       if (unionUpdate) {
         res.status(200).send(unionUpdate).end()
       } else { res.status(500).end() }

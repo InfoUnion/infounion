@@ -87,7 +87,8 @@ function stableSort(array, comparator) {
   return stabilizedThis.map((el) => el[0])
 }
 
-export default function CollapsibleTable({ loc }) {
+export default function CollapsibleTable(props) {
+  const { width, height, loc } = props;
   const [order, setOrder] = React.useState('asc');
   const [orderBy, setOrderBy] = React.useState('name');
   const [page, setPage] = React.useState(0);
@@ -109,11 +110,7 @@ export default function CollapsibleTable({ loc }) {
     setRowsPerPage(+event.target.value)
     setPage(0)
   }
-
-  function checkArray(array) {
-    return (!Array.isArray(array) || !array.length || array.every((val) => val == null))
-  }
-
+  
   async function fetchAll() {
     try {
       const response = await axios.get('http://localhost:4000/unions')
@@ -135,7 +132,7 @@ export default function CollapsibleTable({ loc }) {
   //console.log(unions.union.addressRegion);
 
   const rows1 = unions.map((union) => (
-    (loc ? (loc.some((l) => l.abbr === union.address.addressRegion)) : true) && createData(
+    (loc && loc.length !== 0 ? (loc.some((l) => l.abbr === union.address.addressRegion)) : true) && createData(
       union.name,
       union.address.streetAddress,
       union.address.addressLocality,
@@ -154,8 +151,8 @@ export default function CollapsibleTable({ loc }) {
   //console.log(rows);
 
   return (
-    <Paper sx={{ width: '80vw' }}>
-      <TableContainer sx={{ maxHeight: 440 }}>
+    <Paper sx={{ width: width }}>
+      <TableContainer sx={{ maxHeight: height }}>
         <Table stickyHeader aria-label='sticky table'>
           <CollapsibleTableHead
             columns={columns}

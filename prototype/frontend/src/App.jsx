@@ -10,6 +10,7 @@ import NavBar from './components/Navbar/NavBar';
 import Splash from './components/Splash/Splash'
 import Home from './components/Home/Home'
 import Compare from './components/Compare/Compare'
+import Laws from './components/Laws/Laws'
 import Forum from './components/Forum/Forum'
 import About from './components/About/About'
 import Account from './components/Account/Account'
@@ -59,6 +60,7 @@ function App () {
                 <Route path='/home' element={<Home />} />
                 <Route path='/compare' element={<Compare />} />
                 <Route path='/forum' element={<Forum />} />
+                <Route path='/laws' element={<Laws />} />
                 <Route path='/about' element={<About />} />
                 <Route path='/account' element={<Account />} />
                 <Route path='/unions/:id' element={<Union />} />
