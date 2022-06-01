@@ -53,9 +53,7 @@ jobs:
         heroku_api_key: ${{secrets.HEROKU_API_KEY}}
         heroku_app_name: "info-union" #Must be unique on Heroku
         heroku_email: "kdarghous@gmail.com" #Must be the one you used on Heroku
-        justlogin: true
         appdir: "./prototype/backend" # <- This will point to the api folder in your project
-    - run: heroku auth:whoami
 
   build-frontend:
 
@@ -89,7 +87,5 @@ jobs:
         heroku_api_key: ${{secrets.HEROKU_API_KEY}}
         heroku_app_name: "info-union-frontend" #Must be unique on Heroku
         heroku_email: "kdarghous@gmail.com" #Must be the one you used on Heroku
-        justlogin: true
         appdir: "./prototype/frontend" # <- This will point to the api folder in your project
-    - run: heroku auth:whoami
         
