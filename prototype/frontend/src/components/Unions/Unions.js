@@ -9,7 +9,7 @@ import UnionMap from '../UnionMap/UnionMap';
 
 import { useLocation } from 'react-router-dom';
 
-import Regions from '../Regions/Regions'
+import convertStates from '../Regions/Regions'
 
 
 import './Unions.css'
@@ -26,12 +26,19 @@ function Unions() {
   const occupations = ['Teacher', 'Lawyer', 'Engineer']
 
   const [location, setLocation] = React.useState((u ? u : null))
-  const locations = Regions();
+  const [locations, setLocations] = React.useState([]);
+
+  React.useEffect( () => {
+    convertStates().then( result => {
+      setLocations(result);
+    });
+    
+  }, [])
 
   console.log(location);
 
   const [city, setCity] = React.useState([])
-  const cities = Regions();
+  const cities = ['Sacramento', 'Bakersfield', 'San Diego', 'San Francisco']
 
 
   const handleLocation = (value) => {

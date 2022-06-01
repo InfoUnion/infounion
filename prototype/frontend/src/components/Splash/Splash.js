@@ -7,7 +7,7 @@ import { styled } from '@mui/material/styles'
 import SearchIcon from '@mui/icons-material/Search'
 
 import ComboBox from '../ComboBox/ComboBox'
-import Regions from '../Regions/Regions'
+import convertStates from '../Regions/Regions'
 
 import './Splash.css'
 
@@ -20,9 +20,7 @@ function Splash() {
 
 
   const [location, setLocation] = React.useState('')
-  const locations = Regions()
-
-  console.log(locations)
+  const [locations, setLocations] = React.useState([]);
 
   const navigate = useNavigate()
 
@@ -31,6 +29,13 @@ function Splash() {
     textAlign: 'center',
     background: 'transparent'
   }))
+
+  React.useEffect( () => {
+    convertStates().then( result => {
+      setLocations(result);
+    });
+    
+  }, [])
 
   const handleSearch = () => {
     switch (information) {
