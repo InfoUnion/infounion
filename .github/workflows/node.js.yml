@@ -14,6 +14,8 @@ jobs:
   build-backend:
 
     runs-on: ubuntu-latest
+    env:
+      CI: false
     defaults:
       run:
         working-directory: ./prototype/backend
@@ -56,6 +58,8 @@ jobs:
   build-frontend:
 
     runs-on: ubuntu-latest
+    env:
+      CI: false
     defaults:
       run:
         working-directory: ./prototype/frontend
