@@ -55,11 +55,11 @@ function Unions() {
     fetchAll().then(result => {
       if (result) { setUnions(result.data) }
     })
-  }, [])
+  }, []);
 
   let addy = (unions.length !== 0 ? unions[0].address : null);
 
-  const [data, setData] = useState()
+  const [data, setData] = useState();
 
   async function getCoords(street, city, state, zip) {
     try {
@@ -80,10 +80,10 @@ function Unions() {
         }
       })
     }
-  }, [])
+  }, []);
 
-  console.log(data)
-
+  console.log(data);
+ 
 
   return (
     <Container maxWidth='xl'>
