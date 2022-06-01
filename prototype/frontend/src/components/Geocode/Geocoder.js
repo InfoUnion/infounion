@@ -1,24 +1,35 @@
 import React, { createContext, useEffect, useState } from 'react'
 import axios from 'axios'
 
-function Geocoder() {
+export const GeoContext = createContext()
 
+
+export const Geocoder = (props) => {
+  const { street, city, state, zip } = props
   const [data, setData] = useState()
+
   // const apiKey = '2f78458c224445cea7e8c6cb46bf367a'
 
-  useEffect(() => {
-    axios
-      .get(
-        // `https://geocoding.geo.census.gov/geocoder/locations/address?street=${street}&city=${city}&state=${state}zip=${zip}&benchmark=Public_AR_Census2020&format=json`
-        'https://geocoding.geo.census.gov/geocoder/locations/onelineaddress?address=4600+Silver+Hill+Rd%2C+Washington%2C+DC+20233&benchmark=2020&format=json',
-      )
-      .then((response) => setData(response.data))
-      .catch((error) => console.log(error))
+  async function getCoords(street, city, state, zip) {
+    try {
+      const response = await axios.get(`http://localhost:4000/map?street=${street}&city=${city}&state=${state}&zip=${zip}`)
+      return response
+    } catch (error) {
+      // We're not handling errors. Just logging into the console.
+      console.log(error)
+      return false
+    }
+  }
+
+  React.useEffect(() => {
+    getCoords(street, city, state, zip).then(result => {
+      if (result) { setData(result.data) }
+    })
   }, [])
 
-  // console.log(data)
-
-  return data
+  return (
+    <GeoContext.Provider value={{ data }}>
+      {props.children}
+    </GeoContext.Provider>
+  )
 }
-
-export default Geocoder

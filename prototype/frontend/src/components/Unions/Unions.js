@@ -1,13 +1,11 @@
-import React from 'react'
+import React, { useState } from 'react'
 import axios from 'axios'
 
 import { Container, Box, Stack, } from '@mui/material'
-import ComboBox from '../ComboBox/ComboBox'
 import MultiBox from '../MultiBox/MultiBox';
 
 import CollapsibleTable from '../CollapsibleTable/CollapsibleTable';
 import UnionMap from '../UnionMap/UnionMap';
-import Geocoder from '../Geocode/Geocoder';
 
 import { useLocation } from 'react-router-dom';
 
@@ -53,17 +51,39 @@ function Unions() {
   }
 
 
-  // React.useEffect(() => {
-  //   fetchAll().then(result => {
-  //     if (result) { setUnions(result.data) }
-  //   })
-  // }, [])
+  React.useEffect(() => {
+    fetchAll().then(result => {
+      if (result) { setUnions(result.data) }
+    })
+  }, [])
 
-  // function createData(street, city, state, zip) {
-  //   return { street, city, state, zip };
-  // }
+  let addy = (unions.length !== 0 ? unions[0].address : null);
 
-  // console.log(Geocoder());
+  const [data, setData] = useState()
+
+  async function getCoords(street, city, state, zip) {
+    try {
+      const response = await axios.get(`http://localhost:4000/map?street=${street}&city=${city}&state=${state}&zip=${zip}`)
+      return response
+    } catch (error) {
+      // We're not handling errors. Just logging into the console.
+      console.log(error)
+      return false
+    }
+  }
+
+  React.useEffect(() => {
+    if (addy) {
+      getCoords(addy.streetAddress, addy.addressLocality, addy.addressRegion, addy.postalCode).then(result => {
+        if (result) {
+          setData(result.data.result.addressMatches)
+        }
+      })
+    }
+  }, [])
+
+  console.log(data)
+
 
   return (
     <Container maxWidth='xl'>
