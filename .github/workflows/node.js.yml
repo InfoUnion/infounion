@@ -81,10 +81,10 @@ jobs:
         cache-dependency-path: prototype/frontend/package-lock.json
     - run: npm ci
     - run: npm run build --if-present
-    # - uses: akhileshns/heroku-deploy@v3.12.12 # This is the action
-    #   with:
-    #     heroku_api_key: ${{secrets.HEROKU_API_KEY}}
-    #     heroku_app_name: "info-union" #Must be unique on Heroku
-    #     heroku_email: "kdarghous@gmail.com" #Must be the one you used on Heroku
-    #     appdir: "./prototype/frontend" # <- This will point to the api folder in your project
+    - uses: akhileshns/heroku-deploy@v3.12.12 # This is the action
+      with:
+        heroku_api_key: ${{secrets.HEROKU_API_KEY}}
+        heroku_app_name: "info-union-frontend" #Must be unique on Heroku
+        heroku_email: "kdarghous@gmail.com" #Must be the one you used on Heroku
+        appdir: "./prototype/frontend" # <- This will point to the api folder in your project
 
