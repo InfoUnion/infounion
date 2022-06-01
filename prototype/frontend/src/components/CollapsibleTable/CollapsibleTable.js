@@ -109,11 +109,7 @@ export default function CollapsibleTable({ loc }) {
     setRowsPerPage(+event.target.value)
     setPage(0)
   }
-
-  function checkArray(array) {
-    return (!Array.isArray(array) || !array.length || array.every((val) => val == null))
-  }
-
+  
   async function fetchAll() {
     try {
       const response = await axios.get('http://localhost:4000/unions')
@@ -135,7 +131,7 @@ export default function CollapsibleTable({ loc }) {
   //console.log(unions.union.addressRegion);
 
   const rows1 = unions.map((union) => (
-    (loc ? (loc.some((l) => l.abbr === union.address.addressRegion)) : true) && createData(
+    (loc && loc.length !== 0 ? (loc.some((l) => l.abbr === union.address.addressRegion)) : true) && createData(
       union.name,
       union.address.streetAddress,
       union.address.addressLocality,

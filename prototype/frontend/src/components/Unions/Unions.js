@@ -21,7 +21,7 @@ function Unions() {
   const [occupation, setOccupation] = React.useState('')
   const occupations = ['Teacher', 'Lawyer', 'Engineer']
 
-  const [location, setLocation] = React.useState((u ? u : []))
+  const [location, setLocation] = React.useState((u ? u : null))
   const locations = Regions();
   
   console.log(location);
@@ -32,7 +32,7 @@ function Unions() {
 
   const handleLocation = (value) => {
     setLocation(value);
-    setU(value);
+    (setU(value))
   }
 
   return (
@@ -56,7 +56,7 @@ function Unions() {
             <MultiBox list={locations} label='State' value={location} setValue={handleLocation} />
             <MultiBox list={locations} label='City' value={city} setValue={setCity} />
           </Stack>
-          <CollapsibleTable loc={u} />
+          <CollapsibleTable loc={(u)} />
         </Stack>
       </Box>
     </Container>
