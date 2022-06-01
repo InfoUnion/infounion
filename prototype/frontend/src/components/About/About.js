@@ -29,7 +29,7 @@ const itemData = [
     author: 'https://www.linkedin.com/in/tom%C3%A1s-prieto-577a44225/',
   },
 ]
-
+//g: 'https://images.unsplash.com/photo-1515592505566-64d3ee6c1e83',
 function About() {
 
   // const Item = styled(Paper)(({ theme }) => ({

@@ -2,10 +2,12 @@ import React from 'react';
 import { BrowserRouter, Route, Routes } from 'react-router-dom';
 import { CssBaseline, createTheme, Box } from '@mui/material';
 import { ThemeProvider } from '@emotion/react';
+import useMediaQuery from '@mui/material/useMediaQuery';
 
 import './App.css';
 
 import NavBar from './components/Navbar/NavBar';
+//import Theme from './components/Theme/Theme';
 
 import Splash from './components/Splash/Splash';
 import Home from './components/Home/Home';
@@ -21,22 +23,17 @@ import Footer from './components/Footer/Footer';
 
 function App() {
 
-  const theme = createTheme({
-    // palette: {
-    //   primary: {
-    //     light: '#4f5b62',
-    //     main: '#263238',
-    //     dark: '#000a12',
-    //     contrastText: '#fff',
-    //   },
-    //   secondary: {
-    //     light: '#ffffff',
-    //     main: '#fffbf0',
-    //     dark: '#ccc8bd',
-    //     contrastText: '#000',
-    //   },
-    // },
-  });
+  const prefersDarkMode = useMediaQuery('(prefers-color-scheme: dark)');
+
+  const theme = React.useMemo(
+      () =>
+          createTheme({
+            palette: {
+              mode: prefersDarkMode ? 'dark' : 'light',
+            },
+          }),
+      [prefersDarkMode],
+  );
 
   return (
     <React.Fragment>

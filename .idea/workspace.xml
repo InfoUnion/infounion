@@ -2,7 +2,12 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="0795a534-2dfd-4a15-a707-fd9131b1df49" name="Changes" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/prototype/frontend/src/App.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/prototype/frontend/src/App.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/prototype/frontend/src/components/About/About.js" beforeDir="false" afterPath="$PROJECT_DIR$/prototype/frontend/src/components/About/About.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/prototype/frontend/src/components/Account/Account.js" beforeDir="false" afterPath="$PROJECT_DIR$/prototype/frontend/src/components/Account/Account.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/prototype/frontend/src/components/Footer/Footer.css" beforeDir="false" afterPath="$PROJECT_DIR$/prototype/frontend/src/components/Footer/Footer.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/prototype/frontend/src/components/Footer/Footer.js" beforeDir="false" afterPath="$PROJECT_DIR$/prototype/frontend/src/components/Footer/Footer.js" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -13,6 +18,7 @@
     <option name="RECENT_TEMPLATES">
       <list>
         <option value="HTML File" />
+        <option value="JavaScript File" />
       </list>
     </option>
   </component>
@@ -44,16 +50,17 @@
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/prototype/frontend/src/components" />
     <property name="nodejs_package_manager_path" value="npm" />
     <property name="run.code.analysis.last.selected.profile" value="pProject Default" />
-    <property name="settings.editor.selected.configurable" value="reference.idesettings.emmet.css" />
+    <property name="settings.editor.selected.configurable" value="editor.preferences.appearance" />
   </component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
       <recent name="C:\Users\Giselle\InfoUnion\prototype\frontend\src\components\Register" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
+      <recent name="C:\Users\Giselle\InfoUnion\prototype\frontend\src\components" />
       <recent name="C:\Users\Giselle\InfoUnion\prototype\frontend\src\components\Login" />
     </key>
   </component>
@@ -67,6 +74,7 @@
       <updated>1650830843952</updated>
       <workItem from="1650830847193" duration="13830000" />
       <workItem from="1653953368721" duration="326000" />
+      <workItem from="1654049725376" duration="4515000" />
     </task>
     <servers />
   </component>

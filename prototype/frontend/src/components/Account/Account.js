@@ -2,6 +2,7 @@ import React from 'react';
 
 import { Container, Box, Typography, Stack, Card } from '@mui/material';
 import LoginButton from './LoginButton';
+//import Theme from '../Theme/Theme';
 import LogoutButton from './LogoutButton';
 import { useAuth0 } from '@auth0/auth0-react';
 import Profile from '../Profile/Profile';
@@ -27,6 +28,7 @@ function Account() {
               justifyContent: 'center',
               alignItems: 'center',
             }}>
+
               <Stack>
                 <div className="wrapper">
                   <h1>Account</h1>
