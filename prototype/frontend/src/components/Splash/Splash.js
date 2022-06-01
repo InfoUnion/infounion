@@ -6,18 +6,21 @@ import { styled } from '@mui/material/styles'
 
 import SearchIcon from '@mui/icons-material/Search'
 
-import ComboBox from './ComboBox'
+import ComboBox from '../ComboBox/ComboBox'
+import convertStates from '../Regions/Regions'
+
 import './Splash.css'
 
-function Splash () {
+function Splash() {
   const [occupation, setOccupation] = React.useState('')
   const occupations = ['Teacher', 'Lawyer', 'Engineer']
 
-  const [location, setLocation] = React.useState('')
-  const locations = ['California', 'New York', 'Texas']
-
   const [information, setInformation] = React.useState('')
   const informations = ['Unions', 'News', 'Connections']
+
+
+  const [location, setLocation] = React.useState('')
+  const [locations, setLocations] = React.useState([]);
 
   const navigate = useNavigate()
 
@@ -27,10 +30,17 @@ function Splash () {
     background: 'transparent'
   }))
 
+  React.useEffect( () => {
+    convertStates().then( result => {
+      setLocations(result);
+    });
+    
+  }, [])
+
   const handleSearch = () => {
     switch (information) {
       case "Unions":
-        navigate('/unions', {state: location});
+        navigate('/unions', { state: locations.find(l => l.name === location) });
         break;
       case "News":
         navigate('/home');
@@ -94,7 +104,8 @@ function Splash () {
               </Grid>
 
               <Grid item xs={1}>
-                <ComboBox list={locations} label='Location' value={location} setValue={setLocation} />
+                <ComboBox list={
+                  locations.map((l) => l.name)} label='Location' value={location} setValue={setLocation} />
               </Grid>
             </Grid>
           </Item>

@@ -11,6 +11,7 @@ import {
 
 import CollapsibleRow from './CollapsibleRow'
 import CollapsibleTableHead from './CollapsibleTableHead'
+//import { getStates } from '../../../../backend/union-services'
 // import unions from '../../assets/data/unions';
 
 const columns = [
@@ -52,11 +53,11 @@ const columns = [
   }
 ]
 
-function createData (name, street, city, state, postal, numEmp, founded, website, phone, description, comments) {
+function createData(name, street, city, state, postal, numEmp, founded, website, phone, description, comments) {
   return { name, street, city, state, postal, numEmp, founded, website, phone, description, comments }
 }
 
-function descendingComparator (a, b, orderBy) {
+function descendingComparator(a, b, orderBy) {
   if (b[orderBy] < a[orderBy]) {
     return -1
   }
@@ -66,7 +67,7 @@ function descendingComparator (a, b, orderBy) {
   return 0
 }
 
-function getComparator (order, orderBy) {
+function getComparator(order, orderBy) {
   return order === 'desc'
     ? (a, b) => descendingComparator(a, b, orderBy)
     : (a, b) => -descendingComparator(a, b, orderBy)
@@ -74,7 +75,7 @@ function getComparator (order, orderBy) {
 
 // This method is created for cross-browser compatibility, if you don't
 // need to support IE11, you can use Array.prototype.sort() directly
-function stableSort (array, comparator) {
+function stableSort(array, comparator) {
   const stabilizedThis = array.map((el, index) => [el, index])
   stabilizedThis.sort((a, b) => {
     const order = comparator(a[0], b[0])
@@ -86,11 +87,14 @@ function stableSort (array, comparator) {
   return stabilizedThis.map((el) => el[0])
 }
 
-export default function CollapsibleTable({loc}) {
+export default function CollapsibleTable(props) {
+  const { width, height, loc } = props;
   const [order, setOrder] = React.useState('asc');
   const [orderBy, setOrderBy] = React.useState('name');
   const [page, setPage] = React.useState(0);
   const [rowsPerPage, setRowsPerPage] = React.useState(10);
+  const [unions, setUnions] = React.useState([])
+
 
   const handleRequestSort = (event, property) => {
     const isAsc = orderBy === property && order === 'asc'
@@ -106,8 +110,8 @@ export default function CollapsibleTable({loc}) {
     setRowsPerPage(+event.target.value)
     setPage(0)
   }
-
-  async function fetchAll () {
+  
+  async function fetchAll() {
     try {
       const response = await axios.get('http://localhost:4000/unions')
       return response
@@ -118,7 +122,6 @@ export default function CollapsibleTable({loc}) {
     }
   }
 
-  const [unions, setUnions] = React.useState([])
 
   React.useEffect(() => {
     fetchAll().then(result => {
@@ -126,11 +129,10 @@ export default function CollapsibleTable({loc}) {
     })
   }, [])
 
- //console.log(unions.union.addressRegion);
-
+  //console.log(unions.union.addressRegion);
 
   const rows1 = unions.map((union) => (
-    (union.address.addressRegion === 'CA') && createData(
+    (loc && loc.length !== 0 ? (loc.some((l) => l.abbr === union.address.addressRegion)) : true) && createData(
       union.name,
       union.address.streetAddress,
       union.address.addressLocality,
@@ -141,16 +143,16 @@ export default function CollapsibleTable({loc}) {
       union.sameAs,
       union.telephone,
       union.description,
-      []) 
-    ));
+      [])
+  ));
 
   const rows = rows1.filter(row => (row))
   console.log(loc);
   //console.log(rows);
 
   return (
-    <Paper sx={{ width: '100%' }}>
-      <TableContainer sx={{ maxHeight: 440 }}>
+    <Paper sx={{ width: width }}>
+      <TableContainer sx={{ maxHeight: height }}>
         <Table stickyHeader aria-label='sticky table'>
           <CollapsibleTableHead
             columns={columns}
