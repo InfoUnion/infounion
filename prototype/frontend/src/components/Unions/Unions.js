@@ -76,14 +76,13 @@ function Unions() {
     if (addy) {
       getCoords(addy.streetAddress, addy.addressLocality, addy.addressRegion, addy.postalCode).then(result => {
         if (result) {
-          setData(result.data.result.addressMatches)
+          setData(result.data.result.addressMatches[0].coordinates)
         }
       })
     }
   }, []);
 
-  console.log(data);
- 
+  console.log("Data:");
 
   return (
     <Container maxWidth='xl'>
@@ -118,6 +117,8 @@ function Unions() {
             <UnionMap
               width={'40vw'}
               height={500}
+              lat={(data ? data.y : 0)}
+              lng={data ? data.x : 0}
             />
           </Stack>
         </Stack>

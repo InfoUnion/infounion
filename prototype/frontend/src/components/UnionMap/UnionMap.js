@@ -13,7 +13,7 @@ function mapTiler(x, y, z, dpr) {
 
 function UnionMap(props) {
 
-  const { width, height } = props;
+  const { width, height, lat, lng } = props;
 
   return (
     <Paper sx={{ width: width }}>
@@ -21,7 +21,7 @@ function UnionMap(props) {
         provider={mapTiler}
         dprs={[1, 2]} // add this to support hidpi/retina (2x) maps if your provider supports them
         height={height}
-        defaultCenter={[50.879, 4.6997]}
+        defaultCenter={[lat, lng]}
         defaultZoom={11}
       />
     </Paper>
