@@ -1,12 +1,15 @@
-const mongoose = require('mongoose')
+
+const mongoose = require("mongoose");
+const bcrypt = require('bcrypt');
+
 
 const UserSchema = new mongoose.Schema({
   username: String,
-  password: String,
-  name: {
+  sub: {
     type: String,
     required: true,
-    trim: true
+
+
   },
   location: String,
   occupation: String,
@@ -15,4 +18,17 @@ const UserSchema = new mongoose.Schema({
   union_membership: [mongoose.ObjectId]
 }, { collection: 'users_list' })
 
-module.exports = UserSchema
+
+UserSchema.methods.generateHash = function(password) {
+  return bcrypt.hashSync(password, bcrypt.genSaltSync(8), null);
+};
+
+// checking if password is valid
+UserSchema.methods.validPassword = function(password) {
+  return bcrypt.compareSync(password, this.password);
+};
+
+
+
+module.exports = UserSchema;
+

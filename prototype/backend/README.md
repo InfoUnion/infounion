@@ -8,7 +8,7 @@ npm install cors
 npm install mongoose
 npm install jest
 npm install dotenv
-
+npm install bcrypt
 
 # local files:
 

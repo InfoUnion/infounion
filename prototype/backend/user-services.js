@@ -24,22 +24,27 @@ function getDbConnection () {
   return dbConnection
 }
 
-async function getUsers (name, job, username, password) {
-  const userModel = getDbConnection().model('User', UserSchema)
-  let result
-  if (username && password) {
-    result = await findUserByUserPass(username, password)
-  }
-  if (name === undefined && job === undefined) {
-    result = await userModel.find()
-  } else if (name && !job) {
-    result = await findUserByName(name)
-  } else if (job && !name) {
-    result = await findUserByJob(job)
-  } else if (job && name) {
-    result = await findUserByJobName(name, job)
-  }
-  return result
+
+async function getUsers(name, job,sub){
+    const userModel = getDbConnection().model("User", UserSchema);
+    let result;
+    if (name === undefined && job === undefined){
+        result = await userModel.find();
+    }
+    else if (sub){
+        result = await findUserBySub(sub);
+    }
+    else if (name && !job) {
+        result = await findUserByName(name);
+    }
+    else if (job && !name){
+        result = await findUserByJob(job);
+    }   
+    else if (job && name){
+        result = await findUserByJobName(name,job);
+    } 
+    return result;  
+
 }
 
 async function findUserById (id) {
@@ -52,19 +57,23 @@ async function findUserById (id) {
   }
 }
 
-async function addUser (user) {
-  // userModel is a Model, a subclass of mongoose.Model
-  const userModel = getDbConnection().model('User', UserSchema)
-  try {
-    // You can use a Model to create new documents using 'new' and
-    // passing the JSON content of the Document:
-    const userToAdd = new userModel(user)
-    const savedUser = await userToAdd.save()
-    return savedUser
-  } catch (error) {
-    console.log(error)
-    return false
-  }
+
+async function addUser(user){
+    // userModel is a Model, a subclass of mongoose.Model
+    const userModel = getDbConnection().model("User", UserSchema);
+    try{
+        // You can use a Model to create new documents using 'new' and 
+        // passing the JSON content of the Document:
+
+        const userToAdd = new userModel(user);
+        userToAdd['sub'] = userToAdd.generateHash(userToAdd['sub']);
+        const savedUser = await userToAdd.save()
+        return savedUser;
+    }catch(error) {
+        console.log(error);
+        return false;
+    }   
+
 }
 
 async function findUserByName (name) {
@@ -72,9 +81,16 @@ async function findUserByName (name) {
   return await userModel.find({ name })
 }
 
-async function findUserByJob (job) {
-  const userModel = getDbConnection().model('User', UserSchema)
-  return await userModel.find({ job })
+async function findUserBySub(sub){
+    const userModel = getDbConnection().model("User", UserSchema);
+    
+    return await userModel.findOne({'sub': UserSchema.validPassword(sub)});
+}
+
+async function findUserByJob(job){
+    const userModel = getDbConnection().model("User", UserSchema);
+    return await userModel.find({'job':job});
+
 }
 
 async function findUserByJobName (name, job) {
@@ -82,10 +98,12 @@ async function findUserByJobName (name, job) {
   return await userModel.find({ job, name })
 }
 
-async function findUserByUserPass (username, password) {
-  const userModel = getDbConnection().model('User', UserSchema)
-  return await userModel.find({ username, password })
-}
+/*
+async function findUserByUserPass(username,password){
+    const userModel = getDbConnection().model("User", UserSchema);
+    return await userModel.find({'username':username,'password':password});
+}*/
+
 
 async function deleteUserById (id) {
   const userModel = getDbConnection().model('User', UserSchema)
