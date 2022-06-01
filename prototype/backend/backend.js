@@ -194,11 +194,13 @@ app.patch('/unions', async (req, res) => {
   const industry = req.body.industry
   const year_founded = req.body.year_founded
   const website = req.body.website
+  const longitude = req.body.longitude
+  const latitude =  req.body.latitude
   if (unionFunc.findUnionById(id) == {}) {
     res.status(404).send('Resource not found.')
   } else {
     try {
-      const unionUpdate = await unionFunc.updateUnionById(id, name, address, description, member_count, industry, year_founded, website)
+      const unionUpdate = await unionFunc.updateUnionById(id, name, address, description, member_count, industry, year_founded, website,longitude,latitude)
       if (unionUpdate) {
         res.status(200).send(unionUpdate).end()
       } else { res.status(500).end() }

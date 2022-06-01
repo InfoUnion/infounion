@@ -83,7 +83,7 @@ async function deleteUnionById (id) {
   }
 }
 
-async function updateUnionById (id, name, address, description, member_count, industry, year_founded, website) {
+async function updateUnionById (id, name, address, description, member_count, industry, year_founded, website, longitude, latitude) {
   const unionModel = getDbConnection().model('Union', UnionSchema)
 
   const union = await findUnionById(id)
@@ -108,6 +108,12 @@ async function updateUnionById (id, name, address, description, member_count, in
   if (website == undefined) {
     website = union.website
   }
+  if (longitude== undefined) {
+    longitude = union.longitude
+  }
+  if (latitude == undefined) {
+    latitude = union.latitude
+  }
 
   try {
     const newunion = await unionModel.findOneAndUpdate({ _id: id },
@@ -119,7 +125,9 @@ async function updateUnionById (id, name, address, description, member_count, in
           member_count,
           industry,
           year_founded,
-          website
+          website,
+          longitude,
+          latitude
 
         }
       }, { new: true })
