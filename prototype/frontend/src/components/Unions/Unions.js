@@ -28,14 +28,14 @@ function Unions() {
   const [location, setLocation] = React.useState((u ? u : null))
   const [locations, setLocations] = React.useState([]);
 
-  React.useEffect( () => {
-    convertStates().then( result => {
+  React.useEffect(() => {
+    convertStates().then(result => {
       setLocations(result);
     });
-    
+
   }, [])
 
-  console.log(location);
+  console.log(locations);
 
   const [city, setCity] = React.useState([])
   const cities = ['Sacramento', 'Bakersfield', 'San Diego', 'San Francisco']
@@ -60,36 +60,11 @@ function Unions() {
 
   React.useEffect(() => {
     fetchAll().then(result => {
-      if (result) { setUnions(result.data) }
+      if (result) {
+        setUnions(result.data)
+      }
     })
   }, []);
-
-  let addy = (unions.length !== 0 ? unions[0].address : null);
-
-  const [data, setData] = useState();
-
-  async function getCoords(street, city, state, zip) {
-    try {
-      const response = await axios.get(`http://localhost:4000/map?street=${street}&city=${city}&state=${state}&zip=${zip}`)
-      return response
-    } catch (error) {
-      // We're not handling errors. Just logging into the console.
-      console.log(error)
-      return false
-    }
-  }
-
-  React.useEffect(() => {
-    if (addy) {
-      getCoords(addy.streetAddress, addy.addressLocality, addy.addressRegion, addy.postalCode).then(result => {
-        if (result) {
-          setData(result.data.result.addressMatches[0].coordinates)
-        }
-      })
-    }
-  }, []);
-
-  console.log("Data:");
 
   return (
     <Container maxWidth='xl'>
@@ -124,8 +99,8 @@ function Unions() {
             <UnionMap
               width={'40vw'}
               height={500}
-              lat={(data ? data.y : 0)}
-              lng={data ? data.x : 0}
+              lat={0}
+              lng={0}
             />
           </Stack>
         </Stack>
