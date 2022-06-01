@@ -20,7 +20,6 @@ function UnionMap(props) {
       <Map
         provider={mapTiler}
         dprs={[1, 2]} // add this to support hidpi/retina (2x) maps if your provider supports them
-        width='100%'
         height={height}
         defaultCenter={[50.879, 4.6997]}
         defaultZoom={11}
