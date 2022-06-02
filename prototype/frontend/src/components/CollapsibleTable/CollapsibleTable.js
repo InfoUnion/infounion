@@ -130,7 +130,7 @@ export default function CollapsibleTable(props) {
 
   return (
     <Paper sx={{ width: width }}>
-      <TableContainer sx={{ maxHeight: height }}>
+      <TableContainer sx={{ maxHeight: height}}>
         <Table stickyHeader aria-label='sticky table'>
           <CollapsibleTableHead
             columns={columns}
