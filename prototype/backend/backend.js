@@ -23,7 +23,7 @@ app.get('/map', async (req, res) => {
       let geocode = resp.data;
       console.log('geocode info: ', geocode);
       res.send(geocode);
-   })
+    })
     .catch((error) => console.log(error))
 });
 
@@ -33,16 +33,16 @@ app.get('/', (req, res) => {
 
 app.get('/users', async (req, res) => {
 
-    const name = req.query['name'];
-    const job = req.query['job'];
-    const sub = req.query['sub'];
-    try{
-        result = await myFunctions.getUsers(name,job,sub);
-        res.send(result);
-    } catch(error){
-        console.log(error);
-        res.status(500).send('An error ocurred in the server.');
-    }
+  const name = req.query['name'];
+  const job = req.query['job'];
+  const sub = req.query['sub'];
+  try {
+    result = await myFunctions.getUsers(name, job, sub);
+    res.send(result);
+  } catch (error) {
+    console.log(error);
+    res.status(500).send('An error ocurred in the server.');
+  }
 });
 
 
@@ -110,13 +110,15 @@ app.post('/unions', async (req, res) => {
     .then(resp => {
       geocode = resp.data;
       console.log(geocode);
-      
-      
-   })
+
+
+    })
     .catch((error) => console.log(error))
   console.log(geocode);
-  unionToAdd.longitude = geocode.result.addressMatches[0].coordinates.x;
-  unionToAdd.latitude = geocode.result.addressMatches[0].coordinates.y;
+  if (geocode.result.addressMatches.length !== 0) {
+    unionToAdd.longitude = geocode.result.addressMatches[0].coordinates.x;
+    unionToAdd.latitude = geocode.result.addressMatches[0].coordinates.y;
+  }
   const savedUnion = await unionFunc.addUnion(unionToAdd)
   if (savedUnion) { res.status(201).send(savedUnion).end() } else { res.status(500).end() }
 })
@@ -208,12 +210,12 @@ app.patch('/unions', async (req, res) => {
   const year_founded = req.body.year_founded
   const website = req.body.website
   const longitude = req.body.longitude
-  const latitude =  req.body.latitude
+  const latitude = req.body.latitude
   if (unionFunc.findUnionById(id) == {}) {
     res.status(404).send('Resource not found.')
   } else {
     try {
-      const unionUpdate = await unionFunc.updateUnionById(id, name, address, description, member_count, industry, year_founded, website,longitude,latitude)
+      const unionUpdate = await unionFunc.updateUnionById(id, name, address, description, member_count, industry, year_founded, website, longitude, latitude)
       if (unionUpdate) {
         res.status(200).send(unionUpdate).end()
       } else { res.status(500).end() }

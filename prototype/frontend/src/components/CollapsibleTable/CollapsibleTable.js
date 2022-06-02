@@ -53,10 +53,6 @@ const columns = [
   }
 ]
 
-function createData(name, street, city, state, postal, numEmp, founded, website, phone, description, comments) {
-  return { name, street, city, state, postal, numEmp, founded, website, phone, description, comments }
-}
-
 function descendingComparator(a, b, orderBy) {
   if (b[orderBy] < a[orderBy]) {
     return -1
@@ -88,8 +84,7 @@ function stableSort(array, comparator) {
 }
 
 export default function CollapsibleTable(props) {
-  console.log(props);
-  const { width, height, loc } = props;
+  const { width, height, rows } = props;
   const [order, setOrder] = React.useState('asc');
   const [orderBy, setOrderBy] = React.useState('name');
   const [page, setPage] = React.useState(0);
@@ -132,24 +127,6 @@ export default function CollapsibleTable(props) {
 
   //console.log(unions.union.addressRegion);
 
-  const rows1 = unions.map((union) => (
-    (loc && loc.length !== 0 ? (loc.some((l) => l.abbr === union.address.addressRegion)) : true) && createData(
-      union.name,
-      union.address.streetAddress,
-      union.address.addressLocality,
-      union.address.addressRegion,
-      union.address.postalCode,
-      union.numberOfEmployees,
-      union.foundingDate,
-      union.sameAs,
-      union.telephone,
-      union.description,
-      [])
-  ));
-
-  const rows = rows1.filter(row => (row))
-  console.log(loc);
-  //console.log(rows);
 
   return (
     <Paper sx={{ width: width }}>

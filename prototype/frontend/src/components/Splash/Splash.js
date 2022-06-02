@@ -105,7 +105,7 @@ function Splash() {
 
               <Grid item xs={1}>
                 <ComboBox list={
-                  locations.map((l) => l.name)} label='Location' value={location} setValue={setLocation} />
+                  locations.map((l) => l.name)} label='Location' value={location} setValue={setLocation} /> 
               </Grid>
             </Grid>
           </Item>
