@@ -86,9 +86,11 @@ function Unions() {
 
   const rowsF = rows.filter(row => (row));
 
-  const temp = unions.map((union) => ((u && u.length !== 0 ? (u.some((l) => l.abbr === union.address.addressRegion)) : true)) && union);
+  const temp = unions.map((union) => ((u && u.length !== 0 ? (u.some((l) => l.abbr === union.address.addressRegion)) : true)) && union.latitude && union.longitude && union);
   const unionsF = temp.filter(union => (union));
-  
+  // console.log(unionsF)
+  let coords = [(unions[0] ? parseFloat(unions[0].latitude.$numberDecimal) : 39.8283), (unions[0] ? parseFloat(unions[0].longitude.$numberDecimal) : -98.5795)]
+
   return (
     <Container maxWidth='xl'>
       <Box
@@ -122,9 +124,8 @@ function Unions() {
             <UnionMap
               width={'40vw'}
               height={500}
-              lat={39.8283}
-              lng={-98.5795}
               unions={unionsF}
+              coords={coords}
             />
           </Stack>
         </Stack>
