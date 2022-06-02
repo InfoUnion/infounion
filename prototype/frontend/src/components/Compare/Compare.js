@@ -11,7 +11,8 @@ import {
   Typography,
   Container, 
   Stack,
-  Grid
+  Grid,
+  Card
 } from '@mui/material'
 import MultiBox from '../MultiBox/MultiBox';
 import {Link} from 'react-router-dom';
@@ -88,7 +89,7 @@ function Compare () {
         {u ? u.map((uni) => {
           const row = uni
         return(
-          <Box sx={{height: 500, width: 325, border: 1, }}>
+          <Card sx={{height: 500, width: 325}} elevation={4}>
           <Grid container height={150} width ={325} paddingTop={1} borderBottom={1} alignContent="center" textAlign="center">
           <Typography variant='h6' gutterBottom component='div' fontWeight={"bold"}>
           <Link to={`${uni.name}`} state={{ u: { row } }}>{uni.name}</Link>
@@ -113,7 +114,7 @@ function Compare () {
           <b>Description:</b> {uni.description ? uni.description : 'Unavailable'}
         </Typography>
         </Grid>
-        </Box>
+        </Card>
 
         )}
         ) : null}
