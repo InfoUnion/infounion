@@ -10,6 +10,7 @@ import Comments from './Comments'
 function Union () {
   const location = useLocation()
   const { u } = location.state
+  console.log(u)
 
   useEffect(() => { console.log(u) }, [u])
 

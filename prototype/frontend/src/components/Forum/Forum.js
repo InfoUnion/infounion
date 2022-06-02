@@ -4,6 +4,7 @@
 
 // import { Container } from '@mui/material'
 // import SelectInput from '@mui/material/Select/SelectInput'
+
 // import { withAuth0 } from '@auth0/auth0-react'
 
 // function Forum() {
@@ -18,6 +19,16 @@
 //       return false
 //     }
 //   }
+
+
+//   React.useEffect(() => {
+//     unions.forEach(
+//       union => {
+//         union._id = 0
+//         postOne(union)
+//         console.log(union)
+//       }
+//     )
 
 //   async function getOne(name) {
 //     try {

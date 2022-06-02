@@ -5,7 +5,7 @@ import { ThemeProvider } from '@emotion/react'
 
 import './App.css'
 
-import NavBar from './components/NavBar/NavBar';
+import NavBar from './components/Navbar/NavBar';
 
 import Splash from './components/Splash/Splash'
 import Home from './components/Home/Home'
@@ -64,6 +64,7 @@ function App () {
                 <Route path='/about' element={<About />} />
                 <Route path='/account' element={<Account />} />
                 <Route path='/unions/:id' element={<Union />} />
+                <Route path='/compare/:id' element={<Union />} />
                 <Route path='/unions' element={<Unions />} />
               </Routes>
             </BrowserRouter>
