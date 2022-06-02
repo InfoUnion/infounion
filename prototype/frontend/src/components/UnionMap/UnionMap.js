@@ -12,8 +12,10 @@ function mapTiler(x, y, z, dpr) {
 }
 
 function UnionMap(props) {
+  const [hue, setHue] = React.useState(0)
 
-  const { width, height, lat, lng } = props;
+  const { width, height, lat, lng, unions } = props;
+  const color = `hsl(${hue % 360}deg 39% 70%)`
 
   return (
     <Paper sx={{ width: width }}>
@@ -22,8 +24,22 @@ function UnionMap(props) {
         dprs={[1, 2]} // add this to support hidpi/retina (2x) maps if your provider supports them
         height={height}
         defaultCenter={[lat, lng]}
-        defaultZoom={11}
-      />
+        defaultZoom={5}
+      >
+        {unions.map((union) => {
+          if (union.latitude && union.longitude) {
+            const coords = [parseFloat(union.latitude.$numberDecimal), parseFloat(union.longitude.$numberDecimal)]
+            return (
+              <Marker
+                key={union.name}
+                width={50}
+                anchor={coords}
+                color={color}
+              />
+            );
+          }
+        })}
+      </Map >
     </Paper>
   )
 }

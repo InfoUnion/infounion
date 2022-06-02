@@ -28,14 +28,14 @@ function Unions() {
   const [location, setLocation] = React.useState((u ? u : null))
   const [locations, setLocations] = React.useState([]);
 
-  React.useEffect( () => {
-    convertStates().then( result => {
+  React.useEffect(() => {
+    convertStates().then(result => {
       setLocations(result);
     });
-    
+
   }, [])
 
-  console.log(location);
+  console.log(locations);
 
   const [city, setCity] = React.useState([])
   const cities = ['Sacramento', 'Bakersfield', 'San Diego', 'San Francisco']
@@ -57,40 +57,38 @@ function Unions() {
     }
   }
 
-
   React.useEffect(() => {
     fetchAll().then(result => {
-      if (result) { setUnions(result.data) }
+      if (result) {
+        setUnions(result.data)
+      }
     })
   }, []);
 
-  let addy = (unions.length !== 0 ? unions[0].address : null);
-
-  const [data, setData] = useState();
-
-  async function getCoords(street, city, state, zip) {
-    try {
-      const response = await axios.get(`http://localhost:4000/map?street=${street}&city=${city}&state=${state}&zip=${zip}`)
-      return response
-    } catch (error) {
-      // We're not handling errors. Just logging into the console.
-      console.log(error)
-      return false
-    }
+  function createData(name, street, city, state, postal, numEmp, founded, website, phone, description, comments) {
+    return { name, street, city, state, postal, numEmp, founded, website, phone, description, comments }
   }
 
-  React.useEffect(() => {
-    if (addy) {
-      getCoords(addy.streetAddress, addy.addressLocality, addy.addressRegion, addy.postalCode).then(result => {
-        if (result) {
-          setData(result.data.result.addressMatches[0].coordinates)
-        }
-      })
-    }
-  }, []);
+  const rows = unions.map((union) => (
+    (u && u.length !== 0 ? (u.some((l) => l.abbr === union.address.addressRegion)) : true) && createData(
+      union.name,
+      union.address.streetAddress,
+      union.address.addressLocality,
+      union.address.addressRegion,
+      union.address.postalCode,
+      union.numberOfEmployees,
+      union.foundingDate,
+      union.sameAs,
+      union.telephone,
+      union.description,
+      [])
+  ));
 
-  console.log("Data:");
+  const rowsF = rows.filter(row => (row));
 
+  const temp = unions.map((union) => ((u && u.length !== 0 ? (u.some((l) => l.abbr === union.address.addressRegion)) : true)) && union);
+  const unionsF = temp.filter(union => (union));
+  
   return (
     <Container maxWidth='xl'>
       <Box
@@ -119,13 +117,14 @@ function Unions() {
             <CollapsibleTable
               width='40vw'
               height={440}
-              loc={(u)}
+              rows={rowsF}
             />
             <UnionMap
               width={'40vw'}
               height={500}
-              lat={(data ? data.y : 0)}
-              lng={data ? data.x : 0}
+              lat={39.8283}
+              lng={-98.5795}
+              unions={unionsF}
             />
           </Stack>
         </Stack>
