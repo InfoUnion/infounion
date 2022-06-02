@@ -99,8 +99,9 @@ function Unions() {
             <UnionMap
               width={'40vw'}
               height={500}
-              lat={0}
-              lng={0}
+              lat={39.8283}
+              lng={-98.5795}
+              unions={unions}
             />
           </Stack>
         </Stack>
