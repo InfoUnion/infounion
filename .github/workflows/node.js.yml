@@ -5,7 +5,7 @@ name: Node.js CI
 
 on:
   push:
-    branches: [ cd-servicing ]
+    branches: [ cdFront ]
   pull_request:
     branches: [ main ]
 
