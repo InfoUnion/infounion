@@ -16,7 +16,7 @@ function Splash() {
   const occupations = ['Teacher', 'Lawyer', 'Engineer']
 
   const [information, setInformation] = React.useState('')
-  const informations = ['Unions', 'News', 'Connections']
+  const informations = ['Unions', 'News', 'Compare']
 
 
   const [location, setLocation] = React.useState('')
@@ -45,8 +45,8 @@ function Splash() {
       case "News":
         navigate('/home');
         break;
-      case "Connections":
-        navigate('/forum');
+      case "Compare":
+        navigate('/compare');
         break;
       default:
         break
