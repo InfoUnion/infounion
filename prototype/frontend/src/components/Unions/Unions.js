@@ -20,7 +20,7 @@ function Unions() {
   const u_location = useLocation();
   const [u, setU] = React.useState(u_location.state ? [u_location.state] : null);
 
-  console.log(u);
+  //console.log(unions);
 
   const [occupation, setOccupation] = React.useState('')
   const occupations = ['Teacher', 'Lawyer', 'Engineer']
@@ -35,7 +35,7 @@ function Unions() {
 
   }, [])
 
-  console.log(locations);
+  //console.log(locations);
 
   const [city, setCity] = React.useState([])
   const cities = ['Sacramento', 'Bakersfield', 'San Diego', 'San Francisco']
@@ -90,6 +90,11 @@ function Unions() {
   const unionsF = temp.filter(union => (union));
   // console.log(unionsF)
   let coords = [(unions[0] ? parseFloat(unions[0].latitude.$numberDecimal) : 39.8283), (unions[0] ? parseFloat(unions[0].longitude.$numberDecimal) : -98.5795)]
+  
+  navigator.geolocation.getCurrentPosition(function (position) {
+    console.log("Latitude is :", position.coords.latitude);
+    console.log("Longitude is :", position.coords.longitude);
+  });
 
   return (
     <Container maxWidth='xl'>

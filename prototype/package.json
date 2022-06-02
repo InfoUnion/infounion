@@ -9,6 +9,7 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
+    "pigeon-maps": "^0.21.0",
     "standard": "^17.0.0"
   }
 }

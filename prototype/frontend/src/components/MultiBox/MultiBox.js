@@ -18,8 +18,7 @@ export default function MultiBox(props) {
   return (
     <Autocomplete
       id='combo-box'
-      sx={{ width: 300 }}
-
+      sx={{ width: 400}}
       multiple
       //defaultValue={value}
 
@@ -27,7 +26,7 @@ export default function MultiBox(props) {
       getOptionLabel={(option) => option.name}
       onChange={handleChange}
 
-      disableCloseOnSelect
+      //disableCloseOnSelect
 
       renderOption={(props, option, { selected }) => (
         <li {...props}>
@@ -47,6 +46,7 @@ export default function MultiBox(props) {
           variant="standard"
           label={label}
           placeholder={placeholder}
+          //style={{maxHeight: 50, overflowY: 'scroll'}}
         />)}
     />
   )
