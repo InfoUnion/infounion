@@ -13,7 +13,8 @@ const UnionSchema = new mongoose.Schema({
     streetAddress: String,
     postalCode: String
   },
-
+  longitude: mongoose.Schema.Types.Decimal128,
+  latitude: mongoose.Schema.Types.Decimal128,
   description: String,
   member_count: Number,
   industry: String,
