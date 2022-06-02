@@ -57,7 +57,6 @@ function Unions() {
     }
   }
 
-
   React.useEffect(() => {
     fetchAll().then(result => {
       if (result) {
@@ -66,6 +65,30 @@ function Unions() {
     })
   }, []);
 
+  function createData(name, street, city, state, postal, numEmp, founded, website, phone, description, comments) {
+    return { name, street, city, state, postal, numEmp, founded, website, phone, description, comments }
+  }
+
+  const rows = unions.map((union) => (
+    (u && u.length !== 0 ? (u.some((l) => l.abbr === union.address.addressRegion)) : true) && createData(
+      union.name,
+      union.address.streetAddress,
+      union.address.addressLocality,
+      union.address.addressRegion,
+      union.address.postalCode,
+      union.numberOfEmployees,
+      union.foundingDate,
+      union.sameAs,
+      union.telephone,
+      union.description,
+      [])
+  ));
+
+  const rowsF = rows.filter(row => (row));
+
+  const temp = unions.map((union) => ((u && u.length !== 0 ? (u.some((l) => l.abbr === union.address.addressRegion)) : true)) && union);
+  const unionsF = temp.filter(union => (union));
+  
   return (
     <Container maxWidth='xl'>
       <Box
@@ -94,14 +117,14 @@ function Unions() {
             <CollapsibleTable
               width='40vw'
               height={440}
-              loc={(u)}
+              rows={rowsF}
             />
             <UnionMap
               width={'40vw'}
               height={500}
               lat={39.8283}
               lng={-98.5795}
-              unions={unions}
+              unions={unionsF}
             />
           </Stack>
         </Stack>
