@@ -20,7 +20,7 @@ function Unions() {
   const u_location = useLocation();
   const [u, setU] = React.useState(u_location.state ? [u_location.state] : null);
 
-  console.log(u);
+  //console.log(unions);
 
   const [occupation, setOccupation] = React.useState('')
   const occupations = ['Teacher', 'Lawyer', 'Engineer']
@@ -35,7 +35,7 @@ function Unions() {
 
   }, [])
 
-  console.log(locations);
+  //console.log(locations);
 
   const [city, setCity] = React.useState([])
   const cities = ['Sacramento', 'Bakersfield', 'San Diego', 'San Francisco']

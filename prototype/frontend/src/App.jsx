@@ -64,6 +64,7 @@ function App () {
                 <Route path='/about' element={<About />} />
                 <Route path='/account' element={<Account />} />
                 <Route path='/unions/:id' element={<Union />} />
+                <Route path='/compare/:id' element={<Union />} />
                 <Route path='/unions' element={<Unions />} />
               </Routes>
             </BrowserRouter>

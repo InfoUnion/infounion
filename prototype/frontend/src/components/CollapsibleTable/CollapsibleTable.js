@@ -88,6 +88,7 @@ function stableSort(array, comparator) {
 }
 
 export default function CollapsibleTable(props) {
+  console.log(props);
   const { width, height, loc } = props;
   const [order, setOrder] = React.useState('asc');
   const [orderBy, setOrderBy] = React.useState('name');
@@ -152,7 +153,7 @@ export default function CollapsibleTable(props) {
 
   return (
     <Paper sx={{ width: width }}>
-      <TableContainer sx={{ maxHeight: height }}>
+      <TableContainer sx={{ maxHeight: height}}>
         <Table stickyHeader aria-label='sticky table'>
           <CollapsibleTableHead
             columns={columns}
