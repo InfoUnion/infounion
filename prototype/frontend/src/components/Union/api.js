@@ -2,31 +2,31 @@ export const getComments = async () => {
   return [
     {
       id: '1',
-      body: 'First comment',
-      username: 'Jack',
+      body: 'This union is the bomb!',
+      username: 'John',
       userId: '1',
       parentId: null,
       createdAt: '2021-08-16T23:00:33.010+02:00'
     },
     {
       id: '2',
-      body: 'Second comment',
-      username: 'John',
+      body: 'I love this union!',
+      username: 'Jill',
       userId: '2',
       parentId: null,
       createdAt: '2021-08-16T23:00:33.010+02:00'
     },
     {
       id: '3',
-      body: 'First comment first child',
-      username: 'John',
+      body: 'I concur good sir!',
+      username: 'Carl',
       userId: '2',
       parentId: '1',
       createdAt: '2021-08-16T23:00:33.010+02:00'
     },
     {
       id: '4',
-      body: 'Second comment second child',
+      body: 'Yup, totally',
       username: 'John',
       userId: '2',
       parentId: '2',
@@ -41,7 +41,7 @@ export const createComment = async (text, parentId = null) => {
     body: text,
     parentId,
     userId: '1',
-    username: 'John',
+    username: 'Tomas',
     createdAt: new Date().toISOString()
   }
 }
