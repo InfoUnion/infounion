@@ -33,12 +33,12 @@ function Profile() {
           </CardActions>
         </Card>
         <br />
-        <Typography
+        {/* <Typography
           variant='h5'
           fontWeight='bold'
         >
           Saved Unions
-        </Typography>
+        </Typography> */}
       </Container>
     )
   )
