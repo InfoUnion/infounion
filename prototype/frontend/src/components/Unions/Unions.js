@@ -72,7 +72,6 @@ function Unions() {
   React.useEffect(() => {
     fetchAll().then(result => {
       if (result) {
-        locations.map((loc) => )
         setUnions(result.data)
       }
     })
