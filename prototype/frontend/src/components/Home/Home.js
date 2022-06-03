@@ -41,14 +41,14 @@ function Home() {
         <h1>News</h1>
       </div>
 
-      {isAuthenticated && (
+      {/* {isAuthenticated && (
         <Typography
           variant='h5'
           fontWeight='bold'
         >
           Saved Articles
         </Typography>
-      )}
+      )} */}
 
       <NewsContextProvider u_loc={u_loc ? u_loc : null}>
         <Stack direction="column" spacing={2}>
