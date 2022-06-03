@@ -30,11 +30,14 @@ function Compare() {
   const [u_loc, setULoc] = React.useState(u_location.state ? [u_location.state] : null);
   console.log(u_loc)
 
-  const [location, setRegion] = React.useState((u ? u : null))
   const [locations, setLocations] = React.useState([]);
 
   const handleUnionSelect = (value) => {
     setU(value)
+  }
+
+  const handleLocation = (value) => {
+    setULoc(value);
   }
 
   React.useEffect(() => {
@@ -63,11 +66,13 @@ function Compare() {
     }
   }
 
-  const filteredUnions = unions.map((union) => (
+  const temp = unions.map((union) => (
     (u_loc && u_loc.length !== 0 ? (u_loc.some((l) => l.abbr === union.address.addressRegion)) : true) && 
     union));
 
-  console.log(filteredUnions)
+  const filteredUnions = temp.filter((check) => (check));
+
+  //console.log(filteredUnions)
 
   return (
     <Container maxWidth='xl' >
@@ -84,12 +89,12 @@ function Compare() {
       >
         <Stack direction="column" spacing={2}>
           <MultiBox
-            list={u ? u.length < 3 ? unions : [] : unions}
-            label='Select Union'
-            value={''}
-            setValue={handleUnionSelect} />
+            list={locations}
+            label='Select State'
+            defaultValue={u_loc ? u_loc : []}
+            setValue={handleLocation} />
           <MultiBox
-            list={u ? u.length < 3 ? unions : [] : unions}
+            list={u ? u.length < 3 ? filteredUnions : [] : filteredUnions}
             label='Select Union'
             value={''}
             setValue={handleUnionSelect} />

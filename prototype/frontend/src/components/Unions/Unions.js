@@ -35,7 +35,7 @@ function Unions() {
 
   }, [])
 
-  //console.log(locations);
+  console.log(locations);
 
   const [city, setCity] = React.useState([])
   const cities = ['Sacramento', 'Bakersfield', 'San Diego', 'San Francisco']
@@ -43,7 +43,7 @@ function Unions() {
 
   const handleLocation = (value) => {
     setLocation(value);
-    (setU(value))
+    setU(value)
   }
 
   async function fetchAll() {
@@ -113,7 +113,7 @@ function Unions() {
             direction='row'
             spacing={1}
           >
-            <MultiBox list={occupations} label='Category' value={occupation} setValue={setOccupation} />
+            <MultiBox defualtValue ={u? u : []} list={occupations} label='Category' value={occupation} setValue={setOccupation} />
             <MultiBox list={locations} label='State' value={location} setValue={handleLocation} />
             <MultiBox list={locations} label='City' value={city} setValue={setCity} />
           </Stack>
