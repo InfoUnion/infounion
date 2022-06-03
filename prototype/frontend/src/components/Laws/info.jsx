@@ -198,17 +198,6 @@ const info = [
     "empl": "Employers subject to the Fair Labor Standards Act must pay the current Federal minimum wage of $7.25 per hour.",
   },
   {
-    "name": "",
-    "cond": "",
-    "basic": "",
-    "cond_two": "",
-    "basic_two": "",
-    "premium": "",
-    "premium_two": "",
-    "body": "",
-    "empl": "Employers subject to the Fair Labor Standards Act must pay the current Federal minimum wage of $7.25 per hour.",
-  },
-  {
     "name": "Maine",
     "cond": "",
     "basic": "Basic Minimum Rate (per hour): $12.75",

@@ -25,7 +25,14 @@ function Unions() {
   //console.log(unions);
 
   const [occupation, setOccupation] = React.useState('')
-  const occupations = ['Teacher', 'Lawyer', 'Engineer']
+  const occupations = 
+  [{name: 'Musician'}, 
+  {name: 'Construction Worker'}, 
+  {name: 'Engineer'}, 
+  {name: 'Educator'}, 
+  {name: 'Healthcare Worker'},
+  {name: 'Plumber'},
+  {name: 'Service Worker'}]
 
   const [location, setLocation] = React.useState((u ? u : null))
   const [locations, setLocations] = React.useState([]);
@@ -56,6 +63,10 @@ function Unions() {
   const handleLocation = (value) => {
     setLocation(value);
     setU(value)
+  }
+
+  const handleOccupation = (value) => {
+    setOccupation(value);
   }
 
   async function fetchAll() {
@@ -120,7 +131,7 @@ function Unions() {
             direction='row'
             spacing={1}
           >
-            <MultiBox list={occupations} label='Category' value={occupation} setValue={setOccupation} />
+            <MultiBox defaultValue ={u?[{name: "Educator"}]:[]} list={occupations} label='Category' value={occupation} setValue={handleOccupation} />
             <MultiBox defaultValue ={u? u : []} list={locations} label='State' value={location} setValue={handleLocation} />
             <MultiBox list={cities} label='City' value={city} setValue={setCity} />
           </Stack>
