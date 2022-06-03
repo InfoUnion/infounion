@@ -69,6 +69,16 @@ app.get('/states', async (req, res) => {
   }
 });
 
+app.get('/cities', async (req, res) => {
+    try {
+      result = await unionFunc.getCities();
+      res.send(result);
+    } catch (error) {
+      console.log(error);
+      res.status(500).send('An error ocurred in the server.');
+    }
+  });
+
 app.get('/comments', async (req, res) => {
   const user = req.query.user
   const union = req.query.union
