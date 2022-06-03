@@ -117,7 +117,7 @@ async function deleteUserById (id) {
   }
 }
 
-async function updateUserById (id, name, location, occupation) {
+async function updateUserById (id, name, location, occupation,union) {
   const userModel = getDbConnection().model('User', UserSchema)
 
   const user = await findUserById(id)
@@ -137,6 +137,9 @@ async function updateUserById (id, name, location, occupation) {
           name,
           location,
           occupation
+
+        },
+        $push:{union_favorites: union
 
         }
       }, { new: true })
