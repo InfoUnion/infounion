@@ -78,7 +78,7 @@ async function addUser(user){
 
 async function findUserByName (name) {
   const userModel = getDbConnection().model('User', UserSchema)
-  return await userModel.find({ name })
+  return await userModel.find({ 'username': name })
 }
 
 async function findUserBySub(sub){
