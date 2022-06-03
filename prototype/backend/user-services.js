@@ -66,7 +66,7 @@ async function addUser(user){
         // passing the JSON content of the Document:
 
         const userToAdd = new userModel(user);
-        userToAdd['sub'] = userToAdd.generateHash(userToAdd['sub']);
+        //userToAdd['sub'] = userToAdd.generateHash(userToAdd['sub']);
         const savedUser = await userToAdd.save()
         return savedUser;
     }catch(error) {
@@ -83,8 +83,8 @@ async function findUserByName (name) {
 
 async function findUserBySub(sub){
     const userModel = getDbConnection().model("User", UserSchema);
-    
-    return await userModel.findOne({'sub': UserSchema.validPassword(sub)});
+    //let newer = userModel.validPassword(sub);
+    return await userModel.findOne({'sub': sub});
 }
 
 async function findUserByJob(job){
