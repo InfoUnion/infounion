@@ -6,8 +6,6 @@ import { useAuth0 } from '@auth0/auth0-react'
 
 import News from '../News/News'
 
-import './Home.css'
-
 function Home() {
   const { isAuthenticated } = useAuth0()
 
