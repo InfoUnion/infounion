@@ -170,11 +170,12 @@ app.patch('/users', async (req, res) => {
   const name = req.body.name
   const location = req.body.location
   const occupation = req.body.occupation
+  const union = req.body.union
   if (myFunctions.findUserById(id) == {}) {
     res.status(404).send('Resource not found.')
   } else {
     try {
-      const userUpdate = await myFunctions.updateUserById(id, name, location, occupation)
+      const userUpdate = await myFunctions.updateUserById(id, name, location, occupation,union)
       if (userUpdate) {
         res.status(200).send(userUpdate).end()
       } else { res.status(500).end() }
