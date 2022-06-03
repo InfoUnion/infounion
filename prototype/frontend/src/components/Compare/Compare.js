@@ -1,4 +1,6 @@
 import React from 'react'
+import { useLocation } from 'react-router-dom';
+import convertStates from '../Regions/Regions'
 
 import axios from 'axios'
 
@@ -24,29 +26,18 @@ function Compare() {
   const [unions, setUnions] = React.useState([]);
   const [u, setU] = React.useState();
 
+  const u_location = useLocation();
+  const [u_loc, setULoc] = React.useState(u_location.state ? [u_location.state] : null);
+  console.log(u_loc)
+
+  const [locations, setLocations] = React.useState([]);
+
   const handleUnionSelect = (value) => {
     setU(value)
   }
 
-  //console.log(u);
-
-  const row = unions.map((union) => (
-    createData(
-      union.name,
-      union.address.streetAddress,
-      union.address.addressLocality,
-      union.address.addressRegion,
-      union.address.postalCode,
-      union.numberOfEmployees,
-      union.foundingDate,
-      union.sameAs,
-      union.telephone,
-      union.description,
-      [])
-  ));
-
-  function createData(name, street, city, state, postal, numEmp, founded, website, phone, description, comments) {
-    return { name, street, city, state, postal, numEmp, founded, website, phone, description, comments }
+  const handleLocation = (value) => {
+    setULoc(value);
   }
 
   React.useEffect(() => {
@@ -56,6 +47,13 @@ function Compare() {
       }
     })
   }, []);
+
+  React.useEffect(() => {
+    convertStates().then(result => {
+      setLocations(result);
+    });
+
+  }, [])
 
   async function fetchAll() {
     try {
@@ -67,6 +65,18 @@ function Compare() {
       return false
     }
   }
+
+  function createData(name, street, city, state, postal, numEmp, founded, website, phone, description, comments) {
+    return { name, street, city, state, postal, numEmp, founded, website, phone, description, comments }
+  }
+
+  const temp = unions.map((union) => (
+    (u_loc && u_loc.length !== 0 ? (u_loc.some((l) => l.abbr === union.address.addressRegion)) : true) && 
+    union));
+
+  const filteredUnions = temp.filter((check) => (check));
+
+  //console.log(filteredUnions)
 
   return (
     <Container maxWidth='xl' >
@@ -81,40 +91,52 @@ function Compare() {
         spacing={1}
         sx={{ margin: 1 }}
       >
-        <MultiBox
-          list={u ? u.length < 3 ? unions : [] : unions}
-          label='Select Union'
-          value={''}
-          setValue={handleUnionSelect} />
-
+        <Stack direction="column" spacing={2}>
+          <MultiBox
+            list={locations}
+            label='Select State'
+            defaultValue={u_loc ? u_loc : []}
+            setValue={handleLocation} />
+          <MultiBox
+            list={u ? u.length < 3 ? filteredUnions : [] : filteredUnions}
+            label='Select Union'
+            value={''}
+            setValue={handleUnionSelect} />
+        </Stack>
         {u ? u.map((uni) => {
-          const row = uni
+          const row = createData(uni.name,
+            uni.address.streetAddress,
+            uni.address.addressLocality,
+            uni.address.addressRegion,
+            uni.address.postalCode,
+            uni.numberOfEmployees,
+            uni.foundingDate,
+            uni.sameAs,
+            uni.telephone,
+            uni.description,
+            [])
           return (
             <Card sx={{ height: 500, width: 325 }} elevation={4}>
-              <Grid container height={150} width={325} paddingTop={1} borderBottom={1} alignItems="center" textAlign="center">
-                  <Typography variant='h6' gutterBottom component='div' fontWeight={"bold"}>
-                    <Link to={`${uni.name}`} state={{ u: { row } }}>{uni.name}</Link>
-                  </Typography>
+              <Grid container height={150} width={325} paddingTop={1} borderBottom={1} alignContent="center" textAlign="center">
+                <Typography variant='h6' gutterBottom component='div' fontWeight={"bold"}>
+                  <Link to={`${uni.name}`} state={{ u: { row } }}>{uni.name}</Link>
+                </Typography>
               </Grid>
               <Grid container paddingLeft={2} paddingRight={1} paddingTop={1}>
                 <Typography>
-                  <b>Telephone:</b> {uni.phone ? uni.phone : 'Unavailable'}
+                  <b>Telephone:</b> {uni.telephone ? uni.telephone : 'Unavailable'}
                 </Typography>
-
                 <Typography>
                   <b>Address: </b>
                   {uni.address.streetAddress ? uni.address.streetAddress
                     + ' ' + uni.address.addressLocality + ', ' + uni.address.addressRegion + ' ' + uni.address.postalCode : 'Unavailable'}
                 </Typography>
-
                 <Typography>
-                  <b>Founded in:</b> {uni.founded ? uni.founded : 'Unavailable'}
+                  <b>Founded in:</b> {uni.foundingDate ? uni.foundingDate : 'Unavailable'}
                 </Typography>
-
                 <Typography>
-                  <b>Number of Employees:</b> {uni.numEmp ? uni.numEmp : 'Unavailable'}
+                  <b>Number of Employees:</b> {uni.numberOfEmployees ? uni.numberOfEmployees : 'Unavailable'}
                 </Typography>
-
                 <Typography>
                   <b>Description:</b> {uni.description ? uni.description : 'Unavailable'}
                 </Typography>

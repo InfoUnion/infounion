@@ -8,7 +8,7 @@ const icon = <CheckBoxOutlineBlankIcon fontSize="small" />;
 const checkedIcon = <CheckBoxIcon fontSize="small" />;
 
 export default function MultiBox(props) {
-  const { list, label, value, setValue, placeholder } = props
+  const { list, label, defaultValue, setValue, placeholder } = props
   // const [inputValue, setInputValue] = React.useState('')
 
   const handleChange = (event, newValue) => {
@@ -20,7 +20,7 @@ export default function MultiBox(props) {
       id='combo-box'
       sx={{ width: 400}}
       multiple
-      //defaultValue={value}
+      defaultValue={defaultValue}
 
       options={list}
       getOptionLabel={(option) => option.name}
@@ -46,7 +46,6 @@ export default function MultiBox(props) {
           variant="standard"
           label={label}
           placeholder={placeholder}
-          //style={{maxHeight: 50, overflowY: 'scroll'}}
         />)}
     />
   )
