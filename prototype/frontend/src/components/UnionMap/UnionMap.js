@@ -70,7 +70,7 @@ function UnionMap(props) {
               payload={union}
               anchor={coords}
               color={'#1976d2'}
-              onClick={handleOpen}
+              onMouseOver={handleOpen}
             />
           );
         })}
