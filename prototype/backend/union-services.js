@@ -38,6 +38,13 @@ async function getStates(){
     return result;
 }
 
+async function getCities(){
+    const unionModel = getDbConnection().model("Union", UnionSchema);
+    let result;
+    result = await unionModel.distinct("address.addressLocality");
+    return result;
+}
+
 async function findUnionById(id){
     const unionModel = getDbConnection().model("Union", UnionSchema);    
     try{
@@ -145,4 +152,5 @@ exports.addUnion = addUnion;
 exports.updateUnionById = updateUnionById;
 exports.findUnionByName = findUnionByName;
 exports.getStates = getStates;
+exports.getCities = getCities;
 
