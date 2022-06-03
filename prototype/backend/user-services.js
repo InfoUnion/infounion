@@ -150,9 +150,29 @@ async function updateUserById (id, name, location, occupation,union) {
   }
 }
 
+async function removeFavUnion (id, union) {
+  const userModel = getDbConnection().model('User', UserSchema)
+
+  const user = await findUserById(id)
+  try {
+    const newuser = await userModel.findOneAndUpdate({ _id: id },
+      {
+        
+        $pull:{union_favorites: union
+
+        }
+      }, { new: true })
+    return newuser
+  } catch (error) {
+    console.log(error)
+    return false
+  }
+}
+
 exports.deleteUserById = deleteUserById
 exports.getUsers = getUsers
 exports.findUserByJob = findUserByJob
 exports.findUserById = findUserById
 exports.addUser = addUser
 exports.updateUserById = updateUserById
+exports.removeFavUnion = removeFavUnion
