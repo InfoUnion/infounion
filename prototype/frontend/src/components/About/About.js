@@ -1,36 +1,36 @@
-import { Container, ImageList, ImageListItem, ImageListItemBar } from '@mui/material'
+import { Container, ImageList, ImageListItem, ImageListItemBar, Typography, Link, } from '@mui/material'
 import React from 'react'
 import './About.css'
 
 const itemData = [
   {
-    img: 'https://images.unsplash.com/photo-1565299715199-866c917206bb',
+    img: 'https://media-exp1.licdn.com/dms/image/C5603AQFGfHU09VyJrA/profile-displayphoto-shrink_800_800/0/1624164323083?e=1659571200&v=beta&t=zxZ75FhFcSilWWacZ0RaP8dwKXooNAT1l_LK2XlKV3g',
     title: 'Giselle Dougan',
     author: 'https://www.linkedin.com/in/giselle-dougan-166933153/'
   },
   {
-    img: 'https://images.unsplash.com/photo-1551782450-a2132b4ba21d',
+    img: 'https://media-exp1.licdn.com/dms/image/C4E03AQEXNvKoNb9KCw/profile-displayphoto-shrink_800_800/0/1628024479626?e=1659571200&v=beta&t=9tJMVLVB7ahVjZBsZr3y4-KYnSwMPgiiLwC-Tmyrm1Q',
     title: 'Justin Scabarozi',
     author: 'https://www.linkedin.com/in/justin-scabarozi-620329219/'
   },
   {
-    img: 'https://images.unsplash.com/photo-1602968407815-5963b28c66af',
+    img: 'https://media-exp1.licdn.com/dms/image/C5603AQFBwbnOHBS5gQ/profile-displayphoto-shrink_800_800/0/1627846960874?e=1659571200&v=beta&t=G15XajdeIt4PVPb21DkusCnTSfa46J5PumiRdUTebVI',
     title: 'Kareem Darghous',
     author: 'https://www.linkedin.com/in/kareem-d-35786a109/'
   },
   {
-    img: 'https://images.unsplash.com/photo-1614045959735-6f9dc28cb994',
+    img: 'https://media-exp1.licdn.com/dms/image/C5603AQErO6o1UoVwzg/profile-displayphoto-shrink_800_800/0/1652917376897?e=1659571200&v=beta&t=z1PgoZysCOw63cNcXSpLRHHtHyJwSAvX0_slL7izbxU',
     title: 'Khoa Ly',
     author: 'https://www.linkedin.com/in/khoaly/'
   },
   {
-    img: 'https://images.unsplash.com/photo-1515592505566-64d3ee6c1e83',
+    img: 'https://media-exp1.licdn.com/dms/image/C5603AQHIzMGiEs5b-Q/profile-displayphoto-shrink_800_800/0/1646552182972?e=1659571200&v=beta&t=hBR1x46K_M465ccO7H1lVcH-Q72aO43NQEZplaHQ1SU',
     title: 'Tomas Prieto',
     author: 'https://www.linkedin.com/in/tom%C3%A1s-prieto-577a44225/'
   }
 ]
 
-function About () {
+function About() {
   // const Item = styled(Paper)(({ theme }) => ({
   //   padding: theme.spacing(1),
   //   textAlign: 'center',
@@ -46,14 +46,14 @@ function About () {
         {itemData.map((item) => (
           <ImageListItem key={item.img}>
             <img
-              src={`${item.img}?w=600&h=600&fit=crop&auto=format`}
-              srcSet={`${item.img}?w=600&h=600&fit=crop&auto=format&dpr=2 2x`}
+              src={`${item.img}`}
+              srcSet={`${item.img}`}
               alt={item.title}
               loading='lazy'
             />
             <ImageListItemBar
               title={item.title}
-              subtitle={<span>by: {item.author}</span>}
+              subtitle={<span>by: <a href={item.author} target="_blank">{item.author}</a></span>}
               position='below'
             />
           </ImageListItem>
