@@ -28,7 +28,7 @@ function getDbConnection () {
 async function getUsers(name, job,sub){
     const userModel = getDbConnection().model("User", UserSchema);
     let result;
-    if (name === undefined && job === undefined){
+    if (name === undefined && job === undefined && sub === undefined){
         result = await userModel.find();
     }
     else if (sub){
