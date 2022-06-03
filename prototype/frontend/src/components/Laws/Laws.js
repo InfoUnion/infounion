@@ -24,8 +24,9 @@ function Laws() {
           <Accordion>
             <AccordionSummary>
               <Typography
+                sx={{ fontWeight: 'bold' }}
                 variant="h5">
-                {f.name}
+                {f.name.toUpperCase()}
               </Typography>
             </AccordionSummary>
             <AccordionDetails>

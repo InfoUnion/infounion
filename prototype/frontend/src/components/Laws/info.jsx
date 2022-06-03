@@ -67,8 +67,8 @@ const info = [
   },
   {
     "name": "Connecticut",
-    "cond": "Basic Minimum Rate (per hour): $13.00",
-    "basic": "",
+    "cond": "",
+    "basic": "Basic Minimum Rate (per hour): $13.00",
     "cond_two": "",
     "basic_two": "",
     "premium": "Premium Pay After Designated Hours: Weekly - 40",
