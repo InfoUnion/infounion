@@ -113,8 +113,8 @@ function Unions() {
             direction='row'
             spacing={1}
           >
-            <MultiBox defualtValue ={u? u : []} list={occupations} label='Category' value={occupation} setValue={setOccupation} />
-            <MultiBox list={locations} label='State' value={location} setValue={handleLocation} />
+            <MultiBox list={occupations} label='Category' value={occupation} setValue={setOccupation} />
+            <MultiBox defaultValue ={u? u : []} list={locations} label='State' value={location} setValue={handleLocation} />
             <MultiBox list={locations} label='City' value={city} setValue={setCity} />
           </Stack>
           <Stack

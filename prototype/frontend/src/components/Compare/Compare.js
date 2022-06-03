@@ -66,6 +66,10 @@ function Compare() {
     }
   }
 
+  function createData(name, street, city, state, postal, numEmp, founded, website, phone, description, comments) {
+    return { name, street, city, state, postal, numEmp, founded, website, phone, description, comments }
+  }
+
   const temp = unions.map((union) => (
     (u_loc && u_loc.length !== 0 ? (u_loc.some((l) => l.abbr === union.address.addressRegion)) : true) && 
     union));
@@ -100,7 +104,17 @@ function Compare() {
             setValue={handleUnionSelect} />
         </Stack>
         {u ? u.map((uni) => {
-          const row = uni
+          const row = createData(uni.name,
+            uni.address.streetAddress,
+            uni.address.addressLocality,
+            uni.address.addressRegion,
+            uni.address.postalCode,
+            uni.numberOfEmployees,
+            uni.foundingDate,
+            uni.sameAs,
+            uni.telephone,
+            uni.description,
+            [])
           return (
             <Card sx={{ height: 500, width: 325 }} elevation={4}>
               <Grid container height={150} width={325} paddingTop={1} borderBottom={1} alignContent="center" textAlign="center">
@@ -110,7 +124,7 @@ function Compare() {
               </Grid>
               <Grid container paddingLeft={2} paddingRight={1} paddingTop={1}>
                 <Typography>
-                  <b>Telephone:</b> {uni.phone ? uni.phone : 'Unavailable'}
+                  <b>Telephone:</b> {uni.telephone ? uni.telephone : 'Unavailable'}
                 </Typography>
                 <Typography>
                   <b>Address: </b>
@@ -118,10 +132,10 @@ function Compare() {
                     + ' ' + uni.address.addressLocality + ', ' + uni.address.addressRegion + ' ' + uni.address.postalCode : 'Unavailable'}
                 </Typography>
                 <Typography>
-                  <b>Founded in:</b> {uni.founded ? uni.founded : 'Unavailable'}
+                  <b>Founded in:</b> {uni.foundingDate ? uni.foundingDate : 'Unavailable'}
                 </Typography>
                 <Typography>
-                  <b>Number of Employees:</b> {uni.numEmp ? uni.numEmp : 'Unavailable'}
+                  <b>Number of Employees:</b> {uni.numberOfEmployees ? uni.numberOfEmployees : 'Unavailable'}
                 </Typography>
                 <Typography>
                   <b>Description:</b> {uni.description ? uni.description : 'Unavailable'}
