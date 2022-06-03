@@ -13,7 +13,7 @@ import './Splash.css'
 
 function Splash() {
   const [occupation, setOccupation] = React.useState('')
-  const occupations = ['Teacher', 'Lawyer', 'Engineer']
+  const occupations = ['Musician', 'Construction Worker', 'Engineer', 'Educator', 'Healthcare Worker', 'Plumber', 'Service Worker']
 
   const [information, setInformation] = React.useState('')
   const informations = ['Unions', 'News', 'Compare']
