@@ -16,10 +16,13 @@ const UnionSchema = new mongoose.Schema({
   longitude: mongoose.Schema.Types.Decimal128,
   latitude: mongoose.Schema.Types.Decimal128,
   description: String,
-  member_count: Number,
+  numberOfEmployees: Number,
+  telephone: String,
   industry: String,
-  year_founded: Number,
-  website: String,
+  foundingDate: Number,
+  sameAs: [String],
+  Issues: String,
+  ProgramAreas: String,
   comment_id: [mongoose.ObjectId],
   specific_id: mongoose.ObjectId
 }, { collection: 'unions_list' })

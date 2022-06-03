@@ -56,7 +56,7 @@ function App () {
               <Routes>
                 <Route path='/' element={<Splash />} />
                 <Route path='/splash' element={<Splash />} />
-                <Route path='/home' element={<Home />} />
+                <Route path='/news' element={<Home />} />
                 <Route path='/compare' element={<Compare />} />
                 <Route path='/laws' element={<Laws />} />
                 <Route path='/about' element={<About />} />
