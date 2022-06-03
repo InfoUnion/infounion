@@ -10,6 +10,8 @@ import UnionMap from '../UnionMap/UnionMap';
 import { useLocation } from 'react-router-dom';
 
 import convertStates from '../Regions/Regions'
+import getCities from '../Regions/Cities'
+
 
 
 import './Unions.css'
@@ -34,11 +36,21 @@ function Unions() {
     });
 
   }, [])
+  
 
   console.log(locations);
 
+
   const [city, setCity] = React.useState([])
-  const cities = ['Sacramento', 'Bakersfield', 'San Diego', 'San Francisco']
+  const [cities, setCities] = React.useState([]);
+
+  React.useEffect(() => {
+    getCities().then(result => {
+
+      setCities(result);
+    });
+
+  }, [])
 
 
   const handleLocation = (value) => {
@@ -60,11 +72,13 @@ function Unions() {
   React.useEffect(() => {
     fetchAll().then(result => {
       if (result) {
+        locations.map((loc) => )
         setUnions(result.data)
       }
     })
   }, []);
 
+ 
   function createData(name, street, city, state, postal, numEmp, founded, website, phone, description, comments) {
     return { name, street, city, state, postal, numEmp, founded, website, phone, description, comments }
   }
@@ -109,7 +123,7 @@ function Unions() {
           >
             <MultiBox list={occupations} label='Category' value={occupation} setValue={setOccupation} />
             <MultiBox defaultValue ={u? u : []} list={locations} label='State' value={location} setValue={handleLocation} />
-            <MultiBox list={locations} label='City' value={city} setValue={setCity} />
+            <MultiBox list={cities} label='City' value={city} setValue={setCity} />
           </Stack>
           <Stack
             direction='row'
