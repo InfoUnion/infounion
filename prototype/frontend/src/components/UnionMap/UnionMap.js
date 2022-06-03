@@ -12,10 +12,16 @@ function mapTiler(x, y, z, dpr) {
 }
 
 function UnionMap(props) {
-  const [hue, setHue] = React.useState(0)
+  const [hue, setHue] = React.useState(0);
+  const [focus , setFocus] = React.useState([39.8283, -98.5795]);
 
-  const { width, height, unions, coords} = props;
+  const { width, height, unions, coords } = props;
   const color = `hsl(${hue % 360}deg 39% 70%)`
+
+  // navigator.geolocation.getCurrentPosition(function (position) {
+  //   console.log("Latitude is :", position.coords.latitude);
+  //   console.log("Longitude is :", position.coords.longitude);
+  // });
 
   return (
     <Paper sx={{ width: width }}>
@@ -23,19 +29,20 @@ function UnionMap(props) {
         provider={mapTiler}
         dprs={[1, 2]} // add this to support hidpi/retina (2x) maps if your provider supports them
         height={height}
-        defaultCenter={coords}
+        defaultCenter={focus}
         defaultZoom={4}
       >
         {unions.map((union) => {
-            const coords = [parseFloat(union.latitude.$numberDecimal), parseFloat(union.longitude.$numberDecimal)]
-            return (
-              <Marker
-                key={union.name}
-                width={50}
-                anchor={coords}
-                color={'#1976d2'}
-              />
-            );
+          const coords = [parseFloat(union.latitude.$numberDecimal), parseFloat(union.longitude.$numberDecimal)]
+          return (
+            <Marker
+              key={union.name}
+              width={50}
+              anchor={coords}
+              color={'#1976d2'}
+              onClick={(event) => {setFocus([0, 0])}}
+            />
+          );
         })}
       </Map >
     </Paper>
