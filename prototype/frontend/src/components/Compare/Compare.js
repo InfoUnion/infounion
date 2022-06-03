@@ -14,7 +14,7 @@ import {
   Container,
   Stack,
   Grid,
-  Card
+  Card,
 } from '@mui/material'
 import MultiBox from '../MultiBox/MultiBox';
 import { Link } from 'react-router-dom';
@@ -146,6 +146,7 @@ function Compare() {
           )
         }
         ) : null}
+
       </Stack>
     </Container>
   )

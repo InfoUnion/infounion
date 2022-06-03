@@ -16,7 +16,7 @@ import MenuIcon from '@mui/icons-material/Menu'
 // import { useAuth0 } from '@auth0/auth0-react'
 import LogoutButton from '../LogoutButton/LogoutButton'
 
-const pages = ['Home', 'Unions', 'Compare', 'Forum', 'Laws', 'About']
+const pages = ['Home', 'Unions', 'Compare', 'Laws', 'About']
 // const settings = ['Profile', 'Account', 'Settings', 'Login'];
 
 const NavBar = () => {

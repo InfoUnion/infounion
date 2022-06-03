@@ -35,22 +35,22 @@ const columns = [
     align: 'right'
     // format: (value) => value.toLocaleString('en-US'),
   },
-  {
-    id: 'numEmp',
-    numeric: true,
-    label: 'Num.\u00a0Employees',
-    minWidth: 170,
-    align: 'right',
-    format: (value) => value.toLocaleString('en-US')
-  },
-  {
-    id: 'founded',
-    numeric: true,
-    label: 'Founded',
-    minWidth: 170,
-    align: 'right'
-    // format: (value) => value.toFixed(2),
-  }
+  // {
+  //   id: 'numEmp',
+  //   numeric: true,
+  //   label: 'Num.\u00a0Employees',
+  //   minWidth: 170,
+  //   align: 'right',
+  //   format: (value) => value.toLocaleString('en-US')
+  // },
+  // {
+  //   id: 'founded',
+  //   numeric: true,
+  //   label: 'Founded',
+  //   minWidth: 170,
+  //   align: 'right'
+  //   // format: (value) => value.toFixed(2),
+  // }
 ]
 
 function descendingComparator(a, b, orderBy) {
