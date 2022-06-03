@@ -5,7 +5,7 @@ import NewsArticle from './NewsArticle'
 
 function News (props) {
   const { data } = useContext(NewsContext)
-  console.log(data)
+  // console.log(data)
 
   return (
     <Box

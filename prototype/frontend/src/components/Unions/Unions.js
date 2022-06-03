@@ -1,22 +1,95 @@
-import React from 'react'
+import React, { useState } from 'react'
+import axios from 'axios'
 
 import { Container, Box, Stack, } from '@mui/material'
-import ComboBox from '../Splash/ComboBox'
+import MultiBox from '../MultiBox/MultiBox';
 
-import CollapsibleTable from './CollapsibleTable';
+import CollapsibleTable from '../CollapsibleTable/CollapsibleTable';
+import UnionMap from '../UnionMap/UnionMap';
+
 import { useLocation } from 'react-router-dom';
+
+import convertStates from '../Regions/Regions'
+
 
 import './Unions.css'
 
 function Unions() {
+  const [unions, setUnions] = React.useState([])
+
   const u_location = useLocation();
-  const u_state = u_location.state;
+  const [u, setU] = React.useState(u_location.state ? [u_location.state] : null);
+
+  console.log(u);
 
   const [occupation, setOccupation] = React.useState('')
   const occupations = ['Teacher', 'Lawyer', 'Engineer']
 
-  const [location, setLocation] = React.useState('')
-  const locations = ['California', 'New York', 'Texas']
+  const [location, setLocation] = React.useState((u ? u : null))
+  const [locations, setLocations] = React.useState([]);
+
+  React.useEffect( () => {
+    convertStates().then( result => {
+      setLocations(result);
+    });
+    
+  }, [])
+
+  console.log(location);
+
+  const [city, setCity] = React.useState([])
+  const cities = ['Sacramento', 'Bakersfield', 'San Diego', 'San Francisco']
+
+
+  const handleLocation = (value) => {
+    setLocation(value);
+    (setU(value))
+  }
+
+  async function fetchAll() {
+    try {
+      const response = await axios.get('http://localhost:4000/unions')
+      return response
+    } catch (error) {
+      // We're not handling errors. Just logging into the console.
+      console.log(error)
+      return false
+    }
+  }
+
+
+  React.useEffect(() => {
+    fetchAll().then(result => {
+      if (result) { setUnions(result.data) }
+    })
+  }, []);
+
+  let addy = (unions.length !== 0 ? unions[0].address : null);
+
+  const [data, setData] = useState();
+
+  async function getCoords(street, city, state, zip) {
+    try {
+      const response = await axios.get(`http://localhost:4000/map?street=${street}&city=${city}&state=${state}&zip=${zip}`)
+      return response
+    } catch (error) {
+      // We're not handling errors. Just logging into the console.
+      console.log(error)
+      return false
+    }
+  }
+
+  React.useEffect(() => {
+    if (addy) {
+      getCoords(addy.streetAddress, addy.addressLocality, addy.addressRegion, addy.postalCode).then(result => {
+        if (result) {
+          setData(result.data.result.addressMatches[0].coordinates)
+        }
+      })
+    }
+  }, []);
+
+  console.log("Data:");
 
   return (
     <Container maxWidth='xl'>
@@ -35,10 +108,26 @@ function Unions() {
             direction='row'
             spacing={1}
           >
-            <ComboBox list={occupations} label='Occupation' value={occupation} setValue={setOccupation} />
-            <ComboBox list={locations} label='Location' value={location} setValue={setLocation} />
+            <MultiBox list={occupations} label='Category' value={occupation} setValue={setOccupation} />
+            <MultiBox list={locations} label='State' value={location} setValue={handleLocation} />
+            <MultiBox list={locations} label='City' value={city} setValue={setCity} />
           </Stack>
-          <CollapsibleTable loc={u_state} />
+          <Stack
+            direction='row'
+            spacing={1}
+          >
+            <CollapsibleTable
+              width='40vw'
+              height={440}
+              loc={(u)}
+            />
+            <UnionMap
+              width={'40vw'}
+              height={500}
+              lat={(data ? data.y : 0)}
+              lng={data ? data.x : 0}
+            />
+          </Stack>
         </Stack>
       </Box>
     </Container>

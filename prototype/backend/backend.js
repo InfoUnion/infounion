@@ -4,12 +4,28 @@ const port = 4000
 const myFunctions = require('./user-services.js')
 const unionFunc = require('./union-services.js')
 const comFunc = require('./comment-services.js')
+const axios = require('axios')
 
 const cors = require('cors')
 const e = require('express')
 
 app.use(cors())
 app.use(express.json())
+
+app.get('/map', (req, res) => {
+  const street = req.query.street
+  const city = req.query.city
+  const state = req.query.state
+  const zip = req.query.zip
+  axios
+    .get(`https://geocoding.geo.census.gov/geocoder/locations/address?street=${street}&city=${city}&state=${state}&zip=${zip}&benchmark=Public_AR_Census2020&format=json`)
+    .then(resp => {
+      let geocode = resp.data;
+      console.log('geocode info: ', geocode);
+      res.send(geocode);
+   })
+    .catch((error) => console.log(error))
+});
 
 app.get('/', (req, res) => {
   res.send('hello world')
@@ -31,26 +47,26 @@ app.get('/users', async (req, res) => {
 
 
 app.get('/unions', async (req, res) => {
-    const name = req.query['name'];
-    const postalCode = req.query['postalCode'];
-    //console.log(name,postalCode);
-    try{
-        result = await unionFunc.getUnions(name,postalCode);
-        res.send(result);
-    } catch(error){
-        console.log(error);
-        res.status(500).send('An error ocurred in the server.');
-    }
+  const name = req.query['name'];
+  const postalCode = req.query['postalCode'];
+  //console.log(name,postalCode);
+  try {
+    result = await unionFunc.getUnions(name, postalCode);
+    res.send(result);
+  } catch (error) {
+    console.log(error);
+    res.status(500).send('An error ocurred in the server.');
+  }
 });
 
 app.get('/states', async (req, res) => {
-    try{
-        result = await unionFunc.getStates();
-        res.send(result);
-    } catch(error){
-        console.log(error);
-        res.status(500).send('An error ocurred in the server.');
-    }
+  try {
+    result = await unionFunc.getStates();
+    res.send(result);
+  } catch (error) {
+    console.log(error);
+    res.status(500).send('An error ocurred in the server.');
+  }
 });
 
 app.get('/comments', async (req, res) => {

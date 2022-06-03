@@ -3,7 +3,7 @@ import React from 'react'
 import { Container, Card, CardHeader, Avatar, CardContent, CardActions, Typography } from '@mui/material'
 
 import { useAuth0 } from '@auth0/auth0-react'
-import LogoutButton from '../Account/LogoutButton'
+import LogoutButton from '../LogoutButton/LogoutButton'
 
 function Profile() {
   const { user, isAuthenticated } = useAuth0()
