@@ -46,7 +46,7 @@ function Splash() {
         navigate('/home');
         break;
       case "Compare":
-        navigate('/compare');
+        navigate('/compare', { state: locations.find(l => l.name === location) });
         break;
       default:
         break
