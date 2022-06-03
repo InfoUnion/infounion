@@ -119,7 +119,7 @@ function Compare() {
             <Card sx={{ height: 500, width: 325 }} elevation={4}>
               <Grid container height={150} width={325} paddingTop={1} borderBottom={1} alignContent="center" textAlign="center">
                 <Typography variant='h6' gutterBottom component='div' fontWeight={"bold"}>
-                  <Link to={`${uni.name}`} state={{ u: { row } }}>{uni.name}</Link>
+                  <Link to={`/unions/${uni.name}`} state={{ u: { row } }}>{uni.name}</Link>
                 </Typography>
               </Grid>
               <Grid container paddingLeft={2} paddingRight={1} paddingTop={1}>
