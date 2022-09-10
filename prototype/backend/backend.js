@@ -211,6 +211,24 @@ app.patch('/users', async (req, res) => {
   }
 })
 
+app.patch('/RFav', async (req, res) => {
+    const id = req.body.id
+    const union = req.body.union
+    if (myFunctions.findUserById(id) == {}) {
+      res.status(404).send('Resource not found.')
+    } else {
+      try {
+        const userUpdate = await myFunctions.removeFavUnion(union)
+        if (userUpdate) {
+          res.status(200).send(userUpdate).end()
+        } else { res.status(500).end() }
+      } catch (error) {
+        console.log(error)
+        res.status(500).send('An error ocurred in the server.')
+      }
+    }
+  })
+
 app.patch('/unions', async (req, res) => {
   const id = req.body.id
   const name = req.body.name
